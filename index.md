@@ -97,4 +97,4 @@ Currently, I'm relocating to Houston, TX, and am open to on-site, hybrid, or rem
 ---
 
 Feel free to use this updated content to replace the existing text on your personal webpage. If you need assistance with formatting or further customization, let me know! 
-* [PDF](https://github.com/zhenisduissekov/zhenisduissekov.github.io/edit/gh-pages/index.md#:~:text=en-,ZHENIS_DUISSEKOV_CV_23032703,-.pdf)
+* [PDF](https://github.com/zhenisduissekov/zhenisduissekov.github.io/edit/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf)
