@@ -46,11 +46,6 @@ Open to backend-focused roles in Houston (or remote). Let’s build something aw
 
 ---
 
-If you'd like to chat or collaborate, feel free to [drop a message](mailto:zduissekov@gmail.com) [open a GitHub issue](https://github.com/zhenisduissekov/zhenisduissekov.github.io/issues/new)
-. Thanks for stopping by!
-
----
-
-Let me know if you'd like this in raw HTML format or need help styling it!
+If you'd like to chat or collaborate, feel free to open a [GitHub issu](https://github.com/zhenisduissekov/zhenisduissekov.github.io/issues/new). Thanks for stopping by!
 
 * [PDF](https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf)
