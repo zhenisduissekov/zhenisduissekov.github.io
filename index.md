@@ -1,4 +1,4 @@
-📍 Houston, TX (relocating) | 🟢 U.S. Work Authorized | [GitHub](https://github.com/zhenisduissekov) · [LinkedIn](https://www.linkedin.com/in/zhenis-duissekov) · [Telegram](https://t.me/zduissekov)
+📍 Houston, TX (relocating) | 🟢 U.S. Work Authorized | [GitHub](https://github.com/zhenisduissekov) · [LinkedIn](https://www.linkedin.com/in/zhenis-duissekov) · [Telegram](https://t.me/zduissekov) · [CV PDF](https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf)
 
 ---
 
@@ -48,4 +48,4 @@ Open to backend-focused roles in Houston (or remote). Let’s build something aw
 
 If you'd like to chat or collaborate, feel free to open a [GitHub issu](https://github.com/zhenisduissekov/zhenisduissekov.github.io/issues/new). Thanks for stopping by!
 
-* [PDF](https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf)
+
