@@ -1,5 +1,3 @@
-## **Zhenis Duissekov**  
-### Backend Engineer | Distributed Systems Enthusiast  
 📍 Houston, TX (relocating) | 🟢 U.S. Work Authorized | [GitHub](https://github.com/zhenisduissekov) · [LinkedIn](https://www.linkedin.com/in/zhenis-duissekov) · [Telegram](https://t.me/zduissekov)
 
 ---
@@ -48,7 +46,8 @@ Open to backend-focused roles in Houston (or remote). Let’s build something aw
 
 ---
 
-If you'd like to chat or collaborate, feel free to [drop a message](mailto:zduissekov@gmail.com). Thanks for stopping by!
+If you'd like to chat or collaborate, feel free to [drop a message](mailto:zduissekov@gmail.com) [open a GitHub issue](https://github.com/zhenisduissekov/zhenisduissekov.github.io/issues/new)
+. Thanks for stopping by!
 
 ---
 
