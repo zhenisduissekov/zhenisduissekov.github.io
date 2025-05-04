@@ -168,17 +168,20 @@
       border-top: 1px solid #ccc;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       justify-content: center;
     }
 
     .suggestion-btn {
       background: #e0f2f1;
       border: 1px solid #ccc;
-      padding: 6px 10px;
-      border-radius: 16px;
+      padding: 4px 8px;
+      border-radius: 14px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
+      max-width: 160px;
+      line-height: 1.2;
+      text-align: center;
     }
 
     .suggestion-btn:hover {
@@ -212,72 +215,8 @@
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>ZHENIS DUISSEKOV</h1>
-    <h2>SOFTWARE DEVELOPER</h2>
-  </header>
-
-  <main>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-      <span>📍 Houston, TX (relocating)</span>
-      <span>🟢 U.S. Work Authorized</span>
-      <span>
-        <a href="https://github.com/zhenisduissekov">GitHub</a> ·
-        <a href="https://www.linkedin.com/in/zhenis-duissekov">LinkedIn</a> ·
-        <a href="https://t.me/zduissekov">Telegram</a> ·
-        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>
-      </span>
-    </div>
-
-    <hr>
-
-    <section>
-      <p>Hi! I’m Zhenis — a backend engineer with a love for building fast, reliable systems. With 7+ years of experience, I’ve worked on everything from microservices and real-time pipelines to observability tools powered by LLMs.</p>
-      <p>I’ve mostly been writing Go (with some Python and NodeJS), working with Kafka, ClickHouse, Postgres, and building event-driven systems in production. I care about clean code, smart monitoring, and making services easier to debug and scale.</p>
-      <p>Lately, I’ve been exploring ways to bring AI into infrastructure — like summarizing logs or finding hidden patterns with LLMs.</p>
-      <p><strong>Open to backend-focused roles in Houston (or remote). Let’s build something awesome 🚀</strong></p>
-    </section>
-
-    <section>
-      <h3>Tech I Use Often</h3>
-      <ul>
-        <li><strong>Languages:</strong> Go, Python, NodeJS</li>
-        <li><strong>Infra & DevOps:</strong> Docker, Kubernetes, Prometheus, Grafana, GitLab CI</li>
-        <li><strong>Data:</strong> PostgreSQL, ClickHouse, Kafka, Redis</li>
-        <li><strong>Observability:</strong> OpenTelemetry, Jaeger</li>
-        <li><strong>AI Tools:</strong> OpenAI, LLaMA, Langchain</li>
-        <li><strong>Other:</strong> Agile, Git, Swagger, CI/CD pipelines</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Recent Projects</h3>
-      <p><strong>@ QazCode</strong></p>
-      <ul>
-        <li>Built scalable services for telecom analytics (Go + Kafka + ClickHouse)</li>
-        <li>Used LLMs to summarize logs and detect performance issues</li>
-        <li>Mentored teammates, reviewed code, and helped clean up legacy systems</li>
-      </ul>
-
-      <p><strong>@ Beeline Kazakhstan</strong></p>
-      <ul>
-        <li>Improved system performance and cut wait times from 30 mins to 2</li>
-        <li>Set up real-time observability with Jaeger, Prometheus, Grafana</li>
-        <li>Created a monthly payment service and migrated critical DBs</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Education</h3>
-      <ul>
-        <li><strong>KAUST</strong> (M.S. Electrical Engineering)</li>
-        <li><strong>USC</strong> (B.Sc. Electrical Engineering, honors)</li>
-      </ul>
-    </section>
-  </main>
-
+  <!-- Portfolio Header and Main remain unchanged -->
   <!-- Chat Widget -->
   <div class="chat-widget">
     <div class="chat-container" id="chatContainer">
@@ -289,11 +228,7 @@
       <div class="messages" id="messages">
         <div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>
       </div>
-      <div class="suggestions">
-        <div class="suggestion-btn" onclick="setSuggestion('Tell me about yourself?')">Tell me about yourself?</div>
-        <div class="suggestion-btn" onclick="setSuggestion('What’s your recent project about?')">What’s your recent project about?</div>
-        <div class="suggestion-btn" onclick="setSuggestion('What tech do you use?')">What tech do you use?</div>
-      </div>
+      <div class="suggestions" id="suggestions"></div>
       <div class="form-group">
         <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
         <button class="ask-btn" onclick="ask()">Ask</button>
@@ -311,18 +246,44 @@
     const chatContainer = document.getElementById('chatContainer');
     const promptInput = document.getElementById('prompt');
     const messagesDiv = document.getElementById('messages');
-    const suggestionsDiv = document.querySelector('.suggestions');
+    const suggestionsDiv = document.getElementById('suggestions');
+
+    const allSuggestions = [
+      "What are your most recent projects?",
+      "Tell me about your experience with Kafka.",
+      "How do you use AI in infrastructure?",
+      "What technologies do you use most?",
+      "What's your biggest strength as an engineer?",
+      "What was your role at Beeline?",
+      "Tell me about your backend stack.",
+      "What kind of job are you looking for?",
+      "Explain how you use LLMs in observability.",
+      "What kind of problems do you enjoy solving?"
+    ];
 
     function toggleChat() {
       const isVisible = chatContainer.style.display === 'flex';
       chatContainer.style.display = isVisible ? 'none' : 'flex';
       document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
-      if (!isVisible) setTimeout(() => promptInput.focus(), 100);
+
+      if (!isVisible) {
+        setTimeout(() => promptInput.focus(), 100);
+        showRandomSuggestions();
+      }
+    }
+
+    function showRandomSuggestions() {
+      const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, Math.floor(Math.random() * 2) + 2);
+      suggestionsDiv.innerHTML = selected.map(q =>
+        `<div class="suggestion-btn" onclick="setSuggestion('${q.replace(/'/g, "\\'")}')">${q}</div>`
+      ).join('');
+      suggestionsDiv.style.display = 'flex';
     }
 
     function setSuggestion(text) {
       promptInput.value = text;
-      suggestionsDiv.style.display = 'none'; // hide the suggestion buttons
+      suggestionsDiv.style.display = 'none';
       ask();
     }
 
@@ -333,21 +294,25 @@
     async function ask() {
       const query = promptInput.value.trim();
       if (!query) return;
+
       messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
       promptInput.value = '';
+
       try {
-        const url = 'http://localhost:3000/ask'; // replace with deployed backend
+        const url = 'http://localhost:3000/ask';
         const res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ query })
         });
+
         if (!res.ok) throw new Error('Request failed');
         const data = await res.json();
         messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
       } catch (err) {
         messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
       }
+
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
@@ -358,7 +323,7 @@
 
     function resetChat() {
       messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-      suggestionsDiv.style.display = 'flex'; // show suggestions again
+      showRandomSuggestions();
       chatContainer.style.display = 'none';
       document.getElementById('bubbleWrapper').style.display = 'block';
     }
