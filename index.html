@@ -311,6 +311,7 @@
     const chatContainer = document.getElementById('chatContainer');
     const promptInput = document.getElementById('prompt');
     const messagesDiv = document.getElementById('messages');
+    const suggestionsDiv = document.querySelector('.suggestions');
 
     function toggleChat() {
       const isVisible = chatContainer.style.display === 'flex';
@@ -321,6 +322,7 @@
 
     function setSuggestion(text) {
       promptInput.value = text;
+      suggestionsDiv.style.display = 'none'; // hide the suggestion buttons
       ask();
     }
 
@@ -356,6 +358,7 @@
 
     function resetChat() {
       messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
+      suggestionsDiv.style.display = 'flex'; // show suggestions again
       chatContainer.style.display = 'none';
       document.getElementById('bubbleWrapper').style.display = 'block';
     }
