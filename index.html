@@ -162,23 +162,53 @@
             margin: 4px 0 10px 10px;
         }
 
+        /*.suggestions {*/
+        /*    padding: 8px;*/
+        /*    background: #f0f0f0;*/
+        /*    border-top: 1px solid #ccc;*/
+        /*    display: flex;*/
+        /*    flex-wrap: wrap;*/
+        /*    gap: 8px;*/
+        /*    justify-content: center;*/
+        /*}*/
+
+        /*.suggestion-btn {*/
+        /*    background: #e0f2f1;*/
+        /*    border: 1px solid #ccc;*/
+        /*    padding: 6px 10px;*/
+        /*    border-radius: 16px;*/
+        /*    cursor: pointer;*/
+        /*    font-size: 14px;*/
+        /*}*/
+
+        /*.suggestion-btn:hover {*/
+        /*    background: #c8e6c9;*/
+        /*}*/
+
         .suggestions {
-            padding: 8px;
+            padding: 6px 8px;
             background: #f0f0f0;
             border-top: 1px solid #ccc;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             justify-content: center;
+            flex-direction: row;
         }
 
         .suggestion-btn {
             background: #e0f2f1;
             border: 1px solid #ccc;
-            padding: 6px 10px;
-            border-radius: 16px;
+            padding: 4px 6px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 11px;
+            line-height: 1.2;
+            white-space: normal;
+            text-align: center;
+            max-width: 100px;
+            flex: 1 1 90px;
+            word-break: break-word;
         }
 
         .suggestion-btn:hover {
@@ -313,16 +343,45 @@
     const messagesDiv = document.getElementById('messages');
     const suggestionsDiv = document.querySelector('.suggestions');
 
+    const allSuggestions = [
+        "Tell me about yourself?",
+        "What’s your recent project about?",
+        "What tech do you use?",
+        "What are your strongest skills?",
+        "Have you used AI in production?",
+        "What’s your experience with Kubernetes?",
+        "What are your favorite tools for observability?",
+        "Do you prefer Go or Python for microservices?",
+        "How do you handle system performance bottlenecks?",
+        "What databases are you most comfortable with?"
+    ];
+
+    function getRandomSuggestions(count = 2) {
+        const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    function renderSuggestions() {
+        const selected = getRandomSuggestions();
+        suggestionsDiv.innerHTML = selected.map(q => `
+            <div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>
+        `).join('');
+        suggestionsDiv.style.display = 'flex';
+    }
+
     function toggleChat() {
         const isVisible = chatContainer.style.display === 'flex';
         chatContainer.style.display = isVisible ? 'none' : 'flex';
         document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
-        if (!isVisible) setTimeout(() => promptInput.focus(), 100);
+        if (!isVisible) {
+            renderSuggestions();
+            setTimeout(() => promptInput.focus(), 100);
+        }
     }
 
     function setSuggestion(text) {
         promptInput.value = text;
-        suggestionsDiv.style.display = 'none'; // hide the suggestion buttons
+        suggestionsDiv.style.display = 'none';
         ask();
     }
 
@@ -336,7 +395,7 @@
         messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
         promptInput.value = '';
         try {
-            const url = 'http://localhost:3000/ask'; // replace with deployed backend
+            const url = 'http://localhost:3000/ask';
             const res = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -358,10 +417,12 @@
 
     function resetChat() {
         messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-        suggestionsDiv.style.display = 'flex'; // show suggestions again
+        renderSuggestions();
         chatContainer.style.display = 'none';
         document.getElementById('bubbleWrapper').style.display = 'block';
     }
+
+    renderSuggestions();
 </script>
 </body>
 </html>
