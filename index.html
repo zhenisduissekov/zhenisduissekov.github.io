@@ -167,11 +167,12 @@
       background: #f0f0f0;
       border-top: 1px solid #ccc;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
       justify-content: center;
+      overflow-x: auto;
     }
-    
+
     .suggestion-btn {
       background: #e0f2f1;
       border: 1px solid #ccc;
@@ -179,11 +180,9 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 12px;
-      line-height: 1.2;
-      max-width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.3;
+      white-space: normal;
+      flex-shrink: 0;
     }
 
     .suggestion-btn:hover {
@@ -218,7 +217,9 @@
   </style>
 </head>
 <body>
-  <!-- Portfolio Header and Main remain unchanged -->
+  <main>
+    <!-- Page content should be here (your sections and layout) -->
+  </main>
   <!-- Chat Widget -->
   <div class="chat-widget">
     <div class="chat-container" id="chatContainer">
@@ -243,50 +244,41 @@
       </div>
     </div>
   </div>
-
   <script>
     const chatContainer = document.getElementById('chatContainer');
     const promptInput = document.getElementById('prompt');
     const messagesDiv = document.getElementById('messages');
     const suggestionsDiv = document.getElementById('suggestions');
-
     const allSuggestions = [
-      "What are your most recent projects?",
-      "Tell me about your experience with Kafka.",
-      "How do you use AI in infrastructure?",
-      "What technologies do you use most?",
-      "What's your biggest strength as an engineer?",
-      "What was your role at Beeline?",
-      "Tell me about your backend stack.",
-      "What kind of job are you looking for?",
-      "Explain how you use LLMs in observability.",
-      "What kind of problems do you enjoy solving?"
+      "Tell me about yourself?",
+      "What’s your recent project about?",
+      "What tech do you use?",
+      "What are your strongest skills?",
+      "Have you used AI in production?",
+      "What's your experience with Kubernetes?"
     ];
 
     function toggleChat() {
       const isVisible = chatContainer.style.display === 'flex';
       chatContainer.style.display = isVisible ? 'none' : 'flex';
       document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
-
       if (!isVisible) {
+        renderSuggestions();
         setTimeout(() => promptInput.focus(), 100);
-        showRandomSuggestions();
       }
-    }
-
-    function showRandomSuggestions() {
-      const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, Math.floor(Math.random() * 2) + 2);
-      suggestionsDiv.innerHTML = selected.map(q =>
-        `<div class="suggestion-btn" onclick="setSuggestion('${q.replace(/'/g, "\\'")}')">${q}</div>`
-      ).join('');
-      suggestionsDiv.style.display = 'flex';
     }
 
     function setSuggestion(text) {
       promptInput.value = text;
       suggestionsDiv.style.display = 'none';
       ask();
+    }
+
+    function renderSuggestions() {
+      const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 3);
+      suggestionsDiv.innerHTML = selected.map(q => `<div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>`).join('');
+      suggestionsDiv.style.display = 'flex';
     }
 
     promptInput.addEventListener('keydown', function (e) {
@@ -296,10 +288,8 @@
     async function ask() {
       const query = promptInput.value.trim();
       if (!query) return;
-
       messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
       promptInput.value = '';
-
       try {
         const url = 'http://localhost:3000/ask';
         const res = await fetch(url, {
@@ -307,14 +297,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ query })
         });
-
         if (!res.ok) throw new Error('Request failed');
         const data = await res.json();
         messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
       } catch (err) {
         messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
       }
-
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
@@ -325,10 +313,13 @@
 
     function resetChat() {
       messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-      showRandomSuggestions();
+      suggestionsDiv.style.display = 'none';
       chatContainer.style.display = 'none';
       document.getElementById('bubbleWrapper').style.display = 'block';
     }
+
+    // Optional: render suggestions once on initial page load
+    renderSuggestions();
   </script>
 </body>
 </html>
