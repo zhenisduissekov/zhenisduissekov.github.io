@@ -15,7 +15,7 @@
     }
 
     header {
-      background: linear-gradient(135deg, #2e7eed, #3ec5f3);
+      background: linear-gradient(135deg, #4CAF50, #45a049);
       color: white;
       text-align: center;
       padding: 3rem 1rem 2rem 1rem;
@@ -62,52 +62,46 @@
       z-index: 9999;
     }
 
-   .chat-tooltip-wrapper {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
+    .chat-tooltip-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
 
-.chat-tooltip {
-    visibility: hidden;
-    background-color: #444;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 6px 10px;
-    margin-bottom: 6px;
-    font-size: 12px;
-    white-space: nowrap;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
+    .chat-tooltip {
+      visibility: hidden;
+      background-color: #444;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
 
-.chat-tooltip-wrapper:hover .chat-tooltip {
-    visibility: visible;
-    opacity: 1;
-}
+    .chat-tooltip-wrapper:hover .chat-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
 
-.chat-bubble {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
-    font-family: sans-serif;
-}
+    .chat-bubble {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-.chat-bubble:hover {
-    background-color: #388e3c;
-}
+    .chat-bubble:hover {
+      background-color: #388e3c;
+    }
 
     .chat-container {
       display: none;
@@ -115,7 +109,7 @@
       background-color: white;
       border-radius: 10px;
       width: 360px;
-      height: 480px;
+      height: 500px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       overflow: hidden;
     }
@@ -168,6 +162,29 @@
       margin: 4px 0 10px 10px;
     }
 
+    .suggestions {
+      padding: 8px;
+      background: #f0f0f0;
+      border-top: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .suggestion-btn {
+      background: #e0f2f1;
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .suggestion-btn:hover {
+      background: #c8e6c9;
+    }
+
     .form-group {
       display: flex;
       border-top: 1px solid #ccc;
@@ -218,11 +235,8 @@
 
     <section>
       <p>Hi! I’m Zhenis — a backend engineer with a love for building fast, reliable systems. With 7+ years of experience, I’ve worked on everything from microservices and real-time pipelines to observability tools powered by LLMs.</p>
-
       <p>I’ve mostly been writing Go (with some Python and NodeJS), working with Kafka, ClickHouse, Postgres, and building event-driven systems in production. I care about clean code, smart monitoring, and making services easier to debug and scale.</p>
-
       <p>Lately, I’ve been exploring ways to bring AI into infrastructure — like summarizing logs or finding hidden patterns with LLMs.</p>
-
       <p><strong>Open to backend-focused roles in Houston (or remote). Let’s build something awesome 🚀</strong></p>
     </section>
 
@@ -272,7 +286,14 @@
         <button class="minimize-btn" onclick="minimizeChat()">_</button>
         <button class="close-btn" onclick="resetChat()">✕</button>
       </div>
-      <div class="messages" id="messages"></div>
+      <div class="messages" id="messages">
+        <div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>
+      </div>
+      <div class="suggestions">
+        <div class="suggestion-btn" onclick="setSuggestion('What’s your recent project about?')">What’s your recent project about?</div>
+        <div class="suggestion-btn" onclick="setSuggestion('What tech do you use?')">What tech do you use?</div>
+        <div class="suggestion-btn" onclick="setSuggestion('Where are you based?')">Where are you based?</div>
+      </div>
       <div class="form-group">
         <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
         <button class="ask-btn" onclick="ask()">Ask</button>
@@ -280,11 +301,9 @@
     </div>
     <div id="bubbleWrapper">
       <div class="chat-tooltip-wrapper">
-  <button class="chat-bubble" onclick="toggleChat()">
-    Ask ZhenisGPT 💬
-  </button>
-  <span class="chat-tooltip">Need help? Ask the AI assistant!</span>
-</div>
+        <button class="chat-bubble" onclick="toggleChat()">Ask ZhenisGPT 💬</button>
+        <span class="chat-tooltip">Need help? Ask the AI assistant!</span>
+      </div>
     </div>
   </div>
 
@@ -300,6 +319,11 @@
       if (!isVisible) setTimeout(() => promptInput.focus(), 100);
     }
 
+    function setSuggestion(text) {
+      promptInput.value = text;
+      ask();
+    }
+
     promptInput.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') ask();
     });
@@ -307,10 +331,8 @@
     async function ask() {
       const query = promptInput.value.trim();
       if (!query) return;
-
       messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
       promptInput.value = '';
-
       try {
         const url = 'http://localhost:3000/ask'; // replace with deployed backend
         const res = await fetch(url, {
@@ -318,14 +340,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ query })
         });
-
         if (!res.ok) throw new Error('Request failed');
         const data = await res.json();
         messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
       } catch (err) {
         messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
       }
-
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
@@ -335,7 +355,7 @@
     }
 
     function resetChat() {
-      messagesDiv.innerHTML = '';
+      messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
       chatContainer.style.display = 'none';
       document.getElementById('bubbleWrapper').style.display = 'block';
     }
