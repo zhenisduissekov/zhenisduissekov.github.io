@@ -217,109 +217,109 @@
   </style>
 </head>
 <body>
-  <main>
-    <!-- Page content should be here (your sections and layout) -->
-  </main>
-  <!-- Chat Widget -->
-  <div class="chat-widget">
-    <div class="chat-container" id="chatContainer">
-      <div class="chat-header">
-        ZhenisGPT
-        <button class="minimize-btn" onclick="minimizeChat()">_</button>
-        <button class="close-btn" onclick="resetChat()">✕</button>
-      </div>
-      <div class="messages" id="messages">
-        <div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>
-      </div>
-      <div class="suggestions" id="suggestions"></div>
-      <div class="form-group">
-        <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
-        <button class="ask-btn" onclick="ask()">Ask</button>
-      </div>
+<main>
+  <!-- Page content should be here (your sections and layout) -->
+</main>
+<!-- Chat Widget -->
+<div class="chat-widget">
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+      ZhenisGPT
+      <button class="minimize-btn" onclick="minimizeChat()">_</button>
+      <button class="close-btn" onclick="resetChat()">✕</button>
     </div>
-    <div id="bubbleWrapper">
-      <div class="chat-tooltip-wrapper">
-        <button class="chat-bubble" onclick="toggleChat()">Ask ZhenisGPT 💬</button>
-        <span class="chat-tooltip">Need help? Ask the AI assistant!</span>
-      </div>
+    <div class="messages" id="messages">
+      <div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>
+    </div>
+    <div class="suggestions" id="suggestions"></div>
+    <div class="form-group">
+      <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
+      <button class="ask-btn" onclick="ask()">Ask</button>
     </div>
   </div>
-  <script>
-    const chatContainer = document.getElementById('chatContainer');
-    const promptInput = document.getElementById('prompt');
-    const messagesDiv = document.getElementById('messages');
-    const suggestionsDiv = document.getElementById('suggestions');
-    const allSuggestions = [
-      "Tell me about yourself?",
-      "What’s your recent project about?",
-      "What tech do you use?",
-      "What are your strongest skills?",
-      "Have you used AI in production?",
-      "What's your experience with Kubernetes?"
-    ];
+  <div id="bubbleWrapper">
+    <div class="chat-tooltip-wrapper">
+      <button class="chat-bubble" onclick="toggleChat()">Ask ZhenisGPT 💬</button>
+      <span class="chat-tooltip">Need help? Ask the AI assistant!</span>
+    </div>
+  </div>
+</div>
+<script>
+  const chatContainer = document.getElementById('chatContainer');
+  const promptInput = document.getElementById('prompt');
+  const messagesDiv = document.getElementById('messages');
+  const suggestionsDiv = document.getElementById('suggestions');
+  const allSuggestions = [
+    "Tell me about yourself?",
+    "What’s your recent project about?",
+    "What tech do you use?",
+    "What are your strongest skills?",
+    "Have you used AI in production?",
+    "What's your experience with Kubernetes?"
+  ];
 
-    function toggleChat() {
-      const isVisible = chatContainer.style.display === 'flex';
-      chatContainer.style.display = isVisible ? 'none' : 'flex';
-      document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
-      if (!isVisible) {
-        renderSuggestions();
-        setTimeout(() => promptInput.focus(), 100);
-      }
+  function toggleChat() {
+    const isVisible = chatContainer.style.display === 'flex';
+    chatContainer.style.display = isVisible ? 'none' : 'flex';
+    document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
+    if (!isVisible) {
+      renderSuggestions();
+      setTimeout(() => promptInput.focus(), 100);
     }
+  }
 
-    function setSuggestion(text) {
-      promptInput.value = text;
-      suggestionsDiv.style.display = 'none';
-      ask();
+  function setSuggestion(text) {
+    promptInput.value = text;
+    suggestionsDiv.style.display = 'none';
+    ask();
+  }
+
+  function renderSuggestions() {
+    const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 3);
+    suggestionsDiv.innerHTML = selected.map(q => `<div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>`).join('');
+    suggestionsDiv.style.display = 'flex';
+  }
+
+  promptInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') ask();
+  });
+
+  async function ask() {
+    const query = promptInput.value.trim();
+    if (!query) return;
+    messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
+    promptInput.value = '';
+    try {
+      const url = 'http://localhost:3000/ask';
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query })
+      });
+      if (!res.ok) throw new Error('Request failed');
+      const data = await res.json();
+      messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
+    } catch (err) {
+      messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
     }
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
 
-    function renderSuggestions() {
-      const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 3);
-      suggestionsDiv.innerHTML = selected.map(q => `<div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>`).join('');
-      suggestionsDiv.style.display = 'flex';
-    }
+  function minimizeChat() {
+    chatContainer.style.display = 'none';
+    document.getElementById('bubbleWrapper').style.display = 'block';
+  }
 
-    promptInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') ask();
-    });
+  function resetChat() {
+    messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
+    suggestionsDiv.style.display = 'none';
+    chatContainer.style.display = 'none';
+    document.getElementById('bubbleWrapper').style.display = 'block';
+  }
 
-    async function ask() {
-      const query = promptInput.value.trim();
-      if (!query) return;
-      messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
-      promptInput.value = '';
-      try {
-        const url = 'http://localhost:3000/ask';
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query })
-        });
-        if (!res.ok) throw new Error('Request failed');
-        const data = await res.json();
-        messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
-      } catch (err) {
-        messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
-      }
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
-
-    function minimizeChat() {
-      chatContainer.style.display = 'none';
-      document.getElementById('bubbleWrapper').style.display = 'block';
-    }
-
-    function resetChat() {
-      messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-      suggestionsDiv.style.display = 'none';
-      chatContainer.style.display = 'none';
-      document.getElementById('bubbleWrapper').style.display = 'block';
-    }
-
-    // Optional: render suggestions once on initial page load
-    renderSuggestions();
-  </script>
+  // Optional: render suggestions once on initial page load
+  renderSuggestions();
+</script>
 </body>
 </html>
