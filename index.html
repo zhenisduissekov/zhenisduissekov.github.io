@@ -172,15 +172,6 @@
             flex-wrap: wrap;
         }
 
-        .suggestion-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #6c757d;
-            text-transform: uppercase;
-            margin: 0 0 6px 12px;
-            letter-spacing: 0.5px;
-        }
-
         .suggestion-btn {
             background: #ffffff;
             border: 1px solid #ccc;
@@ -312,6 +303,7 @@
             <div class="suggestion-btn" onclick="setSuggestion('What tech do you use?')">What tech do you use?</div>
         </div>
         <div class="form-group">
+            <label for="prompt" style="display:none;">Ask ZhenisGPT</label>
             <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
             <button class="ask-btn" onclick="ask()">Ask</button>
         </div>
@@ -382,17 +374,22 @@
         messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
         promptInput.value = '';
         try {
-            const url = 'http://localhost:3000/ask';
+            const url = 'http://localhost:3000/ask'; // I did not forget it...
             const res = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })
             });
-            if (!res.ok) throw new Error('Request failed');
+            if (!res.ok) {
+                console.warn('Non-OK response, showing message to user');
+                showErrorToUser('Server is busy, try again later');
+                return;
+            }
             const data = await res.json();
             messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
         } catch (err) {
-            messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
+            messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Server unavailable — this feature is still in development.</div>`;
+            // messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
         }
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
