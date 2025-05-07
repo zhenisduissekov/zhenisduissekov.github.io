@@ -398,10 +398,10 @@
         messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
         promptInput.value = '';
         try {
-            const url = 'http://localhost:3000/ask'; // I did not forget it...
+            const url = 'http://44.201.129.222:3000/ask'; // I did not forget it...
             const res = await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'X-Auth-Token': '2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2' },
                 body: JSON.stringify({ query })
             });
             if (!res.ok) {
