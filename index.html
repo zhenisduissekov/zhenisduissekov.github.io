@@ -442,5 +442,41 @@
     <a href="https://en.wikipedia.org/wiki/File:KAUST_Logo.svg" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
     No endorsement implied.
 </footer>
+
+<script>
+
+function checkBackendHealth() {
+    fetch('https://zhenisduissekov.com/health', {
+        method: 'GET',
+        headers: {
+            'X-Auth-Token': '2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2'  // only if your /health route requires auth
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+               console.log('✅ Backend is healthy (Status:', response.status + ')');
+        // Optionally update UI:
+        // document.getElementById('backend-status').innerText = 'Online';
+        // document.getElementById('backend-status').style.color = 'green';
+      } else {
+        console.warn('⚠️ Backend health check failed (Status:', response.status + ')');
+        // document.getElementById('backend-status').innerText = 'Unhealthy';
+        // document.getElementById('backend-status').style.color = 'orange';
+      }
+    })
+    .catch(error => {
+      console.error('❌ Backend is unreachable:', error);
+      // document.getElementById('backend-status').innerText = 'Offline';
+      // document.getElementById('backend-status').style.color = 'red';
+    });
+}
+
+// Run immediately on page load
+checkBackendHealth();
+
+// Repeat every 30 minutes (1800000 ms)
+setInterval(checkBackendHealth, 30 * 60 * 1000);
+</script>
+
 </body>
 </html>
