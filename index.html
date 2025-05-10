@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-2DE3HEQKB2');
+    </script>
+
     <meta charset="UTF-8">
     <title>ZHENIS DUISSEKOV | BACKEND ENGINEER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -229,13 +238,22 @@
 
 <main>
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-        <span>📍 Houston, TX (relocating)</span>
+        <span>📍 Houston, TX</span>
         <span>🟢 U.S. Work Authorized (Green Card holder)</span>
         <span>
         <a href="https://github.com/zhenisduissekov">GitHub</a> ·
         <a href="https://www.linkedin.com/in/zhenis-duissekov">LinkedIn</a> ·
         <a href="https://t.me/zduissekov">Telegram</a> ·
-        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>
+<!--        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>-->
+        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
+           download
+           onclick="gtag('event', 'download_cv', {
+     event_category: 'Engagement',
+     event_label: 'CV PDF',
+     value: 1
+   })">
+   CV
+</a>
       </span>
     </div>
 
