@@ -1606,8 +1606,10 @@
                 transition: background 0.2s;
             }
 
-            .send-btn:hover {
-                background: #2563eb;
+            .send-btn:disabled {
+                background: #9CA3AF;
+                cursor: not-allowed;
+                opacity: 0.7;
             }
 
             .suggestions {
@@ -1642,6 +1644,44 @@
                     border-radius: 0;
                 }
             }
+
+            .typing-indicator {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+                padding: 0.5rem 1rem;
+                background: rgba(59, 130, 246, 0.1);
+                border-radius: 1rem;
+                margin: 0.5rem 0;
+                width: fit-content;
+            }
+
+            .typing-dot {
+                width: 8px;
+                height: 8px;
+                background: var(--primary);
+                border-radius: 50%;
+                display: inline-block;
+                animation: typing 1.4s infinite both;
+            }
+
+            .typing-dot:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .typing-dot:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            @keyframes typing {
+                0%, 60%, 100% { transform: translateY(0); }
+                30% { transform: translateY(-4px); }
+            }
+
+            .input-container.disabled {
+                opacity: 0.7;
+                pointer-events: none;
+            }
         </style>
 
         <script>
@@ -1675,8 +1715,28 @@
                 if (!message) return;
                 
                 const messages = document.getElementById('messages');
+                const sendButton = document.querySelector('.send-btn');
+                const inputContainer = document.querySelector('.input-container');
+                
+                // Add user message and clear input
                 messages.innerHTML += `<div class="user">${message}</div>`;
                 userInput.value = '';
+                
+                // Show typing indicator
+                messages.innerHTML += `
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>`;
+                
+                // Disable input and button
+                userInput.disabled = true;
+                sendButton.disabled = true;
+                inputContainer.classList.add('disabled');
+                
+                // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
                 
                 try {
                     const url = 'https://zhenisduissekov.com/ask';
@@ -1694,13 +1754,30 @@
                     }
                     
                     const data = await response.json();
+                    
+                    // Remove typing indicator
+                    const typingIndicator = document.getElementById('typingIndicator');
+                    if (typingIndicator) typingIndicator.remove();
+                    
+                    // Add bot response
                     messages.innerHTML += `<div class="bot">${data.answer || 'I\'m here to help! Please ask me specific questions about my work, projects, or technical expertise.'}</div>`;
                 } catch (error) {
                     console.error('Error:', error);
+                    // Remove typing indicator if it exists
+                    const typingIndicator = document.getElementById('typingIndicator');
+                    if (typingIndicator) typingIndicator.remove();
+                    
                     messages.innerHTML += '<div class="bot">I\'m having trouble connecting to the server. Please try again later.</div>';
+                } finally {
+                    // Re-enable input and button
+                    userInput.disabled = false;
+                    sendButton.disabled = false;
+                    inputContainer.classList.remove('disabled');
+                    userInput.focus();
+                    
+                    // Scroll to bottom
+                    messages.scrollTop = messages.scrollHeight;
                 }
-                
-                messages.scrollTop = messages.scrollHeight;
             }
 
             function handleKeyPress(event) {
