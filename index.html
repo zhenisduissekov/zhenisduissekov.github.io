@@ -320,7 +320,8 @@
                 border-radius: 0.75rem;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
                 transition: all 0.3s ease;
-                max-width: 1000px;
+                width: calc(100% - 5rem); /* uses full width minus the left timeline space */
+                max-width: none;
             }
 
             .timeline-item:hover {
@@ -1246,14 +1247,14 @@
                         <p><em>Note: In June 2023, the backend engineering team transitioned from Beeline Kazakhstan to QazCode as part of an internal restructuring.</em></p>
                         <div class="timeline-description">
                             <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
-                                <li>Reduced latency: Rebuilt a legacy integration, cutting customer wait times from 30 minutes to seconds and eliminating unstable dependencies.</li>
-                                <li>Observability: Introduced OpenTelemetry + Jaeger across critical services; designed dashboards in Grafana and ClickHouse.</li>
-                                <li>Log infrastructure: Designed a scalable Kafka → ClickHouse logging pipeline; improved reliability, reduced storage size 10x, and enabled real-time insights.</li>
-                                <li>AI/LLM integration: Developed prototypes for LLM-powered observability using log anomaly detection via statistical models.</li>
-                                <li>Error tracking: Created dashboards surfacing the top 10 unstable endpoints, which guided team focus and led to complete resolution within 6 months.</li>
-                                <li>Monitoring revival: Rescued a broken internal monitoring system; replaced Postgres-based reporting with partitioned ClickHouse queries.</li>
-                                <li>Team empowerment: Presented solutions on feature toggles, release strategies, and circuit breaker patterns; supported junior engineers and advocated best practices.</li>
-                                <li>Code quality: Integrated SonarQube, improved test coverage from 32% to 46%, and introduced structured logging for external dependencies.</li>
+                                <li><strong>Reduced latency:</strong> Rebuilt a legacy integration, cutting customer wait times from 30 minutes to seconds and eliminating unstable dependencies.</li>
+                                <li><strong>Observability:</strong> Introduced OpenTelemetry + Jaeger across critical services; designed dashboards in Grafana and ClickHouse.</li>
+                                <li><strong>Log infrastructure:</strong> Designed a scalable Kafka → ClickHouse logging pipeline; improved reliability, reduced storage size 10x, and enabled real-time insights.</li>
+                                <li><strong>AI/LLM integration:</strong> Developed prototypes for LLM-powered observability using log anomaly detection via statistical models.</li>
+                                <li><strong>Error tracking:</strong> Created dashboards surfacing the top 10 unstable endpoints, which guided team focus and led to complete resolution within 6 months.</li>
+                                <li><strong>Monitoring revival:</strong> Rescued a broken internal monitoring system; replaced Postgres-based reporting with partitioned ClickHouse queries.</li>
+                                <li><strong>Team empowerment:</strong> Presented solutions on feature toggles, release strategies, and circuit breaker patterns; supported junior engineers and advocated best practices.</li>
+                                <li><strong>Code quality:</strong> Integrated SonarQube, improved test coverage from 32% to 46%, and introduced structured logging for external dependencies.</li>
                             </ul>
                         </div>
                         <div class="timeline-tags">
