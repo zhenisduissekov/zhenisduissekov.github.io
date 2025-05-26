@@ -1,514 +1,647 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-        gtag('config', 'G-4NFSQ9XG8W');
-    </script>
+            gtag("config", "G-4NFSQ9XG8W");
+        </script>
 
-    <meta charset="UTF-8">
-    <title>ZHENIS DUISSEKOV | BACKEND ENGINEER</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Zhenis Duissekov - Backend Engineer Portfolio">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            /*background-color: #f8f9fa;*/
-            /*color: #212529;*/
+        <meta charset="UTF-8" />
+        <title>ZHENIS DUISSEKOV | BACKEND ENGINEER</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Zhenis Duissekov - Backend Engineer Portfolio"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+        />
+        <style>
+            body {
+                margin: 0;
+                font-family: "Poppins", sans-serif;
+                /*background-color: #f8f9fa;*/
+                /*color: #212529;*/
 
-            background-color: #f4f7fa;
-            color: #2d2d2d;
+                background-color: #f4f7fa;
+                color: #2d2d2d;
 
-            /*background-color: #fdfdfd;*/
-            /*color: #2d2d2d;*/
-        }
+                /*background-color: #fdfdfd;*/
+                /*color: #2d2d2d;*/
+            }
 
-        header {
-            /*background: linear-gradient(135deg, #4CAF50, #45a049);*/ /*ядовито зеленый*/
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /*темный*/
-            /*background: linear-gradient(135deg, #667eea, #764ba2); !* gradient green tones *!*/
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem 2rem 1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+            header {
+                /*background: linear-gradient(135deg, #4CAF50, #45a049);*/ /*ядовито зеленый*/
+                background: linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                ); /*темный*/
+                /*background: linear-gradient(135deg, #667eea, #764ba2); !* gradient green tones *!*/
+                color: white;
+                text-align: center;
+                padding: 3rem 1rem 2rem 1rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
 
-        header h1 {
-            /*font-size: 3rem;*/
-            /*margin-bottom: 0.5rem;*/
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-        }
+            header h1 {
+                /*font-size: 3rem;*/
+                /*margin-bottom: 0.5rem;*/
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
 
-        header h2 {
-            font-weight: 400;
-            font-size: 1.5rem;
-            margin: 0;
-        }
+            header h2 {
+                font-weight: 400;
+                font-size: 1.5rem;
+                margin: 0;
+            }
 
-        main {
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            /*line-height: 1.6;*/
-            /*font-size: 1.1rem;*/
+            main {
+                max-width: 960px;
+                margin: 2rem auto;
+                padding: 0 1.5rem;
+                /*line-height: 1.6;*/
+                /*font-size: 1.1rem;*/
 
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
+                line-height: 1.8;
+                font-size: 1.05rem;
+            }
 
-        hr {
-            margin: 2rem 0;
-            border: none;
-            border-top: 1px solid #dee2e6;
-        }
+            hr {
+                margin: 2rem 0;
+                border: none;
+                border-top: 1px solid #dee2e6;
+            }
 
-        section {
-            margin-bottom: 2rem;
-        }
+            section {
+                margin-bottom: 2rem;
+            }
 
-        ul {
-            padding-left: 1.2rem;
-        }
+            ul {
+                padding-left: 1.2rem;
+            }
 
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
+            .chat-widget {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999;
+            }
 
-        .chat-tooltip-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
+            .chat-tooltip-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
 
-        .chat-tooltip {
-            visibility: hidden;
-            background-color: #444;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 6px 10px;
-            margin-bottom: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
+            .chat-tooltip {
+                visibility: hidden;
+                background-color: #444;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 6px 10px;
+                margin-bottom: 6px;
+                font-size: 12px;
+                white-space: nowrap;
+                transition: opacity 0.3s ease;
+                opacity: 0;
+            }
 
-        .chat-tooltip-wrapper:hover .chat-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+            .chat-tooltip-wrapper:hover .chat-tooltip {
+                visibility: visible;
+                opacity: 1;
+            }
 
-        .chat-bubble {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 999px;
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
+            .chat-bubble {
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 999px;
+                padding: 12px 20px;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
 
-        .chat-bubble:hover {
-            background-color: #388e3c;
-        }
+            .chat-bubble:hover {
+                background-color: #388e3c;
+            }
 
-        .chat-container {
-            display: none;
-            flex-direction: column;
-            background-color: white;
-            border-radius: 10px;
-            width: 360px;
-            height: 500px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
+            .chat-container {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                border-radius: 10px;
+                width: 360px;
+                height: 500px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+            }
 
-        .chat-header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-            position: relative;
-        }
+            .chat-header {
+                background-color: #4caf50;
+                color: white;
+                padding: 12px;
+                text-align: center;
+                font-weight: bold;
+                position: relative;
+            }
 
-        .minimize-btn, .close-btn {
-            position: absolute;
-            top: 8px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+            .minimize-btn,
+            .close-btn {
+                position: absolute;
+                top: 8px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
 
-        .minimize-btn {
-            right: 36px;
-        }
+            .minimize-btn {
+                right: 36px;
+            }
 
-        .close-btn {
-            right: 12px;
-        }
+            .close-btn {
+                right: 12px;
+            }
 
-        .messages {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            background: #f6f7f9;
-        }
+            .messages {
+                flex: 1;
+                padding: 10px;
+                overflow-y: auto;
+                background: #f6f7f9;
+            }
 
-        .user {
-            font-weight: bold;
-            color: #2d6cdf;
-            margin-top: 8px;
-        }
+            .user {
+                font-weight: bold;
+                color: #2d6cdf;
+                margin-top: 8px;
+            }
 
-        .bot {
-            background-color: #eef3fb;
-            border-radius: 6px;
-            padding: 8px;
-            margin: 4px 0 10px 10px;
-        }
+            .bot {
+                background-color: #eef3fb;
+                border-radius: 6px;
+                padding: 8px;
+                margin: 4px 0 10px 10px;
+            }
 
-        .suggestions {
-            padding: 12px;
-            background: #f6f7f9;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            border-top: none;
-            flex-wrap: wrap;
-        }
+            .suggestions {
+                padding: 12px;
+                background: #f6f7f9;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                border-top: none;
+                flex-wrap: wrap;
+            }
 
-        .suggestion-btn {
-            background: #ffffff;
-            border: 1px solid #ccc;
-            padding: 8px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 13px;
-            line-height: 1.3;
-            text-align: center;
-            white-space: normal;
-            word-break: break-word;
-            /*max-width: 140px;*/
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: background 0.2s ease;
-        }
+            .suggestion-btn {
+                background: #ffffff;
+                border: 1px solid #ccc;
+                padding: 8px 12px;
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 13px;
+                line-height: 1.3;
+                text-align: center;
+                white-space: normal;
+                word-break: break-word;
+                /*max-width: 140px;*/
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                transition: background 0.2s ease;
+            }
 
-        .suggestion-btn:hover {
-            background: #f0f0f0;
-        }
+            .suggestion-btn:hover {
+                background: #f0f0f0;
+            }
 
+            .form-group {
+                display: flex;
+                border-top: 1px solid #ccc;
+            }
 
-        .form-group {
-            display: flex;
-            border-top: 1px solid #ccc;
-        }
+            input[type="text"] {
+                flex: 1;
+                padding: 10px;
+                font-size: 16px;
+                border: none;
+                outline: none;
+            }
 
-        input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            outline: none;
-        }
+            button.ask-btn {
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                padding: 0 16px;
+                cursor: pointer;
+                font-size: 16px;
+            }
 
-        button.ask-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 0 16px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+            .ask-btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
 
-        .ask-btn:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
+    <body>
+        <header>
+            <h1>ZHENIS DUISSEKOV</h1>
+            <h2>Backend Engineer | Distributed Systems | Go + Kafka</h2>
+        </header>
 
-<body>
-<header>
-    <h1>ZHENIS DUISSEKOV</h1>
-    <h2>Backend Engineer | Distributed Systems | Go + Kafka</h2>
-</header>
-
-<main>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-        <span>📍 Houston, TX</span>
-        <span>🟢 U.S. Work Authorized(activates July 14, 2025)</span>
-        <span>
-        <a href="https://github.com/zhenisduissekov">GitHub</a> ·
-        <a href="https://www.linkedin.com/in/zhenis-duissekov">LinkedIn</a> ·
-        <a href="https://t.me/zduissekov">Telegram</a> ·
-<!--        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>-->
-        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
-           download
-           onclick="gtag('event', 'download_cv', {
+        <main>
+            <div
+                style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                "
+            >
+                <span>📍 Houston, TX</span>
+                <span>🟢 U.S. Work Authorized(activates July 14, 2025)</span>
+                <span>
+                    <a href="https://github.com/zhenisduissekov">GitHub</a> ·
+                    <a href="https://www.linkedin.com/in/zhenis-duissekov"
+                        >LinkedIn</a
+                    >
+                    · <a href="https://t.me/zduissekov">Telegram</a> ·
+                    <!--        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>-->
+                    <a
+                        href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
+                        download
+                        onclick="gtag('event', 'download_cv', {
      event_category: 'Engagement',
      event_label: 'CV PDF',
      value: 1
-   })">
-   CV
-</a>
-      </span>
-    </div>
+   })"
+                    >
+                        CV
+                    </a>
+                </span>
+            </div>
 
-    <hr>
+            <hr />
 
-    <section>
-        <p>Hi! I'm Zhenis — a backend engineer with over 7 years of experience developing scalable real-time systems and distributed microservices using Go. I've worked extensively with Kafka, ClickHouse, PostgreSQL, and observability tools like Prometheus, Grafana, and Jaeger.</p>
-        <p>At QazCode (part of the Nasdaq-listed VEON Group), I applied LLMs to summarize logs and detect patterns across production systems. My recent work includes refactoring legacy codebases, building analytics infrastructure, and resolving security vulnerabilities.</p>
-        <p>I'm a strong advocate for clean code, maintainable architecture, and smart observability. Open to onsite, hybrid, or remote roles.</p>
-    </section>
+            <section>
+                <p>
+                    Backend engineer with over 7 years of experience building
+                    scalable systems in Go and Kafka, with a proven track record
+                    in observability and AI-driven solutions for real-time
+                    insights. As a former startup CTO, I thrive in fast-paced
+                    environments, delivering impactful solutions like reducing
+                    latency by orders of magnitude. Relocating to Houston with a
+                    U.S. Green Card (July 2025), I’m eager to drive innovation
+                    in the city’s energy and tech industries through robust,
+                    AI-enhanced architectures.
+                </p>
+            </section>
 
-    <section>
-        <h3>Technical Skills</h3>
-        <ul>
-            <li><strong>Languages & Frameworks:</strong> Go (7+ yrs), Python, NodeJS, gRPC, REST</li>
-            <li><strong>Databases & Queues:</strong> PostgreSQL, ClickHouse, MongoDB, Redis, Kafka, RabbitMQ</li>
-            <li><strong>DevOps:</strong> Docker, Kubernetes, GitLab CI, AWS, Alertmanager</li>
-            <li><strong>Observability:</strong> Prometheus, Grafana, Jaeger, OpenTelemetry</li>
-            <li><strong>AI/LLM:</strong> Prompt Engineering, OpenAI API, LLaMA, LM Studio</li>
-            <li><strong>Testing:</strong> Unit/Integration Testing, Profiling, Load Testing</li>
-            <li><strong>Architecture:</strong> Clean Architecture, Microservices, Multi-threaded Systems</li>
-            <li><strong>Other Tools:</strong> Git, SonarQube, Kibana, Agile, Swagger, Postman</li>
-        </ul>
-    </section>
+            <section>
+                <h3>🔧 CORE SKILLS</h3>
+                <ul>
+                    <li>
+                        <strong>AI/LLM:</strong> OpenAI API, Prompt Engineering,
+                        LM Studio, Copilot, Windsurf
+                    </li>
+                    <li>
+                        <strong>Languages:</strong> Go, Python, NodeJS | gRPC,
+                        REST, WebSockets
+                    </li>
+                    <li>
+                        <strong>Databases:</strong> PostgreSQL, ClickHouse,
+                        MongoDB, Redis
+                    </li>
+                    <li>
+                        <strong>Event Systems:</strong> Kafka, RabbitMQ, NATS
+                    </li>
+                    <li>
+                        <strong>Observability:</strong> Prometheus, Grafana,
+                        Jaeger, OpenTelemetry, Alertmanager
+                    </li>
+                    <li>
+                        <strong>DevOps & CI/CD:</strong> Docker, Kubernetes,
+                        GitLab CI, Jenkins
+                    </li>
+                    <li>
+                        <strong>Testing:</strong> Unit, Integration, Load
+                        Testing | Profiling
+                    </li>
+                    <li>
+                        <strong>Architecture:</strong> Clean Architecture,
+                        Microservices | Circuit Breakers | Feature Toggles
+                    </li>
+                    <li>
+                        <strong>Languages:</strong> English, Russian, Kazakh,
+                        Turkish, Spanish
+                    </li>
+                </ul>
+            </section>
 
-    <section>
-        <h3>Work Experience</h3>
-        <p><strong>QazCode (Jun 2023 – Present)</strong></p>
-        <ul>
-            <li>Developed Go backend services with ClickHouse, PostgreSQL, and MongoDB</li>
-            <li>Applied LLMs for log summarization and anomaly detection</li>
-            <li>Resolved CVEs and improved security posture</li>
-            <li>Mentored juniors and improved test coverage</li>
-            <li>Implemented real-time observability using Grafana, Prometheus, and Jaeger</li>
-        </ul>
+            <section>
+                <h3>🧠 EXPERIENCE</h3>
 
-        <p><strong>@ Beeline Kazakhstan</strong></p>
-        <ul>
-            <li>Improved performance by refactoring services (reduced wait times 30→2 mins)</li>
-            <li>Built Kafka → ClickHouse pipeline for 1.2M daily logs</li>
-            <li>Expanded test coverage from 32% to 46%</li>
-            <li>Installed SonarQube and enhanced code quality/security</li>
-        </ul>
-        <p><strong>E-Sports Startup (Consultant, 2024)</strong></p>
-        <ul>
-            <li>Optimized DB schema and implemented CI/CD pipelines</li>
-            <li>Applied clean architecture and security best practices</li>
-        </ul>
-        <p><strong>BAIOL (Co-founder, 2017–2021)</strong></p>
-        <ul>
-            <li>Built monitoring systems for finance, industrial, and healthcare clients</li>
-            <li>Created automated data scrapers in Go and Python</li>
-            <li>Managed infra for 100+ servers and 500+ endpoints</li>
-        </ul>
-    </section>
+            </section>
 
-    <section>
-        <h3>Education</h3>
+            <section>
+                <h3>Work Experience</h3>
+                <p><strong>VEON Group (Beeline Kazakhstan → QazCode)</strong></p>
+                <p><em>Backend Engineer | Mar 2021 – Present</em></p>
+                <p><em>Note: In June 2023, the backend engineering team transitioned from Beeline Kazakhstan to QazCode as part of an internal restructuring.</em></p>
+                <ul>
+                    <li>Reduced latency: Rebuilt a legacy integration, cutting customer wait times from 30 minutes to seconds and eliminating unstable dependencies.</li>
+                    <li>Observability: Introduced OpenTelemetry + Jaeger across critical services; designed dashboards in Grafana and ClickHouse.</li>
+                    <li>Log infrastructure: Designed a scalable Kafka → ClickHouse logging pipeline; improved reliability, reduced storage size 10x, and enabled real-time insights.</li>
+                    <li>AI/LLM integration: Developed prototypes for LLM-powered observability using log anomaly detection via statistical models.</li>
+                    <li>Error tracking: Created dashboards surfacing the top 10 unstable endpoints, which guided team focus and led to complete resolution within 6 months.</li>
+                    <li>Monitoring revival: Rescued a broken internal monitoring system; replaced Postgres-based reporting with partitioned ClickHouse queries.</li>
+                    <li>Team empowerment: Presented solutions on feature toggles, release strategies, and circuit breaker patterns; supported junior engineers and advocated best practices.</li>
+                    <li>Code quality: Integrated SonarQube, improved test coverage from 32% to 46%, and introduced structured logging for external dependencies.</li>
+                </ul>
+                <p><strong>BAIOL Startup</strong></p>
+                <p><em>Co-Founder & CTO | Oct 2017 – Feb 2021</em></p>
+                <ul>
+                    <li>Delivered 5 real-world pilots; 2 are still in operation. Secured and supported a full-year contract with a local oil institute.</li>
+                    <li>Designed and implemented a live monitoring infrastructure covering 100+ servers, 500+ workstations, SNMP-enabled air conditioners, heat sensors, and Cisco devices.</li>
+                    <li>Developed automated data scraping tools in Go and Python for Wi-Fi routers, public platforms, and corporate systems.</li>
+                    <li>Built and deployed a COVID reporting system that helped the city mayor reduce administrative load on emergency services.</li>
+                    <li>Led end-to-end delivery: engineering, system architecture, client demos, and multi-tier customer support.</li>
+                </ul>
+            <section>
 
-        <ul style="list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 1rem;">
-                <img src="images/usc-logo.png" alt="USC Logo" height="28" style="vertical-align:middle; margin-right: 8px;">
-                <strong>USC – B.Sc. in Electrical Engineering</strong><br>
-                Graduated with honors · GPA 3.6/4.0 · Focus: Signal Processing & Real-Time Systems
-            </li>
-            <li>
-                <img src="images/kaust-logo.png" alt="KAUST Logo" height="28" style="vertical-align:middle; margin-right: 8px;">
-                <strong>KAUST – M.Sc. in Electrical Engineering</strong><br>
-                GPA 3.7/4.0 · Focus: Parallel Programming & Image Recognition
-            </li>
-        </ul>
-    </section>
-</main>
+                <h3>Education</h3>
 
-<!-- Chat Widget -->
-<div class="chat-widget">
-    <div class="chat-container" id="chatContainer">
-        <div class="chat-header">
-            ZhenisGPT
-            <button class="minimize-btn" onclick="minimizeChat()">_</button>
-            <button class="close-btn" onclick="resetChat()">✕</button>
+                <ul style="list-style: none; padding-left: 0">
+                    <li style="margin-bottom: 1rem">
+                        <img
+                            src="images/kaust-logo.png"
+                            alt="KAUST Logo"
+                            height="28"
+                            style="vertical-align: middle; margin-right: 8px"
+                        />
+                        <strong>M.S., Electrical Engineering</strong><br />
+                        King Abdullah University of Science and Technology (KAUST), Saudi Arabia<br />
+                        GPA: 3.7/4.0 · Focus: Parallel Programming, Image Recognition
+                    </li>
+                    <li style="margin-bottom: 1rem">
+                        <img
+                            src="images/usc-logo.png"
+                            alt="USC Logo"
+                            height="28"
+                            style="vertical-align: middle; margin-right: 8px"
+                        />
+                        <strong>B.Sc., Electrical Engineering (Honors)</strong><br />
+                        University of Southern California (USC), Los Angeles, CA<br />
+                        GPA: 3.6/4.0 · Focus: Signal Processing, Wireless Systems
+                    </li>
+                    <li>
+                        <strong>Continued Learning:</strong><br />
+                        Actively exploring AI systems engineering through courses and content from DeepLearning.AI, OpenAI, and multi-agent frameworks such as CrewAI. Regularly experiment with tools like Windsurf for automated code generation and gRPC workflows.
+                    </li>
+            </section>
+        </main>
+
+        <!-- Chat Widget -->
+        <div class="chat-widget">
+            <div class="chat-container" id="chatContainer">
+                <div class="chat-header">
+                    ZhenisGPT
+                    <button class="minimize-btn" onclick="minimizeChat()">
+                        _
+                    </button>
+                    <button class="close-btn" onclick="resetChat()">✕</button>
+                </div>
+                <div class="messages" id="messages">
+                    <div class="bot">
+                        Hi 👋 I'm ZhenisGPT. How can I help you today?
+                    </div>
+                </div>
+                <div class="suggestions">
+                    <div
+                        class="suggestion-btn"
+                        onclick="setSuggestion('Tell me about yourself?')"
+                    >
+                        Tell me about yourself?
+                    </div>
+                    <div
+                        class="suggestion-btn"
+                        onclick="setSuggestion('What’s your recent project about?')"
+                    >
+                        What’s your recent project about?
+                    </div>
+                    <div
+                        class="suggestion-btn"
+                        onclick="setSuggestion('What tech do you use?')"
+                    >
+                        What tech do you use?
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prompt" style="display: none"
+                        >Ask ZhenisGPT</label
+                    >
+                    <input
+                        type="text"
+                        id="prompt"
+                        placeholder="Ask ZhenisGPT..."
+                    />
+                    <button class="ask-btn" onclick="ask()">Ask</button>
+                </div>
+            </div>
+            <div id="bubbleWrapper">
+                <div class="chat-tooltip-wrapper">
+                    <button class="chat-bubble" onclick="toggleChat()">
+                        Ask ZhenisGPT 💬
+                    </button>
+                    <span class="chat-tooltip"
+                        >Need help? Ask the AI assistant!</span
+                    >
+                </div>
+            </div>
         </div>
-        <div class="messages" id="messages">
-            <div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>
-        </div>
-        <div class="suggestions">
-            <div class="suggestion-btn" onclick="setSuggestion('Tell me about yourself?')">Tell me about yourself?</div>
-            <div class="suggestion-btn" onclick="setSuggestion('What’s your recent project about?')">What’s your recent project about?</div>
-            <div class="suggestion-btn" onclick="setSuggestion('What tech do you use?')">What tech do you use?</div>
-        </div>
-        <div class="form-group">
-            <label for="prompt" style="display:none;">Ask ZhenisGPT</label>
-            <input type="text" id="prompt" placeholder="Ask ZhenisGPT..." />
-            <button class="ask-btn" onclick="ask()">Ask</button>
-        </div>
-    </div>
-    <div id="bubbleWrapper">
-        <div class="chat-tooltip-wrapper">
-            <button class="chat-bubble" onclick="toggleChat()">Ask ZhenisGPT 💬</button>
-            <span class="chat-tooltip">Need help? Ask the AI assistant!</span>
-        </div>
-    </div>
-</div>
 
-<script>
-    const chatContainer = document.getElementById('chatContainer');
-    const promptInput = document.getElementById('prompt');
-    const messagesDiv = document.getElementById('messages');
-    const suggestionsDiv = document.querySelector('.suggestions');
+        <script>
+            const chatContainer = document.getElementById("chatContainer");
+            const promptInput = document.getElementById("prompt");
+            const messagesDiv = document.getElementById("messages");
+            const suggestionsDiv = document.querySelector(".suggestions");
 
-    const allSuggestions = [
-        "Tell me about yourself?",
-        "What’s your recent project about?",
-        "What tech do you use?",
-        "What are your strongest skills?",
-        "Have you used AI in production?",
-        "What’s your experience with Kubernetes?",
-        "What are your favorite tools for observability?",
-        "Do you prefer Go or Python for microservices?",
-        "How do you handle system performance bottlenecks?",
-        "What databases are you most comfortable with?"
-    ];
+            const allSuggestions = [
+                "Tell me about yourself?",
+                "What’s your recent project about?",
+                "What tech do you use?",
+                "What are your strongest skills?",
+                "Have you used AI in production?",
+                "What’s your experience with Kubernetes?",
+                "What are your favorite tools for observability?",
+                "Do you prefer Go or Python for microservices?",
+                "How do you handle system performance bottlenecks?",
+                "What databases are you most comfortable with?",
+            ];
 
-    function getRandomSuggestions(count = 2) {
-        const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-    }
-
-    function renderSuggestions() {
-        const selected = getRandomSuggestions();
-        suggestionsDiv.innerHTML = selected.map(q => `
-            <div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>
-        `).join('');
-        suggestionsDiv.style.display = 'flex';
-    }
-
-    function toggleChat() {
-        const isVisible = chatContainer.style.display === 'flex';
-        chatContainer.style.display = isVisible ? 'none' : 'flex';
-        document.getElementById('bubbleWrapper').style.display = isVisible ? 'block' : 'none';
-        if (!isVisible) {
-            renderSuggestions();
-            setTimeout(() => promptInput.focus(), 100);
-        }
-    }
-
-    function setSuggestion(text) {
-        promptInput.value = text;
-        suggestionsDiv.style.display = 'none';
-        ask();
-    }
-
-    promptInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') ask();
-    });
-
-    async function ask() {
-        const query = promptInput.value.trim();
-        if (!query) return;
-        messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
-        promptInput.value = '';
-        try {
-            // const url = 'http://localhost:3000/ask'; // I did not forget it...
-            // const url = 'http://44.201.129.222:3000/ask'; // I did not forget it...
-            const url = 'https://zhenisduissekov.com/ask'
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'X-Auth-Token': '2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2' },
-                body: JSON.stringify({ query })
-            });
-            if (!res.ok) {
-                console.warn('Non-OK response, showing message to user');
-                showErrorToUser('Server is busy, try again later');
-                return;
+            function getRandomSuggestions(count = 2) {
+                const shuffled = [...allSuggestions].sort(
+                    () => 0.5 - Math.random(),
+                );
+                return shuffled.slice(0, count);
             }
-            const data = await res.json();
-            messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
-        } catch (err) {
-            messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Server unavailable — this feature is still in development.</div>`;
-            // messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
-        }
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
 
-    function minimizeChat() {
-        chatContainer.style.display = 'none';
-        document.getElementById('bubbleWrapper').style.display = 'block';
-    }
+            function renderSuggestions() {
+                const selected = getRandomSuggestions();
+                suggestionsDiv.innerHTML = selected
+                    .map(
+                        (q) => `
+            <div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>
+        `,
+                    )
+                    .join("");
+                suggestionsDiv.style.display = "flex";
+            }
 
-    function resetChat() {
-        messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-        renderSuggestions();
-        chatContainer.style.display = 'none';
-        document.getElementById('bubbleWrapper').style.display = 'block';
-    }
+            function toggleChat() {
+                const isVisible = chatContainer.style.display === "flex";
+                chatContainer.style.display = isVisible ? "none" : "flex";
+                document.getElementById("bubbleWrapper").style.display =
+                    isVisible ? "block" : "none";
+                if (!isVisible) {
+                    renderSuggestions();
+                    setTimeout(() => promptInput.focus(), 100);
+                }
+            }
 
-    renderSuggestions();
-</script>
-<footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem;">
-    Logos of USC and KAUST are used solely for educational identification purposes.
-    USC logo sourced from
-    <a href="https://www.c6f.navy.mil/Press-Room/Image-Gallery/igphoto/2002289893/" target="_blank" rel="noopener noreferrer">U.S. Navy 6th Fleet</a>,
-    KAUST logo from
-    <a href="https://en.wikipedia.org/wiki/File:KAUST_Logo.svg" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
-    No endorsement implied.
-</footer>
+            function setSuggestion(text) {
+                promptInput.value = text;
+                suggestionsDiv.style.display = "none";
+                ask();
+            }
 
-<script>
+            promptInput.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") ask();
+            });
 
-function checkBackendHealth() {
-    fetch('https://zhenisduissekov.com/health', {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': '2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2'  // only if your /health route requires auth
-        }
-    })
-        .then(response => {
-            if (response.ok) {
-               console.log('✅ Backend is healthy (Status:', response.status + ')');
-        // Optionally update UI:
-        // document.getElementById('backend-status').innerText = 'Online';
-        // document.getElementById('backend-status').style.color = 'green';
-      } else {
-        console.warn('⚠️ Backend health check failed (Status:', response.status + ')');
-        // document.getElementById('backend-status').innerText = 'Unhealthy';
-        // document.getElementById('backend-status').style.color = 'orange';
-      }
-    })
-    .catch(error => {
-      console.error('❌ Backend is unreachable:', error);
-      // document.getElementById('backend-status').innerText = 'Offline';
-      // document.getElementById('backend-status').style.color = 'red';
-    });
-}
+            async function ask() {
+                const query = promptInput.value.trim();
+                if (!query) return;
+                messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
+                promptInput.value = "";
+                try {
+                    // const url = 'http://localhost:3000/ask'; // I did not forget it...
+                    // const url = 'http://44.201.129.222:3000/ask'; // I did not forget it...
+                    const url = "https://zhenisduissekov.com/ask";
+                    const res = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-Auth-Token":
+                                "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2",
+                        },
+                        body: JSON.stringify({ query }),
+                    });
+                    if (!res.ok) {
+                        console.warn(
+                            "Non-OK response, showing message to user",
+                        );
+                        showErrorToUser("Server is busy, try again later");
+                        return;
+                    }
+                    const data = await res.json();
+                    messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
+                } catch (err) {
+                    messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Server unavailable — this feature is still in development.</div>`;
+                    // messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
+                }
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
 
-// Run immediately on page load
-checkBackendHealth();
+            function minimizeChat() {
+                chatContainer.style.display = "none";
+                document.getElementById("bubbleWrapper").style.display =
+                    "block";
+            }
 
-// Repeat every 30 minutes (1800000 ms)
-setInterval(checkBackendHealth, 30 * 60 * 1000);
-</script>
+            function resetChat() {
+                messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
+                renderSuggestions();
+                chatContainer.style.display = "none";
+                document.getElementById("bubbleWrapper").style.display =
+                    "block";
+            }
 
-</body>
+            renderSuggestions();
+        </script>
+        <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
+            Logos of USC and KAUST are used solely for educational
+            identification purposes. USC logo sourced from
+            <a
+                href="https://www.c6f.navy.mil/Press-Room/Image-Gallery/igphoto/2002289893/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >U.S. Navy 6th Fleet</a
+            >, KAUST logo from
+            <a
+                href="https://en.wikipedia.org/wiki/File:KAUST_Logo.svg"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Wikipedia</a
+            >. No endorsement implied.
+        </footer>
+
+        <script>
+            function checkBackendHealth() {
+                fetch("https://zhenisduissekov.com/health", {
+                    method: "GET",
+                    headers: {
+                        "X-Auth-Token":
+                            "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2", // only if your /health route requires auth
+                    },
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log(
+                                "✅ Backend is healthy (Status:",
+                                response.status + ")",
+                            );
+                            // Optionally update UI:
+                            // document.getElementById('backend-status').innerText = 'Online';
+                            // document.getElementById('backend-status').style.color = 'green';
+                        } else {
+                            console.warn(
+                                "⚠️ Backend health check failed (Status:",
+                                response.status + ")",
+                            );
+                            // document.getElementById('backend-status').innerText = 'Unhealthy';
+                            // document.getElementById('backend-status').style.color = 'orange';
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("❌ Backend is unreachable:", error);
+                        // document.getElementById('backend-status').innerText = 'Offline';
+                        // document.getElementById('backend-status').style.color = 'red';
+                    });
+            }
+
+            // Run immediately on page load
+            checkBackendHealth();
+
+            // Repeat every 30 minutes (1800000 ms)
+            setInterval(checkBackendHealth, 30 * 60 * 1000);
+        </script>
+    </body>
 </html>
