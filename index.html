@@ -1036,20 +1036,36 @@
 
             .project-header {
                 display: flex;
-                align-items: center;
-                gap: 1rem;
+                align-items: flex-start;
+                gap: 0.75rem;
                 margin-bottom: 1rem;
+                position: relative;
             }
 
-            .project-icon {
-                font-size: 1.5rem;
-                color: var(--primary);
+            .project-title-container {
+                display: flex;
+                flex-direction: column;
+                gap: 0.15rem;
             }
 
             .project-title {
                 font-size: 1.25rem;
                 font-weight: 600;
                 color: var(--text);
+                margin: 0;
+                line-height: 1.2;
+            }
+
+            .project-status {
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.7rem;
+                color: var(--primary);
+                font-weight: 500;
+                background: rgba(59, 130, 246, 0.1);
+                padding: 0.15rem 0.5rem;
+                border-radius: 1rem;
+                width: fit-content;
             }
 
             .project-description {
@@ -1220,55 +1236,6 @@
                 </div>
             </section>
 
-            <section id="projects" class="section" style="background-color: var(--bg-light);">
-                <h2 class="section-title">Projects</h2>
-                <div class="projects-container">
-                    <div class="projects-grid">
-                        <!-- Project 1: Houston Energy Dashboard -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">📊</i>
-                                <h3 class="project-title">Houston Energy Dashboard</h3>
-                            </div>
-                            <p class="project-description">
-                                AI-driven oil price analytics and forecasting system tailored for the Texas energy market.
-                            </p>
-                            <a href="link1" class="project-link" target="_blank">
-                                <i>👉</i> View Project
-                            </a>
-                        </div>
-
-                        <!-- Project 2: GRPC Labs -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🛠️</i>
-                                <h3 class="project-title">GRPC Labs</h3>
-                            </div>
-                            <p class="project-description">
-                                Hands-on gRPC experiments and workflows, auto-generated and managed via Windsurf prompts.
-                            </p>
-                            <a href="link2" class="project-link" target="_blank">
-                                <i>👉</i> View on GitHub
-                            </a>
-                        </div>
-
-                        <!-- Project 3: AI Observability Assistant -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🤖</i>
-                                <h3 class="project-title">AI Observability Assistant</h3>
-                            </div>
-                            <p class="project-description">
-                                Combines GitLab, Prometheus, Jaeger, and Confluence to auto-summarize service health and suggest improvements.
-                            </p>
-                            <a href="link3" class="project-link" target="_blank">
-                                <i>👉</i> View Project
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section id="experience" class="section" style="background-color: var(--bg-light);">
                 <h2 class="section-title">Experience</h2>
                 <div class="timeline">
@@ -1374,6 +1341,64 @@
                         <div class="education-details">
                             <p><strong>Focus:</strong> Signal Processing, Wireless Systems</p>
                             <p><strong>GPA:</strong> 3.6/4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-container">
+                    <div class="projects-grid">
+                        <!-- Project 1: Houston Energy Dashboard -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">📊</i>
+                                <div class="project-title-container">
+                                    <h3 class="project-title">Houston Energy Dashboard</h3>
+                                    <span class="project-status">In Progress</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                AI-driven oil price analytics and forecasting system tailored for the Texas energy market.
+                            </p>
+                            <a href="link1" class="project-link" target="_blank">
+                                <i>👉</i> View Project
+                            </a>
+                        </div>
+
+                        <!-- Project 2: GRPC Labs -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">🛠️</i>
+                                <div class="project-title-container">
+                                    <h3 class="project-title">GRPC Labs</h3>
+                                    <span class="project-status">In Progress</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                Hands-on gRPC experiments and workflows, auto-generated and managed via Windsurf prompts.
+                            </p>
+                            <a href="https://github.com/zhenisduissekov/grpc-labs" class="project-link" target="_blank">
+                                <i>👉</i> View on GitHub
+                            </a>
+                        </div>
+
+                        <!-- Project 3: AI Observability Assistant -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">🤖</i>
+                                <div class="project-title-container">
+                                    <h3 class="project-title">AI Observability Assistant</h3>
+                                    <span class="project-status">In Progress</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                Combines GitLab, Prometheus, Jaeger, and Confluence to auto-summarize service health and suggest improvements.
+                            </p>
+                            <a href="link3" class="project-link" target="_blank">
+                                <i>👉</i> View Project
+                            </a>
                         </div>
                     </div>
                 </div>
