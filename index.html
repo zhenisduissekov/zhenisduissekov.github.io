@@ -1,72 +1,393 @@
-<!doctype html>
-<html lang="en-US">
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"
-        ></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            gtag("config", "G-4NFSQ9XG8W");
-        </script>
-
-        <meta charset="UTF-8" />
-        <title>ZHENIS DUISSEKOV | BACKEND ENGINEER</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-            name="description"
-            content="Zhenis Duissekov - Backend Engineer Portfolio"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-        />
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhenis Duissekov | Backend Engineer</title>
+    <meta name="description" content="Backend Engineer with expertise in building scalable systems and APIs" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4NFSQ9XG8W');
+    </script>
         <style>
-            body {
+            :root {
+                --primary: #3B82F6;
+                --primary-light: #60A5FA;
+                --primary-dark: #2563EB;
+                --text: #1F2937;
+                --text-light: #6B7280;
+                --bg: #FFFFFF;
+                --bg-light: #F9FAFB;
+                --border: #E5E7EB;
+            }
+
+            * {
                 margin: 0;
-                font-family: "Poppins", sans-serif;
-                /*background-color: #f8f9fa;*/
-                /*color: #212529;*/
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-                background-color: #f4f7fa;
-                color: #2d2d2d;
+            html {
+                scroll-behavior: smooth;
+            }
 
-                /*background-color: #fdfdfd;*/
-                /*color: #2d2d2d;*/
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                background-color: var(--bg);
+                color: var(--text);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .header-gradient {
+                background: linear-gradient(90deg, #3B82F6 0%, #38BDF8 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .bg-gradient {
+                background: linear-gradient(90deg, #3B82F6 0%, #38BDF8 100%);
+            }
+
+            .btn {
+                display: inline-block;
+                background: linear-gradient(90deg, #3B82F6 0%, #38BDF8 100%);
+                color: white;
+                font-weight: 600;
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                text-decoration: none;
+                transition: all 0.2s;
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
+            }
+
+            .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
+            }
+
+            .btn-outline {
+                background: transparent;
+                border: 2px solid var(--primary);
+                color: var(--primary);
+                margin-left: 1rem;
+            }
+
+            .btn-outline:hover {
+                background: var(--primary);
+                color: white;
             }
 
             header {
-                /*background: linear-gradient(135deg, #4CAF50, #45a049);*/ /*ядовито зеленый*/
-                background: linear-gradient(
-                    135deg,
-                    #0f2027,
-                    #203a43,
-                    #2c5364
-                ); /*темный*/
-                /*background: linear-gradient(135deg, #667eea, #764ba2); !* gradient green tones *!*/
-                color: white;
-                text-align: center;
-                padding: 3rem 1rem 2rem 1rem;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background: white;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                padding: 1rem 0;
             }
 
-            header h1 {
-                /*font-size: 3rem;*/
-                /*margin-bottom: 0.5rem;*/
-                font-size: 2.5rem;
-                letter-spacing: 1px;
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
             }
 
-            header h2 {
-                font-weight: 400;
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
                 font-size: 1.5rem;
-                margin: 0;
+                font-weight: 700;
+                text-decoration: none;
+                color: var(--text);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                color: var(--text-light);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary);
+            }
+
+            .hero {
+                padding: 10rem 0 8rem;
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+                font-weight: 800;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.05em;
+                background: linear-gradient(90deg, #3B82F6 0%, #38BDF8 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                color: var(--text-light);
+                max-width: 600px;
+                margin: 0 auto 2.5rem;
+                line-height: 1.7;
+            }
+
+            .hero-buttons {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+                color: var(--text-light);
+                margin-bottom: 2rem;
+                font-weight: 500;
+            }
+
+            .highlight {
+                background: linear-gradient(120deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 100%);
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+            }
+
+            /* About Section */
+            .section {
+                padding: 5rem 0;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 3rem;
+                position: relative;
+                display: inline-block;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, #3B82F6 0%, #38BDF8 100%);
+                border-radius: 2px;
+            }
+
+            .about-grid {
+                display: block;
+                margin: 0 auto;
+                max-width: 1000px;
+            }
+
+            .about-text {
+                margin: 0 auto;
+                max-width: 1000px;
+            }
+
+            .about-text p {
+                margin-bottom: 1.5rem;
+                color: var(--text-light);
+                line-height: 1.7;
+            }
+
+            .about-text p:last-child {
+                margin-bottom: 2rem;
+            }
+
+            .skills-container {
+                background: var(--bg);
+                border-radius: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .skill-category {
+                border-radius: 0.75rem;
+                padding: 1rem;
+                background: rgba(59, 130, 246, 0.05);
+                transition: all 0.3s ease;
+            }
+
+            .skill-category:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px -5px rgba(59, 130, 246, 0.1);
+            }
+
+            .skill-category-title {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 0.75rem;
+                display: inline-block;
+                padding: 0.25rem 0.5rem;
+                background: linear-gradient(120deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 100%);
+                border-radius: 4px;
+            }
+
+            .skills-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--primary);
+                padding: 0.5rem 1rem;
+                border-radius: 2rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                transition: all 0.2s;
+            }
+
+            .skill-tag:hover {
+                background: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            /* Experience Section */
+            .timeline {
+                position: relative;
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 1rem 0;
+            }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 1.5rem;
+                width: 3px;
+                height: 100%;
+                background: linear-gradient(180deg, #3B82F6 0%, #38BDF8 100%);
+                border-radius: 2px;
+            }
+
+            .timeline-item {
+                position: relative;
+                margin-bottom: 2rem;
+                margin-left: 4rem;
+                padding: 1.5rem;
+                background: white;
+                border-radius: 0.75rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+                max-width: 1000px;
+            }
+
+            .timeline-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            }
+
+            .timeline-item:before {
+                content: '';
+                position: absolute;
+                left: -2.5rem;
+                top: 1.5rem;
+                width: 1.25rem;
+                height: 1.25rem;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #3B82F6 0%, #38BDF8 100%);
+                z-index: 1;
+                border: 3px solid white;
+            }
+
+            .timeline-date {
+                font-size: 0.85rem;
+                color: var(--primary);
+                font-weight: 600;
+                margin-bottom: 0.25rem;
+                display: inline-block;
+                padding: 0.2rem 0.6rem;
+                background: rgba(59, 130, 246, 0.1);
+                border-radius: 1rem;
+            }
+
+            .timeline-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin-bottom: 0.25rem;
+                color: var(--text);
+            }
+
+            .timeline-company {
+                font-size: 1rem;
+                color: var(--primary);
+                font-weight: 500;
+                margin-bottom: 0.75rem;
+                display: block;
+            }
+
+            .timeline-description {
+                color: var(--text-light);
+                line-height: 1.6;
+                margin-bottom: 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            .timeline-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+                margin-top: 0.75rem;
+            }
+
+            .timeline-tag {
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--primary);
+                padding: 0.2rem 0.6rem;
+                border-radius: 0.5rem;
+                font-size: 0.75rem;
+                font-weight: 500;
             }
 
             main {
@@ -154,7 +475,13 @@
             }
 
             .chat-header {
-                background-color: #4caf50;
+                /* background-color: #4caf50; */ /* commented out green color */
+                background: linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                ); /* matching header gradient */
                 color: white;
                 padding: 12px;
                 text-align: center;
@@ -257,165 +584,857 @@
             .ask-btn:hover {
                 background-color: #45a049;
             }
+
+            /* Responsive Styles */
+            @media (max-width: 1024px) {
+                .timeline:before {
+                    left: 1.5rem;
+                }
+
+                .timeline-item {
+                    margin-left: 3rem !important;
+                    padding: 1.25rem;
+                }
+
+                .timeline-item:before {
+                    left: -2.5rem;
+                    width: 1rem;
+                    height: 1rem;
+                }
+
+                .about-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .hero {
+                    padding: 6rem 0 4rem;
+                }
+
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+
+                .hero p {
+                    font-size: 1.1rem;
+                }
+
+                .hero-buttons {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .btn-outline {
+                    margin-left: 0;
+                }
+
+                .nav-links {
+                    display: none;
+                }
+
+                .section {
+                    padding: 3rem 0;
+                }
+
+                .section-title {
+                    font-size: 2rem;
+                    margin-bottom: 2rem;
+                }
+
+                .timeline-item {
+                    padding: 1.25rem;
+                    margin-left: 2.5rem !important;
+                }
+
+                .timeline-item:before {
+                    left: -2.25rem;
+                }
+
+                .timeline-title {
+                    font-size: 1.1rem;
+                }
+
+                .timeline-company {
+                    font-size: 0.95rem;
+                }
+
+                .timeline-description {
+                    font-size: 0.9rem;
+                }
+
+                .timeline-tag {
+                    font-size: 0.7rem;
+                    padding: 0.15rem 0.5rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero h1 {
+                    font-size: 2rem;
+                }
+
+                .hero-subtitle {
+                    font-size: 1.2rem;
+                }
+
+                .section-title {
+                    font-size: 1.75rem;
+                }
+
+                .timeline-item {
+                    padding: 1rem;
+                    margin-left: 2rem !important;
+                }
+
+                .timeline-item:before {
+                    left: -1.75rem;
+                    width: 0.8rem;
+                    height: 0.8rem;
+                }
+            }
+
+            .education-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .education-card {
+                background: var(--bg);
+                border-radius: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            }
+
+            .education-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .education-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+                color: var(--primary);
+            }
+
+            .education-institution {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .institution-logo {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+                flex-shrink: 0;
+            }
+
+            .institution-name {
+                font-weight: 600;
+                display: block;
+            }
+
+            .institution-location {
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+
+            .education-details {
+                color: var(--text-light);
+            }
+
+            .education-details strong {
+                color: var(--text);
+            }
+
+            @media (max-width: 768px) {
+                .education-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .institution-logo {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+            #skills {
+                padding: 5rem 0;
+            }
+
+            .skills-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            .skill-category {
+                background: var(--bg);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .skill-category:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px -5px rgba(59, 130, 246, 0.1);
+            }
+
+            .skill-category-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 1rem;
+                display: inline-block;
+                padding: 0.3rem 0.75rem;
+                background: linear-gradient(120deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 100%);
+                border-radius: 6px;
+            }
+
+            .skills-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            .skill-tag {
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--primary);
+                padding: 0.5rem 1rem;
+                border-radius: 2rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                transition: all 0.2s;
+            }
+
+            .skill-tag:hover {
+                background: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .skills-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+
+                .skill-category {
+                    padding: 1.25rem;
+                }
+
+                .skill-category-title {
+                    font-size: 1rem;
+                    padding: 0.25rem 0.5rem;
+                }
+            }
+
+            .contact-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .contact-card {
+                background: var(--bg);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px -5px rgba(59, 130, 246, 0.1);
+            }
+
+            .contact-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+            .contact-links a {
+                display: block;
+                margin-bottom: 1rem;
+                color: var(--text);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+            .contact-links a:hover {
+                color: var(--primary);
+            }
+
+            .contact-link-title {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+            }
+
+            .contact-link-desc {
+                display: block;
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+
+            @media (max-width: 768px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .contact-card {
+                    padding: 1.25rem;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .container,
+                .skills-container,
+                .education-grid,
+                .contact-container,
+                .timeline {
+                    padding: 0 1rem;
+                }
+            }
+
+            .contact-card p {
+                margin: 0.5rem 0;
+                color: var(--text);
+            }
+
+            .location-address {
+                font-size: 0.95rem;
+                color: var(--text-light);
+                line-height: 1.5;
+            }
+
+            .location-address span {
+                display: block;
+                margin-bottom: 0.25rem;
+            }
+
+            .location-address span:last-child {
+                margin-bottom: 0;
+            }
+
+            .location-icon {
+                color: var(--primary);
+                margin-right: 0.5rem;
+            }
+
+            .location-note {
+                color: var(--text-light);
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+            }
+
+            .work-status {
+                color: var(--primary);
+                margin-top: 1rem;
+                font-weight: 500;
+            }
+
+            .location-details {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .location-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--primary);
+                font-weight: 500;
+            }
+
+            .location-badge .status-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--primary);
+            }
+
+            .location-options {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .location-option {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                background: rgba(59, 130, 246, 0.05);
+                color: var(--text);
+                font-size: 0.9rem;
+            }
+
+            .location-option i {
+                font-size: 1rem;
+            }
+
+            .projects-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            .project-card {
+                background: var(--bg);
+                border-radius: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px -5px rgba(59, 130, 246, 0.1);
+            }
+
+            .project-header {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-icon {
+                font-size: 1.5rem;
+                color: var(--primary);
+            }
+
+            .project-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--text);
+            }
+
+            .project-description {
+                color: var(--text-light);
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .project-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+
+            .project-link:hover {
+                color: #2563eb;
+            }
+
+            .project-link i {
+                font-size: 1.25rem;
+            }
+
+            @media (max-width: 768px) {
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .project-card {
+                    padding: 1.25rem;
+                }
+            }
         </style>
     </head>
 
     <body>
         <header>
-            <h1>ZHENIS DUISSEKOV</h1>
-            <h2>Backend Engineer | Distributed Systems | Go + Kafka</h2>
+            <div class="container">
+                <nav class="nav-container">
+                    <a href="#" class="logo">Zhenis Duissekov</a>
+                    <div class="nav-links">
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#education" class="nav-link">Education</a>
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </div>
+                </nav>
+            </div>
         </header>
 
-        <main>
-            <div
-                style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    align-items: center;
-                "
-            >
-                <span>📍 Houston, TX</span>
-                <span>🟢 U.S. Work Authorized(activates July 14, 2025)</span>
-                <span>
-                    <a href="https://github.com/zhenisduissekov">GitHub</a> ·
-                    <a href="https://www.linkedin.com/in/zhenis-duissekov"
-                        >LinkedIn</a
-                    >
-                    · <a href="https://t.me/zduissekov">Telegram</a> ·
-                    <!--        <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf">CV</a>-->
-                    <a
-                        href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
-                        download
-                        onclick="gtag('event', 'download_cv', {
-     event_category: 'Engagement',
-     event_label: 'CV PDF',
-     value: 1
-   })"
-                    >
-                        CV
-                    </a>
-                </span>
-            </div>
+        <main class="container">
+            <section class="hero">
+                <h1>Backend Engineer</h1>
+                <p>Building <span class="highlight">scalable</span> and <span class="highlight">efficient</span> systems with modern technologies</p>
+                <div class="hero-subtitle">Distributed Systems | Go + AI</div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get in Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                </div>
+            </section>
 
+            <section id="about" class="section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Hello! I'm Zhenis, a passionate Backend Engineer with expertise in building scalable and efficient distributed systems. I specialize in Go and have extensive experience with Kafka, microservices, and cloud-native technologies.</p>
+                        <p>My journey in software engineering has taken me through various domains, from telecommunications to fintech, where I've had the opportunity to design and implement high-performance systems that handle millions of requests daily.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Core Skills</h2>
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">AI/LLM</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">OpenAI API</span>
+                                <span class="skill-tag">Prompt Engineering</span>
+                                <span class="skill-tag">LM Studio</span>
+                                <span class="skill-tag">Copilot</span>
+                                <span class="skill-tag">Windsurf</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Languages & Frameworks</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Go</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">NodeJS</span>
+                                <span class="skill-tag">gRPC</span>
+                                <span class="skill-tag">REST</span>
+                                <span class="skill-tag">WebSockets</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Databases</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">ClickHouse</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Redis</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Event Systems</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Kafka</span>
+                                <span class="skill-tag">RabbitMQ</span>
+                                <span class="skill-tag">NATS</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Observability</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Prometheus</span>
+                                <span class="skill-tag">Grafana</span>
+                                <span class="skill-tag">Jaeger</span>
+                                <span class="skill-tag">OpenTelemetry</span>
+                                <span class="skill-tag">Alertmanager</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">DevOps</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Kubernetes</span>
+                                <span class="skill-tag">GitLab CI</span>
+                                <span class="skill-tag">Jenkins</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Testing</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Unit Testing</span>
+                                <span class="skill-tag">Integration Testing</span>
+                                <span class="skill-tag">Load Testing</span>
+                                <span class="skill-tag">Profiling</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Architecture</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Clean Architecture</span>
+                                <span class="skill-tag">Microservices</span>
+                                <span class="skill-tag">Circuit Breakers</span>
+                                <span class="skill-tag">Feature Toggles</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">Languages</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">English</span>
+                                <span class="skill-tag">Russian</span>
+                                <span class="skill-tag">Kazakh</span>
+                                <span class="skill-tag">Turkish</span>
+                                <span class="skill-tag">Spanish</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-container">
+                    <div class="projects-grid">
+                        <!-- Project 1: Houston Energy Dashboard -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">📊</i>
+                                <h3 class="project-title">Houston Energy Dashboard</h3>
+                            </div>
+                            <p class="project-description">
+                                AI-driven oil price analytics and forecasting system tailored for the Texas energy market.
+                            </p>
+                            <a href="link1" class="project-link" target="_blank">
+                                <i>👉</i> View Project
+                            </a>
+                        </div>
+
+                        <!-- Project 2: GRPC Labs -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">🛠️</i>
+                                <h3 class="project-title">GRPC Labs</h3>
+                            </div>
+                            <p class="project-description">
+                                Hands-on gRPC experiments and workflows, auto-generated and managed via Windsurf prompts.
+                            </p>
+                            <a href="link2" class="project-link" target="_blank">
+                                <i>👉</i> View on GitHub
+                            </a>
+                        </div>
+
+                        <!-- Project 3: AI Observability Assistant -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">🤖</i>
+                                <h3 class="project-title">AI Observability Assistant</h3>
+                            </div>
+                            <p class="project-description">
+                                Combines GitLab, Prometheus, Jaeger, and Confluence to auto-summarize service health and suggest improvements.
+                            </p>
+                            <a href="link3" class="project-link" target="_blank">
+                                <i>👉</i> View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 2021 - Present</span>
+                        <h3 class="timeline-title">Backend Engineer</h3>
+                        <span class="timeline-company">VEON Group (Beeline Kazakhstan → QazCode)</span>
+                        <p><em>Note: In June 2023, the backend engineering team transitioned from Beeline Kazakhstan to QazCode as part of an internal restructuring.</em></p>
+                        <div class="timeline-description">
+                            <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
+                                <li>Reduced latency: Rebuilt a legacy integration, cutting customer wait times from 30 minutes to seconds and eliminating unstable dependencies.</li>
+                                <li>Observability: Introduced OpenTelemetry + Jaeger across critical services; designed dashboards in Grafana and ClickHouse.</li>
+                                <li>Log infrastructure: Designed a scalable Kafka → ClickHouse logging pipeline; improved reliability, reduced storage size 10x, and enabled real-time insights.</li>
+                                <li>AI/LLM integration: Developed prototypes for LLM-powered observability using log anomaly detection via statistical models.</li>
+                                <li>Error tracking: Created dashboards surfacing the top 10 unstable endpoints, which guided team focus and led to complete resolution within 6 months.</li>
+                                <li>Monitoring revival: Rescued a broken internal monitoring system; replaced Postgres-based reporting with partitioned ClickHouse queries.</li>
+                                <li>Team empowerment: Presented solutions on feature toggles, release strategies, and circuit breaker patterns; supported junior engineers and advocated best practices.</li>
+                                <li>Code quality: Integrated SonarQube, improved test coverage from 32% to 46%, and introduced structured logging for external dependencies.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Go</span>
+                            <span class="timeline-tag">Kafka</span>
+                            <span class="timeline-tag">gRPC</span>
+                            <span class="timeline-tag">Kubernetes</span>
+                            <span class="timeline-tag">ClickHouse</span>
+                            <span class="timeline-tag">OpenTelemetry</span>
+                            <span class="timeline-tag">Jaeger</span>
+                            <span class="timeline-tag">Grafana</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Oct 2017 - Feb 2021</span>
+                        <h3 class="timeline-title">Co-Founder & CTO</h3>
+                        <span class="timeline-company">BAIOL Startup</span>
+                        <div class="timeline-description">
+                            <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
+                                <li>Delivered 5 real-world pilots; 2 are still in operation. Secured and supported a full-year contract with a local oil institute.</li>
+                                <li>Designed and implemented a live monitoring infrastructure covering 100+ servers, 500+ workstations, SNMP-enabled air conditioners, heat sensors, and Cisco devices.</li>
+                                <li>Developed automated data scraping tools in Go and Python for Wi-Fi routers, public platforms, and corporate systems.</li>
+                                <li>Built and deployed a COVID reporting system that helped the city mayor reduce administrative load on emergency services.</li>
+                                <li>Led end-to-end delivery: engineering, system architecture, client demos, and multi-tier customer support.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Go</span>
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">System Architecture</span>
+                            <span class="timeline-tag">Monitoring</span>
+                            <span class="timeline-tag">Data Scraping</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 2017 - Sep 2017</span>
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <span class="timeline-company">Talgo S.L. (Madrid, Spain)</span>
+                        <div class="timeline-description">
+                            <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
+                                <li>Developed and maintained software for train control and monitoring systems.</li>
+                                <li>Worked on real-time data processing and visualization for train diagnostics.</li>
+                                <li>Collaborated with cross-functional teams to implement new features and resolve technical issues.</li>
+                                <li>Participated in code reviews and contributed to architectural decisions.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">C++</span>
+                            <span class="timeline-tag">Real-time Systems</span>
+                            <span class="timeline-tag">Embedded Systems</span>
+                            <span class="timeline-tag">Qt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <h3 class="education-title">M.S., Electrical Engineering</h3>
+                        <div class="education-institution">
+                            <img src="images/kaust-logo.png" alt="KAUST Logo" class="institution-logo">
+                            <div>
+                                <span class="institution-name">King Abdullah University of Science and Technology (KAUST)</span>
+                                <span class="institution-location">Saudi Arabia</span>
+                            </div>
+                        </div>
+                        <div class="education-details">
+                            <p><strong>Focus:</strong> Parallel Programming, Image Recognition</p>
+                            <p><strong>GPA:</strong> 3.7/4.0</p>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <h3 class="education-title">B.Sc., Electrical Engineering (Honors)</h3>
+                        <div class="education-institution">
+                            <img src="images/usc-logo.png" alt="USC Logo" class="institution-logo">
+                            <div>
+                                <span class="institution-name">University of Southern California (USC)</span>
+                                <span class="institution-location">Los Angeles, CA</span>
+                            </div>
+                        </div>
+                        <div class="education-details">
+                            <p><strong>Focus:</strong> Signal Processing, Wireless Systems</p>
+                            <p><strong>GPA:</strong> 3.6/4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section" style="background-color: var(--bg-light);">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-container">
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <h4 class="contact-title">Location</h4>
+                            <div class="location-address">
+                                <span class="location-icon">📍  8222 KingsBrook Rd, Houston, TX 77024</span>
+                            </div>
+                            <div class="location-details">
+                                <div class="location-badge">
+                                    <span class="status-dot"></span>
+                                    U.S. Work Authorized from July 14, 2025
+                                </div>
+                                <div class="location-options">
+                                    <span class="location-option">
+                                        <i>💻</i> Remote
+                                    </span>
+                                    <span class="location-option">
+                                        <i>🏢</i> Office
+                                    </span>
+                                    <span class="location-option">
+                                        <i>🔄</i> Hybrid
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <h4 class="contact-title">Social Links</h4>
+                            <div class="contact-links">
+                                <a href="https://github.com/zhenisduissekov" target="_blank">
+                                    <span class="contact-link-title">GitHub</span>
+                                    <span class="contact-link-desc">View my open-source projects and contributions</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/zhenis-duissekov" target="_blank">
+                                    <span class="contact-link-title">LinkedIn</span>
+                                    <span class="contact-link-desc">Connect with me professionally</span>
+                                </a>
+                                <a href="https://t.me/zduissekov" target="_blank">
+                                    <span class="contact-link-title">Telegram</span>
+                                    <span class="contact-link-desc">Direct messaging and updates</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <h4 class="contact-title">Downloads</h4>
+                            <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf" download class="btn">
+                                <span class="contact-link-title">CV</span>
+                                <span class="contact-link-desc">View my complete professional history</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <hr />
 
-            <section>
-                <p>
-                    Backend engineer with over 7 years of experience building
-                    scalable systems in Go and Kafka, with a proven track record
-                    in observability and AI-driven solutions for real-time
-                    insights. As a former startup CTO, I thrive in fast-paced
-                    environments, delivering impactful solutions like reducing
-                    latency by orders of magnitude. Relocating to Houston with a
-                    U.S. Green Card (July 2025), I’m eager to drive innovation
-                    in the city’s energy and tech industries through robust,
-                    AI-enhanced architectures.
-                </p>
-            </section>
-
-            <section>
-                <h3>🔧 CORE SKILLS</h3>
-                <ul>
-                    <li>
-                        <strong>AI/LLM:</strong> OpenAI API, Prompt Engineering,
-                        LM Studio, Copilot, Windsurf
-                    </li>
-                    <li>
-                        <strong>Languages:</strong> Go, Python, NodeJS | gRPC,
-                        REST, WebSockets
-                    </li>
-                    <li>
-                        <strong>Databases:</strong> PostgreSQL, ClickHouse,
-                        MongoDB, Redis
-                    </li>
-                    <li>
-                        <strong>Event Systems:</strong> Kafka, RabbitMQ, NATS
-                    </li>
-                    <li>
-                        <strong>Observability:</strong> Prometheus, Grafana,
-                        Jaeger, OpenTelemetry, Alertmanager
-                    </li>
-                    <li>
-                        <strong>DevOps & CI/CD:</strong> Docker, Kubernetes,
-                        GitLab CI, Jenkins
-                    </li>
-                    <li>
-                        <strong>Testing:</strong> Unit, Integration, Load
-                        Testing | Profiling
-                    </li>
-                    <li>
-                        <strong>Architecture:</strong> Clean Architecture,
-                        Microservices | Circuit Breakers | Feature Toggles
-                    </li>
-                    <li>
-                        <strong>Languages:</strong> English, Russian, Kazakh,
-                        Turkish, Spanish
-                    </li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>🧠 EXPERIENCE</h3>
-
-            </section>
-
-            <section>
-                <h3>Work Experience</h3>
-                <p><strong>VEON Group (Beeline Kazakhstan → QazCode)</strong></p>
-                <p><em>Backend Engineer | Mar 2021 – Present</em></p>
-                <p><em>Note: In June 2023, the backend engineering team transitioned from Beeline Kazakhstan to QazCode as part of an internal restructuring.</em></p>
-                <ul>
-                    <li>Reduced latency: Rebuilt a legacy integration, cutting customer wait times from 30 minutes to seconds and eliminating unstable dependencies.</li>
-                    <li>Observability: Introduced OpenTelemetry + Jaeger across critical services; designed dashboards in Grafana and ClickHouse.</li>
-                    <li>Log infrastructure: Designed a scalable Kafka → ClickHouse logging pipeline; improved reliability, reduced storage size 10x, and enabled real-time insights.</li>
-                    <li>AI/LLM integration: Developed prototypes for LLM-powered observability using log anomaly detection via statistical models.</li>
-                    <li>Error tracking: Created dashboards surfacing the top 10 unstable endpoints, which guided team focus and led to complete resolution within 6 months.</li>
-                    <li>Monitoring revival: Rescued a broken internal monitoring system; replaced Postgres-based reporting with partitioned ClickHouse queries.</li>
-                    <li>Team empowerment: Presented solutions on feature toggles, release strategies, and circuit breaker patterns; supported junior engineers and advocated best practices.</li>
-                    <li>Code quality: Integrated SonarQube, improved test coverage from 32% to 46%, and introduced structured logging for external dependencies.</li>
-                </ul>
-                <p><strong>BAIOL Startup</strong></p>
-                <p><em>Co-Founder & CTO | Oct 2017 – Feb 2021</em></p>
-                <ul>
-                    <li>Delivered 5 real-world pilots; 2 are still in operation. Secured and supported a full-year contract with a local oil institute.</li>
-                    <li>Designed and implemented a live monitoring infrastructure covering 100+ servers, 500+ workstations, SNMP-enabled air conditioners, heat sensors, and Cisco devices.</li>
-                    <li>Developed automated data scraping tools in Go and Python for Wi-Fi routers, public platforms, and corporate systems.</li>
-                    <li>Built and deployed a COVID reporting system that helped the city mayor reduce administrative load on emergency services.</li>
-                    <li>Led end-to-end delivery: engineering, system architecture, client demos, and multi-tier customer support.</li>
-                </ul>
-            <section>
-
-                <h3>Education</h3>
-
-                <ul style="list-style: none; padding-left: 0">
-                    <li style="margin-bottom: 1rem">
-                        <img
-                            src="images/kaust-logo.png"
-                            alt="KAUST Logo"
-                            height="28"
-                            style="vertical-align: middle; margin-right: 8px"
-                        />
-                        <strong>M.S., Electrical Engineering</strong><br />
-                        King Abdullah University of Science and Technology (KAUST), Saudi Arabia<br />
-                        GPA: 3.7/4.0 · Focus: Parallel Programming, Image Recognition
-                    </li>
-                    <li style="margin-bottom: 1rem">
-                        <img
-                            src="images/usc-logo.png"
-                            alt="USC Logo"
-                            height="28"
-                            style="vertical-align: middle; margin-right: 8px"
-                        />
-                        <strong>B.Sc., Electrical Engineering (Honors)</strong><br />
-                        University of Southern California (USC), Los Angeles, CA<br />
-                        GPA: 3.6/4.0 · Focus: Signal Processing, Wireless Systems
-                    </li>
-                    <li>
-                        <strong>Continued Learning:</strong><br />
-                        Actively exploring AI systems engineering through courses and content from DeepLearning.AI, OpenAI, and multi-agent frameworks such as CrewAI. Regularly experiment with tools like Windsurf for automated code generation and gRPC workflows.
-                    </li>
-            </section>
         </main>
 
         <!-- Chat Widget -->
