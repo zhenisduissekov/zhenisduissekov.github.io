@@ -1439,171 +1439,275 @@
 
         <!-- Chat Widget -->
         <div class="chat-widget">
-            <div class="chat-container" id="chatContainer">
+            <div class="chat-badge" onclick="toggleChat()">
+                <span class="chat-icon">🤖</span>
+                <span class="chat-label">Ask About My Work</span>
+            </div>
+            <div class="chat-container" id="chatContainer" style="display: none;">
                 <div class="chat-header">
-                    ZhenisGPT
-                    <button class="minimize-btn" onclick="minimizeChat()">
-                        _
-                    </button>
-                    <button class="close-btn" onclick="resetChat()">✕</button>
+                    <div class="chat-title">
+                        <span class="chat-icon">🤖</span>
+                        <span class="chat-name">ZhenisGPT</span>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="minimize-btn" onclick="minimizeChat()">_</button>
+                        <button class="close-btn" onclick="resetChat()">✕</button>
+                    </div>
                 </div>
                 <div class="messages" id="messages">
                     <div class="bot">
-                        Hi 👋 I'm ZhenisGPT. How can I help you today?
+                        Hi 👋 I'm ZhenisGPT - your AI assistant! I can help you with:
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                            <li>Explaining my projects and technologies</li>
+                            <li>Discussing my experience and skills</li>
+                            <li>Answering questions about my work</li>
+                            <li>Providing technical insights</li>
+                        </ul>
+                        What would you like to know?
                     </div>
                 </div>
                 <div class="suggestions">
-                    <div
-                        class="suggestion-btn"
-                        onclick="setSuggestion('Tell me about yourself?')"
-                    >
-                        Tell me about yourself?
+                    <div class="suggestion-btn" onclick="setSuggestion('Tell me about your AI projects')">
+                        AI Projects
                     </div>
-                    <div
-                        class="suggestion-btn"
-                        onclick="setSuggestion('What’s your recent project about?')"
-                    >
-                        What’s your recent project about?
+                    <div class="suggestion-btn" onclick="setSuggestion('What technologies do you specialize in?')">
+                        Technologies
                     </div>
-                    <div
-                        class="suggestion-btn"
-                        onclick="setSuggestion('What tech do you use?')"
-                    >
-                        What tech do you use?
+                    <div class="suggestion-btn" onclick="setSuggestion('What was your most challenging project?')">
+                        Projects
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="prompt" style="display: none"
-                        >Ask ZhenisGPT</label
-                    >
-                    <input
-                        type="text"
-                        id="prompt"
-                        placeholder="Ask ZhenisGPT..."
-                    />
-                    <button class="ask-btn" onclick="ask()">Ask</button>
-                </div>
-            </div>
-            <div id="bubbleWrapper">
-                <div class="chat-tooltip-wrapper">
-                    <button class="chat-bubble" onclick="toggleChat()">
-                        Ask ZhenisGPT 💬
-                    </button>
-                    <span class="chat-tooltip"
-                        >Need help? Ask the AI assistant!</span
-                    >
+                <div class="input-container">
+                    <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="handleKeyPress(event)" />
+                    <button class="send-btn" onclick="sendMessage()">Send</button>
                 </div>
             </div>
         </div>
 
+        <style>
+            .chat-badge {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                background: linear-gradient(120deg, #3B82F6 0%, #38BDF8 100%);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border-radius: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                z-index: 1000;
+                transition: transform 0.2s;
+            }
+
+            .chat-badge:hover {
+                transform: translateY(-2px);
+            }
+
+            .chat-badge .chat-icon {
+                font-size: 1.25rem;
+            }
+
+            .chat-badge .chat-label {
+                font-weight: 500;
+            }
+
+            .chat-container {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 350px;
+                max-height: 80vh;
+                background: var(--bg);
+                border-radius: 1rem 1rem 0 0;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                z-index: 1000;
+            }
+
+            .chat-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .chat-title {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--primary);
+            }
+
+            .chat-name {
+                font-weight: 600;
+            }
+
+            .chat-actions {
+                display: flex;
+                gap: 0.5rem;
+            }
+
+            .chat-actions button {
+                width: 24px;
+                height: 24px;
+                border: none;
+                background: none;
+                color: var(--text);
+                cursor: pointer;
+                border-radius: 4px;
+                padding: 0;
+            }
+
+            .chat-actions button:hover {
+                background: rgba(59, 130, 246, 0.1);
+            }
+
+            .messages {
+                flex: 1;
+                overflow-y: auto;
+                padding: 1rem;
+            }
+
+            .bot {
+                background: rgba(59, 130, 246, 0.05);
+                padding: 1rem;
+                border-radius: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .input-container {
+                padding: 1rem;
+                border-top: 1px solid var(--border);
+                display: flex;
+                gap: 0.5rem;
+            }
+
+            #userInput {
+                flex: 1;
+                padding: 0.75rem;
+                border: 1px solid var(--border);
+                border-radius: 0.5rem;
+                background: var(--bg);
+                color: var(--text);
+            }
+
+            .send-btn {
+                padding: 0.75rem 1.5rem;
+                background: var(--primary);
+                color: white;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .send-btn:hover {
+                background: #2563eb;
+            }
+
+            .suggestions {
+                padding: 1rem;
+                border-top: 1px solid var(--border);
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .suggestion-btn {
+                padding: 0.5rem 1rem;
+                background: rgba(59, 130, 246, 0.05);
+                border-radius: 0.5rem;
+                color: var(--primary);
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .suggestion-btn:hover {
+                background: rgba(59, 130, 246, 0.1);
+            }
+
+            @media (max-width: 768px) {
+                .chat-badge {
+                    bottom: 1rem;
+                    right: 1rem;
+                }
+
+                .chat-container {
+                    width: 100%;
+                    border-radius: 0;
+                }
+            }
+        </style>
+
         <script>
-            const chatContainer = document.getElementById("chatContainer");
-            const promptInput = document.getElementById("prompt");
-            const messagesDiv = document.getElementById("messages");
-            const suggestionsDiv = document.querySelector(".suggestions");
-
-            const allSuggestions = [
-                "Tell me about yourself?",
-                "What’s your recent project about?",
-                "What tech do you use?",
-                "What are your strongest skills?",
-                "Have you used AI in production?",
-                "What’s your experience with Kubernetes?",
-                "What are your favorite tools for observability?",
-                "Do you prefer Go or Python for microservices?",
-                "How do you handle system performance bottlenecks?",
-                "What databases are you most comfortable with?",
-            ];
-
-            function getRandomSuggestions(count = 2) {
-                const shuffled = [...allSuggestions].sort(
-                    () => 0.5 - Math.random(),
-                );
-                return shuffled.slice(0, count);
-            }
-
-            function renderSuggestions() {
-                const selected = getRandomSuggestions();
-                suggestionsDiv.innerHTML = selected
-                    .map(
-                        (q) => `
-            <div class="suggestion-btn" onclick="setSuggestion('${q}')">${q}</div>
-        `,
-                    )
-                    .join("");
-                suggestionsDiv.style.display = "flex";
-            }
-
             function toggleChat() {
-                const isVisible = chatContainer.style.display === "flex";
-                chatContainer.style.display = isVisible ? "none" : "flex";
-                document.getElementById("bubbleWrapper").style.display =
-                    isVisible ? "block" : "none";
-                if (!isVisible) {
-                    renderSuggestions();
-                    setTimeout(() => promptInput.focus(), 100);
-                }
-            }
-
-            function setSuggestion(text) {
-                promptInput.value = text;
-                suggestionsDiv.style.display = "none";
-                ask();
-            }
-
-            promptInput.addEventListener("keydown", function (e) {
-                if (e.key === "Enter") ask();
-            });
-
-            async function ask() {
-                const query = promptInput.value.trim();
-                if (!query) return;
-                messagesDiv.innerHTML += `<div class='user'>You: ${query}</div>`;
-                promptInput.value = "";
-                try {
-                    // const url = 'http://localhost:3000/ask'; // I did not forget it...
-                    // const url = 'http://44.201.129.222:3000/ask'; // I did not forget it...
-                    const url = "https://zhenisduissekov.com/ask";
-                    const res = await fetch(url, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-Auth-Token":
-                                "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2",
-                        },
-                        body: JSON.stringify({ query }),
-                    });
-                    if (!res.ok) {
-                        console.warn(
-                            "Non-OK response, showing message to user",
-                        );
-                        showErrorToUser("Server is busy, try again later");
-                        return;
-                    }
-                    const data = await res.json();
-                    messagesDiv.innerHTML += `<div class='bot'>ZhenisGPT: ${data.answer}</div>`;
-                } catch (err) {
-                    messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Server unavailable — this feature is still in development.</div>`;
-                    // messagesDiv.innerHTML += `<div class='bot' style='color:red;'>ZhenisGPT: Error reaching server</div>`;
-                }
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.style.display = chatContainer.style.display === 'none' ? 'flex' : 'none';
             }
 
             function minimizeChat() {
-                chatContainer.style.display = "none";
-                document.getElementById("bubbleWrapper").style.display =
-                    "block";
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.style.display = 'none';
             }
 
             function resetChat() {
-                messagesDiv.innerHTML = `<div class='bot'>Hi 👋 I'm ZhenisGPT. How can I help you today?</div>`;
-                renderSuggestions();
-                chatContainer.style.display = "none";
-                document.getElementById("bubbleWrapper").style.display =
-                    "block";
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.style.display = 'none';
+                // Reset chat messages
+                const messages = document.getElementById('messages');
+                messages.innerHTML = '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>What would you like to know?</div>';
             }
 
-            renderSuggestions();
+            function setSuggestion(text) {
+                const userInput = document.getElementById('userInput');
+                userInput.value = text;
+                sendMessage();
+            }
+
+            async function sendMessage() {
+                const userInput = document.getElementById('userInput');
+                const message = userInput.value.trim();
+                if (!message) return;
+                
+                const messages = document.getElementById('messages');
+                messages.innerHTML += `<div class="user">${message}</div>`;
+                userInput.value = '';
+                
+                try {
+                    const url = 'https://zhenisduissekov.com/ask';
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'X-Auth-Token': '2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2' 
+                        },
+                        body: JSON.stringify({ query: message })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Server responded with status: ' + response.status);
+                    }
+                    
+                    const data = await response.json();
+                    messages.innerHTML += `<div class="bot">${data.answer || 'I\'m here to help! Please ask me specific questions about my work, projects, or technical expertise.'}</div>`;
+                } catch (error) {
+                    console.error('Error:', error);
+                    messages.innerHTML += '<div class="bot">I\'m having trouble connecting to the server. Please try again later.</div>';
+                }
+                
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function handleKeyPress(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            }
         </script>
         <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
             Logos of USC and KAUST are used solely for educational
