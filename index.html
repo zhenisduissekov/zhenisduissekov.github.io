@@ -1109,6 +1109,29 @@
                 line-height: 1.2;
             }
 
+            /* Typing effect styles */
+            .cursor {
+                display: inline-block;
+                margin-left: 2px;
+                width: 3px;
+                background-color: var(--primary);
+                animation: blink 1s infinite;
+                opacity: 1;
+                transition: opacity 0.1s;
+                vertical-align: middle;
+                height: 1.2em;
+            }
+            
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            
+            #typing-text {
+                display: inline-block;
+                min-width: 1px;
+            }
+
             .project-status {
                 display: inline-flex;
                 align-items: center;
@@ -1232,7 +1255,7 @@
 
         <main class="container">
             <section class="hero">
-                <h1>Backend Engineer</h1>
+                <h1><span id="typing-text"></span><span class="cursor">|</span></h1>
                 <p>
                     Building <span class="highlight">scalable</span> and
                     <span class="highlight">efficient</span> systems with modern
