@@ -1412,11 +1412,18 @@
                                     times from 30 minutes to seconds and
                                     eliminating unstable dependencies.
                                 </li>
+<!--                                <li>-->
+<!--                                    <strong>Observability:</strong> Introduced-->
+<!--                                    OpenTelemetry + Jaeger across critical-->
+<!--                                    services; designed dashboards in Grafana and-->
+<!--                                    ClickHouse.-->
+<!--                                </li>-->
                                 <li>
                                     <strong>Observability:</strong> Introduced
-                                    OpenTelemetry + Jaeger across critical
-                                    services; designed dashboards in Grafana and
-                                    ClickHouse.
+                                    OpenTelemetry and Jaeger across critical
+                                    services to address frequent outages. As
+                                    a result, reduced recurring incidents from
+                                    monthly occurrences to zero over the past year.
                                 </li>
                                 <li>
                                     <strong>Log infrastructure:</strong>
@@ -1429,7 +1436,9 @@
                                     <strong>AI/LLM integration:</strong>
                                     Developed prototypes for LLM-powered
                                     observability using log anomaly detection
-                                    via statistical models.
+                                    via statistical models;early results show
+                                    promising pattern recognition and anomaly
+                                    clustering capabilities.
                                 </li>
                                 <li>
                                     <strong>Error tracking:</strong> Created
@@ -1437,19 +1446,27 @@
                                     endpoints, which guided team focus and led
                                     to complete resolution within 6 months.
                                 </li>
+<!--                                <li>-->
+<!--                                    <strong>Monitoring revival:</strong> Rescued-->
+<!--                                    a broken internal monitoring system;-->
+<!--                                    replaced Postgres-based reporting with-->
+<!--                                    partitioned ClickHouse queries.-->
+<!--                                </li>-->
                                 <li>
-                                    <strong>Monitoring revival:</strong> Rescued
-                                    a broken internal monitoring system;
-                                    replaced Postgres-based reporting with
-                                    partitioned ClickHouse queries.
+                                    <strong>Monitoring Revival:</strong> Restored
+                                    a completely non-functional internal monitoring
+                                    system by replacing Postgres-based reporting
+                                    with partitioned ClickHouse queries, enabling
+                                    real-time observability for 50+ services and
+                                    reducing query times by 80%.
                                 </li>
-                                <li>
-                                    <strong>Team empowerment:</strong> Presented
-                                    solutions on feature toggles, release
-                                    strategies, and circuit breaker patterns;
-                                    supported junior engineers and advocated
-                                    best practices.
-                                </li>
+<!--                                <li>-->
+<!--                                    <strong>Team empowerment:</strong> Presented-->
+<!--                                    solutions on feature toggles, release-->
+<!--                                    strategies, and circuit breaker patterns;-->
+<!--                                    supported junior engineers and advocated-->
+<!--                                    best practices.-->
+<!--                                </li>-->
                                 <li>
                                     <strong>Code quality:</strong> Integrated
                                     SonarQube, improved test coverage from 32%
