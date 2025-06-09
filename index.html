@@ -1423,78 +1423,26 @@
                             >
                         </p>
                         <div class="timeline-description">
-                            <ul
-                                style="
-                                    margin-top: 0.5rem;
-                                    padding-left: 1.25rem;
-                                "
-                            >
+                            <ul style="list-style-type: none;">
                                 <li>
-                                    <strong>Reduced latency:</strong> Rebuilt a
-                                    legacy integration, cutting customer wait
-                                    times from 30 minutes to seconds and
-                                    eliminating unstable dependencies.
-                                </li>
-<!--                                <li>-->
-<!--                                    <strong>Observability:</strong> Introduced-->
-<!--                                    OpenTelemetry + Jaeger across critical-->
-<!--                                    services; designed dashboards in Grafana and-->
-<!--                                    ClickHouse.-->
-<!--                                </li>-->
-                                <li>
-                                    <strong>Observability:</strong> Introduced
-                                    OpenTelemetry and Jaeger across critical
-                                    services to address frequent outages. As
-                                    a result, reduced recurring incidents from
-                                    monthly occurrences to zero over the past year.
+                                    <strong>🛠️ Reduced Latency: </strong>
+                                    Rebuilt a fragile legacy integration used to restore archived mobile plans with a new method that was found during research and collaboration. Eliminated complex cron retries and manual operator workflows, cutting average handling time from 30 minutes to just seconds.
                                 </li>
                                 <li>
-                                    <strong>Log infrastructure:</strong>
-                                    Designed a scalable Kafka → ClickHouse
-                                    logging pipeline; improved reliability,
-                                    reduced storage size 10x, and enabled
-                                    real-time insights.
+                                    <strong>📊 Stabilized High-Volume Logging Pipeline: </strong>
+                                     Inherited and productionized a Kafka → ClickHouse pipeline processing 1.2M logs/day. Refactored it into a stateless, horizontally scalable service with async dual writes (ClickHouse + PostgreSQL), monthly partitioning, and integrity checks via materialized views. Enabled reliable, real-time observability.
                                 </li>
                                 <li>
-                                    <strong>AI/LLM integration:</strong>
-                                    Developed prototypes for LLM-powered
-                                    observability using log anomaly detection
-                                    via statistical models;early results show
-                                    promising pattern recognition and anomaly
-                                    clustering capabilities.
+                                    <strong>🔍 Tackling Endpoint Latency in Core Endpoints: </strong>
+                                    Diagnosed unpredictable delays in two mission-critical endpoints by leading the team’s first deployment of OpenTelemetry + Jaeger. Delivered a custom UDP-based setup that exposed the root cause to downstream teams, enabling a permanent fix and restoring full traceability to critical workflows.
                                 </li>
                                 <li>
-                                    <strong>Error tracking:</strong> Created
-                                    dashboards surfacing the top 10 unstable
-                                    endpoints, which guided team focus and led
-                                    to complete resolution within 6 months.
+                                    <strong>📉 Revived Monitoring Stack: </strong>
+                                        Fixed broken Grafana dashboards and rebuilt observability on ClickHouse after Postgres performance issues. Delivered actionable views (e.g., top 10 failing endpoints) that drove a 6-month team initiative to eliminate unstable APIs.
                                 </li>
-<!--                                <li>-->
-<!--                                    <strong>Monitoring revival:</strong> Rescued-->
-<!--                                    a broken internal monitoring system;-->
-<!--                                    replaced Postgres-based reporting with-->
-<!--                                    partitioned ClickHouse queries.-->
-<!--                                </li>-->
                                 <li>
-                                    <strong>Monitoring Revival:</strong> Restored
-                                    a completely non-functional internal monitoring
-                                    system by replacing Postgres-based reporting
-                                    with partitioned ClickHouse queries, enabling
-                                    real-time observability for 50+ services and
-                                    reducing query times by 80%.
-                                </li>
-<!--                                <li>-->
-<!--                                    <strong>Team empowerment:</strong> Presented-->
-<!--                                    solutions on feature toggles, release-->
-<!--                                    strategies, and circuit breaker patterns;-->
-<!--                                    supported junior engineers and advocated-->
-<!--                                    best practices.-->
-<!--                                </li>-->
-                                <li>
-                                    <strong>Code quality:</strong> Integrated
-                                    SonarQube, improved test coverage from 32%
-                                    to 46%, and introduced structured logging
-                                    for external dependencies.
+                                    <strong>🤖 Prototyped AI Log Analysis: </strong>
+                                    Initiated LLM-based observability project using OpenAI and local models (Ollama, Dolphin). Developed tools for log summarization and anomaly detection; surfaced insights like response time standard deviation. Though paused, the project sparked team interest and showed clear potential.
                                 </li>
                             </ul>
                         </div>
