@@ -1,9 +1,15 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
     <head>
-        <meta property="og:image" content="https://zhenisduissekov.github.io/images/logo-transparent.png">
-        <meta property="og:title" content="ZHENIS DUISSEKOV">
-        <meta property="og:description" content="My portfolio of backend and cloud engineering projects.">
+        <meta
+            property="og:image"
+            content="https://zhenisduissekov.github.io/images/logo-transparent.png"
+        />
+        <meta property="og:title" content="ZHENIS DUISSEKOV" />
+        <meta
+            property="og:description"
+            content="My portfolio of backend and cloud engineering projects."
+        />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Zhenis Duissekov | Backend Engineer</title>
@@ -17,7 +23,7 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <!-- Google tag (gtag.js) -->
         <script
             async
@@ -1121,12 +1127,17 @@
                 vertical-align: middle;
                 height: 1.2em;
             }
-            
+
             @keyframes blink {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0; }
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
             }
-            
+
             #typing-text {
                 display: inline-block;
                 min-width: 1px;
@@ -1255,7 +1266,9 @@
 
         <main class="container">
             <section class="hero">
-                <h1><span id="typing-text"></span><span class="cursor">|</span></h1>
+                <h1>
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </h1>
                 <p>
                     Building <span class="highlight">scalable</span> and
                     <span class="highlight">efficient</span> systems with modern
@@ -1423,26 +1436,68 @@
                             >
                         </p>
                         <div class="timeline-description">
-                            <ul style="list-style-type: none;">
+                            <ul style="list-style-type: none">
                                 <li>
                                     <strong>🛠️ Reduced Latency: </strong>
-                                    Rebuilt a fragile legacy integration used to restore archived mobile plans with a new method that was found during research and collaboration. Eliminated complex cron retries and manual operator workflows, cutting average handling time from 30 minutes to just seconds.
+                                    Rebuilt a fragile legacy integration used to
+                                    restore archived mobile plans with a new
+                                    method that was found during research and
+                                    collaboration. Eliminated complex cron
+                                    retries and manual operator workflows,
+                                    cutting average handling time from 30
+                                    minutes to just seconds.
                                 </li>
                                 <li>
-                                    <strong>📊 Stabilized High-Volume Logging Pipeline: </strong>
-                                     Inherited and productionized a Kafka → ClickHouse pipeline processing 1.2M logs/day. Refactored it into a stateless, horizontally scalable service with async dual writes (ClickHouse + PostgreSQL), monthly partitioning, and integrity checks via materialized views. Enabled reliable, real-time observability.
+                                    <strong
+                                        >📊 Stabilized High-Volume Logging
+                                        Pipeline:
+                                    </strong>
+                                    Inherited and productionized a Kafka →
+                                    ClickHouse pipeline processing 1.2M
+                                    logs/day. Refactored it into a stateless,
+                                    horizontally scalable service with async
+                                    dual writes (ClickHouse + PostgreSQL),
+                                    monthly partitioning, and integrity checks
+                                    via materialized views. Enabled reliable,
+                                    real-time observability.
                                 </li>
                                 <li>
-                                    <strong>🔍 Tackling Endpoint Latency in Core Endpoints: </strong>
-                                    Diagnosed unpredictable delays in two mission-critical endpoints by leading the team’s first deployment of OpenTelemetry + Jaeger. Delivered a custom UDP-based setup that exposed the root cause to downstream teams, enabling a permanent fix and restoring full traceability to critical workflows.
+                                    <strong
+                                        >🔍 Tackling Endpoint Latency in Core
+                                        Endpoints:
+                                    </strong>
+                                    Diagnosed unpredictable delays in two
+                                    mission-critical endpoints by leading the
+                                    team’s first deployment of OpenTelemetry +
+                                    Jaeger. Delivered a custom UDP-based setup
+                                    that exposed the root cause to downstream
+                                    teams, enabling a permanent fix and
+                                    restoring full traceability to critical
+                                    workflows.
                                 </li>
                                 <li>
-                                    <strong>📉 Revived Monitoring Stack: </strong>
-                                        Fixed broken Grafana dashboards and rebuilt observability on ClickHouse after Postgres performance issues. Delivered actionable views (e.g., top 10 failing endpoints) that drove a 6-month team initiative to eliminate unstable APIs.
+                                    <strong
+                                        >📉 Revived Monitoring Stack:
+                                    </strong>
+                                    Fixed broken Grafana dashboards and rebuilt
+                                    observability on ClickHouse after Postgres
+                                    performance issues. Delivered actionable
+                                    views (e.g., top 10 failing endpoints) that
+                                    drove a 6-month team initiative to eliminate
+                                    unstable APIs.
                                 </li>
                                 <li>
-                                    <strong>🤖 Prototyped AI Log Analysis: </strong>
-                                    Initiated LLM-based observability project using OpenAI and local models (Ollama, Dolphin). Developed tools for log summarization and anomaly detection; surfaced insights like response time standard deviation. Though paused, the project sparked team interest and showed clear potential.
+                                    <strong
+                                        >🤖 Prototyped AI Log Analysis:
+                                    </strong>
+                                    Initiated LLM-based observability project
+                                    using OpenAI and local models (Ollama,
+                                    Dolphin). Developed tools for log
+                                    summarization and anomaly detection;
+                                    surfaced insights like response time
+                                    standard deviation. Though paused, the
+                                    project sparked team interest and showed
+                                    clear potential.
                                 </li>
                             </ul>
                         </div>
@@ -1636,7 +1691,9 @@
                                     <h3 class="project-title">
                                         Houston Energy Dashboard
                                     </h3>
-                                    <span class="project-status in-progress">In Progress</span>
+                                    <span class="project-status in-progress"
+                                        >In Progress</span
+                                    >
                                 </div>
                             </div>
                             <p class="project-description">
@@ -1650,22 +1707,25 @@
                                 <span class="project-tag">Data Viz</span>
                             </div>
                             <div class="project-links">
-<!--                                <a-->
-<!--                                    href="https://6fdc65fa-0eda-4ca3-9811-c287c6fd15fd.worf.prod.repl.run/"-->
-<!--                                    class="project-link"-->
-<!--                                    target="_blank"-->
-<!--                                >-->
-<!--                                    <i>🌐</i> Demo-->
-<!--                                </a>-->
-                                <span class="project-link" style="cursor: not-allowed; opacity: 0.6;">
+                                <!--                                <a-->
+                                <!--                                    href="https://6fdc65fa-0eda-4ca3-9811-c287c6fd15fd.worf.prod.repl.run/"-->
+                                <!--                                    class="project-link"-->
+                                <!--                                    target="_blank"-->
+                                <!--                                >-->
+                                <!--                                    <i>🌐</i> Demo-->
+                                <!--                                </a>-->
+                                <span
+                                    class="project-link"
+                                    style="cursor: not-allowed; opacity: 0.6"
+                                >
                                     <i>🔒</i> Coming Soon
                                 </span>
-                                    <a
-                                            href="case-studies/houston-energy.html"
-                                            class="project-link"
-                                    >
-                                        <i>📄</i> Case Study
-                                    </a>
+                                <a
+                                    href="case-studies/houston-energy.html"
+                                    class="project-link"
+                                >
+                                    <i>📄</i> Case Study
+                                </a>
                             </div>
                         </div>
 
@@ -1675,9 +1735,29 @@
                                 <i class="project-icon">🔌</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">gRPC Labs</h3>
-                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                        <span class="project-status in-progress">In Progress</span>
-                                        <span class="project-status" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">11/17 Labs</span>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            gap: 0.5rem;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span class="project-status in-progress"
+                                            >In Progress</span
+                                        >
+                                        <span
+                                            class="project-status"
+                                            style="
+                                                background: rgba(
+                                                    99,
+                                                    102,
+                                                    241,
+                                                    0.1
+                                                );
+                                                color: #6366f1;
+                                            "
+                                            >15/17 Labs</span
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -1689,7 +1769,9 @@
                                 <span class="project-tag">gRPC</span>
                                 <span class="project-tag">Go</span>
                                 <span class="project-tag">Protobuf</span>
-                                <span class="project-tag">Distributed Systems</span>
+                                <span class="project-tag"
+                                    >Distributed Systems</span
+                                >
                             </div>
                             <div class="project-links">
                                 <a
@@ -1702,7 +1784,7 @@
                                 <a
                                     href="#"
                                     class="project-link"
-                                    style="opacity: 0.6; pointer-events: none;"
+                                    style="opacity: 0.6; pointer-events: none"
                                 >
                                     <i>📚</i> Documentation
                                 </a>
@@ -1717,7 +1799,9 @@
                                     <h3 class="project-title">
                                         AI Observability Assistant
                                     </h3>
-                                    <span class="project-status in-progress">In Development</span>
+                                    <span class="project-status in-progress"
+                                        >In Development</span
+                                    >
                                 </div>
                             </div>
                             <p class="project-description">
@@ -1732,13 +1816,16 @@
                                 <span class="project-tag">Automation</span>
                             </div>
                             <div class="project-links">
-                                <span class="project-link" style="cursor: not-allowed; opacity: 0.6;">
+                                <span
+                                    class="project-link"
+                                    style="cursor: not-allowed; opacity: 0.6"
+                                >
                                     <i>🔒</i> Coming Soon
                                 </span>
                                 <a
                                     href="#"
                                     class="project-link"
-                                    style="opacity: 0.6; pointer-events: none;"
+                                    style="opacity: 0.6; pointer-events: none"
                                 >
                                     <i>📝</i> Case Study
                                 </a>
@@ -1751,18 +1838,21 @@
                                 <i class="project-icon">💬</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">ChannelMind</h3>
-                                    <span class="project-status in-progress">In Development</span>
+                                    <span class="project-status in-progress"
+                                        >In Development</span
+                                    >
                                 </div>
                             </div>
                             <p class="project-description">
                                 An AI assistant that helps users find answers
                                 from Telegram channel histories without manual
                                 searching.
-                                <span class="tooltip">ℹ️
+                                <span class="tooltip"
+                                    >ℹ️
                                     <span class="tooltiptext">
-                                        Ask questions directly and get clear, 
-                                        summarized responses — even when original
-                                        messages are unclear.
+                                        Ask questions directly and get clear,
+                                        summarized responses — even when
+                                        original messages are unclear.
                                     </span>
                                 </span>
                             </p>
@@ -1773,13 +1863,16 @@
                                 <span class="project-tag">Vector DB</span>
                             </div>
                             <div class="project-links">
-                                <span class="project-link" style="cursor: not-allowed; opacity: 0.6;">
+                                <span
+                                    class="project-link"
+                                    style="cursor: not-allowed; opacity: 0.6"
+                                >
                                     <i>🔒</i> Coming Soon
                                 </span>
                                 <a
                                     href="#"
                                     class="project-link"
-                                    style="opacity: 0.6; pointer-events: none;"
+                                    style="opacity: 0.6; pointer-events: none"
                                 >
                                     <i>📝</i> Case Study
                                 </a>
@@ -1792,9 +1885,29 @@
                                 <i class="project-icon">🗳️</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">Vote4Feature</h3>
-                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                                        <span class="project-status demo">Demo Ready</span>
-                                        <span class="project-status" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">Inspired by features.vote</span>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            gap: 0.5rem;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span class="project-status demo"
+                                            >Demo Ready</span
+                                        >
+                                        <span
+                                            class="project-status"
+                                            style="
+                                                background: rgba(
+                                                    139,
+                                                    92,
+                                                    246,
+                                                    0.1
+                                                );
+                                                color: #8b5cf6;
+                                            "
+                                            >Inspired by features.vote</span
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -1807,21 +1920,23 @@
                             <div class="project-tags">
                                 <span class="project-tag">Web App</span>
                                 <span class="project-tag">User Feedback</span>
-                                <span class="project-tag">Product Management</span>
+                                <span class="project-tag"
+                                    >Product Management</span
+                                >
                                 <span class="project-tag">Community</span>
                             </div>
                             <div class="project-links">
                                 <a
-                                        href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
-                                        class="project-link"
-                                        target="_blank"
+                                    href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
+                                    class="project-link"
+                                    target="_blank"
                                 >
                                     <i>🌐</i> Demo
                                 </a>
                                 <a
-                                        href="https://github.com/zhenisduissekov/FeatureVoteBoard"
-                                        class="project-link"
-                                        target="_blank"
+                                    href="https://github.com/zhenisduissekov/FeatureVoteBoard"
+                                    class="project-link"
+                                    target="_blank"
                                 >
                                     <i>👨‍💻</i> GitHub
                                 </a>
@@ -1834,13 +1949,24 @@
                                 <i class="project-icon">🎮</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">AIOrNot</h3>
-                                    <span class="project-status demo">Demo Ready</span>
+                                    <span class="project-status demo"
+                                        >Demo Ready</span
+                                    >
                                 </div>
                             </div>
                             <p class="project-description">
-                                Fast-built app combining AI text detection with a fun 3-round guessing game — human or not?
-                                <span style="display: block; font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem;">
-                                    ⚠️ Note: Demo may be slow initially due to free hosting.
+                                Fast-built app combining AI text detection with
+                                a fun 3-round guessing game — human or not?
+                                <span
+                                    style="
+                                        display: block;
+                                        font-size: 0.85rem;
+                                        color: var(--text-light);
+                                        margin-top: 0.5rem;
+                                    "
+                                >
+                                    ⚠️ Note: Demo may be slow initially due to
+                                    free hosting.
                                 </span>
                             </p>
                             <div class="project-tags">
@@ -1860,7 +1986,7 @@
                                 <a
                                     href="#"
                                     class="project-link"
-                                    style="opacity: 0.6; pointer-events: none;"
+                                    style="opacity: 0.6; pointer-events: none"
                                 >
                                     <i>📄</i> Case Study
                                 </a>
@@ -1997,8 +2123,9 @@
                             <li>Answering questions about my work</li>
                             <li>Providing technical insights</li>
                         </ul>
-                     <!--   What would you like to know? TODO uncomment this when AI updated-->
-                        I am currently offline disabled for updates. A sharper assistant is on the way.
+                        <!--   What would you like to know? TODO uncomment this when AI updated-->
+                        I am currently offline disabled for updates. A sharper
+                        assistant is on the way.
                     </div>
                 </div>
                 <div class="suggestions">
@@ -2270,8 +2397,8 @@
                 // Reset chat messages
                 const messages = document.getElementById("messages");
                 messages.innerHTML =
-             //---TODO: uncomment this when ready!       // '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>What would you like to know?</div>';
-                '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>I am currently offline disabled for updates. A sharper assistant is on the way.</div>';
+                    //---TODO: uncomment this when ready!       // '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>What would you like to know?</div>';
+                    '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>I am currently offline disabled for updates. A sharper assistant is on the way.</div>';
             }
 
             function setSuggestion(text) {
@@ -2420,20 +2547,20 @@
 
             // Repeat every 30 minutes (1800000 ms)
             setInterval(checkBackendHealth, 30 * 60 * 1000);
-            
+
             // Typing effect for hero text
-            const text = 'Backend Engineer';
-            const typingText = document.getElementById('typing-text');
-            const cursor = document.querySelector('.cursor');
+            const text = "Backend Engineer";
+            const typingText = document.getElementById("typing-text");
+            const cursor = document.querySelector(".cursor");
             let charIndex = 0;
             let isDeleting = false;
             let typingSpeed = 100; // ms
             let pauseDuration = 8000; // ms to pause before deleting (increased from 2000ms)
-            
+
             function type() {
                 const currentText = text.substring(0, charIndex);
                 typingText.textContent = currentText;
-                
+
                 if (!isDeleting && charIndex < text.length) {
                     // Typing
                     charIndex++;
@@ -2451,14 +2578,14 @@
                     isDeleting = false;
                     setTimeout(type, typingSpeed / 2);
                 }
-                
+
                 // Blink cursor
-                cursor.style.opacity = (cursor.style.opacity == 0 ? 1 : 0);
+                cursor.style.opacity = cursor.style.opacity == 0 ? 1 : 0;
             }
-            
+
             // Start the typing effect
             setTimeout(type, 1000);
-            
+
             // Like/Dislike functionality>
         </script>
     </body>
