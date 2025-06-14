@@ -2006,85 +2006,65 @@
                 class="section"
                 style="background-color: var(--bg-light)"
             >
-                <h2 class="section-title">Contact</h2>
+                <h2 class="section-title">Get In Touch</h2>
                 <div class="contact-container">
                     <div class="contact-grid">
                         <div class="contact-card">
-                            <h4 class="contact-title">Location</h4>
+                            <h4 class="contact-title">📍 Location</h4>
                             <div class="location-address">
-                                <span class="location-icon"
-                                    >📍 8222 KingsBrook Rd, Houston, TX
-                                    77024</span
-                                >
-                            </div>
-                            <div class="location-details">
+                                <p>Houston, TX 77024</p>
                                 <div class="location-badge">
                                     <span class="status-dot"></span>
                                     U.S. Work Authorized from July 14, 2025
                                 </div>
-                                <div class="location-options">
-                                    <span class="location-option">
-                                        <i>💻</i> Remote
+                                <div class="work-options">
+                                    <span class="work-option">
+                                        <i class="fas fa-laptop"></i> Remote
                                     </span>
-                                    <span class="location-option">
-                                        <i>🏢</i> Office
+                                    <span class="work-option">
+                                        <i class="fas fa-building"></i> Office
                                     </span>
-                                    <span class="location-option">
-                                        <i>🔄</i> Hybrid
+                                    <span class="work-option">
+                                        <i class="fas fa-exchange-alt"></i> Hybrid
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="contact-card">
-                            <h4 class="contact-title">Social Links</h4>
-                            <div class="contact-links">
-                                <a
-                                    href="https://github.com/zhenisduissekov"
-                                    target="_blank"
-                                >
-                                    <span class="contact-link-title"
-                                        >GitHub</span
-                                    >
-                                    <span class="contact-link-desc"
-                                        >View my open-source projects and
-                                        contributions</span
-                                    >
+                            <h4 class="contact-title">🔗 Connect With Me</h4>
+                            <div class="social-links">
+                                <a href="https://github.com/zhenisduissekov" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                    <i class="fas fa-external-link-alt external-icon"></i>
                                 </a>
-                                <a
-                                    href="https://www.linkedin.com/in/zhenis-duissekov"
-                                    target="_blank"
-                                >
-                                    <span class="contact-link-title"
-                                        >LinkedIn</span
-                                    >
-                                    <span class="contact-link-desc"
-                                        >Connect with me professionally</span
-                                    >
+                                <a href="https://www.linkedin.com/in/zhenis-duissekov" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                    <i class="fas fa-external-link-alt external-icon"></i>
                                 </a>
-                                <a
-                                    href="https://t.me/zduissekov"
-                                    target="_blank"
-                                >
-                                    <span class="contact-link-title"
-                                        >Telegram</span
-                                    >
-                                    <span class="contact-link-desc"
-                                        >Direct messaging and updates</span
-                                    >
+                                <a href="https://t.me/zduissekov" target="_blank" class="social-link">
+                                    <i class="fab fa-telegram"></i>
+                                    <span>Telegram</span>
+                                    <i class="fas fa-external-link-alt external-icon"></i>
                                 </a>
                             </div>
                         </div>
+                        
                         <div class="contact-card">
-                            <h4 class="contact-title">Downloads</h4>
-                            <a
-                                href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
-                                download
-                                class="btn"
-                            >
-                                <span class="contact-link-title">CV</span>
-                                <span class="contact-link-desc"
-                                    >View my complete professional history</span
-                                >
+                            <h4 class="contact-title">📄 Resume</h4>
+                            <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf" 
+                               download 
+                               class="resume-download">
+                                <div class="resume-content">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <div>
+                                        <span class="resume-title">Download CV</span>
+                                        <span class="resume-subtitle">PDF, 2.4 MB</span>
+                                    </div>
+                                </div>
+                                <i class="fas fa-download"></i>
                             </a>
                         </div>
                     </div>
@@ -2189,7 +2169,7 @@
                 box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
                 cursor: pointer;
                 z-index: 1000;
-                transition: transform 0.2s;
+                transition: transform 0.2s ease;
             }
 
             .chat-badge:hover {
@@ -2684,3 +2664,145 @@
         </script>
     </body>
 </html>
+
+<style>
+.contact-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Social Links Styling */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+}
+
+.social-link:hover {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.social-link i:first-child {
+    font-size: 1.25rem;
+    width: 24px;
+    text-align: center;
+    margin-right: 0.75rem;
+}
+
+.social-link span {
+    flex-grow: 1;
+    font-weight: 500;
+}
+
+.external-icon {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Resume Download Styling */
+.resume-download {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+}
+
+.resume-download:hover {
+    background: #f8fafc;
+    border-color: var(--primary);
+}
+
+.resume-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.resume-content i {
+    font-size: 1.5rem;
+    color: #e53e3e;
+}
+
+.resume-title {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.resume-subtitle {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Work Options */
+.work-options {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.work-option {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: var(--bg-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .social-link, .resume-download {
+        padding: 0.75rem 1rem;
+    }
+}
+</style>
+
+<!-- Add Font Awesome in the head section if not already present -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
