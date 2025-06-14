@@ -2124,8 +2124,13 @@
                             <li>Providing technical insights</li>
                         </ul>
                         <!--   What would you like to know? TODO uncomment this when AI updated-->
-                        I am currently offline disabled for updates. A sharper
-                        assistant is on the way.
+                        <div class="offline-notice">
+                            <span>⚠️</span>
+                            <div>
+                                <strong>I am currently offline for updates.</strong>
+                                <div>A smarter assistant is coming soon!</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="suggestions">
@@ -2371,6 +2376,88 @@
                 30% {
                     transform: translateY(-4px);
                 }
+            }
+
+            .offline-notice {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                background: #fff3cd;
+                border-left: 4px solid #ffc107;
+                color: #856404;
+                padding: 12px 16px;
+                border-radius: 6px;
+                margin-top: 12px;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .offline-notice span {
+                font-size: 18px;
+                margin-top: 2px;
+            }
+
+            .offline-notice strong {
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .input-container {
+                display: flex;
+                border-top: 1px solid #e2e8f0;
+                padding: 10px;
+                background: #ffffff;
+                border-radius: 0 0 12px 12px;
+                box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+            }
+
+            #userInput {
+                flex: 1;
+                padding: 10px 15px;
+                font-size: 14px;
+                border: 1px solid #e2e8f0;
+                border-radius: 20px;
+                outline: none;
+                transition: all 0.2s ease;
+                background: #f8fafc;
+                margin-right: 10px;
+            }
+
+            #userInput:focus {
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            }
+
+            .send-btn {
+                background: linear-gradient(120deg, #3b82f6 0%, #38bdf8 100%);
+                color: white;
+                border: none;
+                border-radius: 20px;
+                padding: 0 20px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                min-width: 80px;
+            }
+
+            .send-btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .send-btn:active {
+                transform: translateY(0);
+            }
+
+            .send-btn:disabled {
+                background: #cbd5e1;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
             }
 
             .input-container.disabled {
