@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MediScope - Case Study</title>
+        <style>
+            :root {
+                --primary: #3b82f6;
+                --primary-light: #60a5fa;
+                --primary-dark: #2563eb;
+                --bg: #ffffff;
+                --bg-light: #f8fafc;
+                --text: #1e293b;
+                --text-light: #64748b;
+                --border: #e2e8f0;
+            }
+
+            body {
+                font-family:
+                    "Inter",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    Oxygen,
+                    Ubuntu,
+                    Cantarell,
+                    "Open Sans",
+                    "Helvetica Neue",
+                    sans-serif;
+                line-height: 1.6;
+                color: var(--text);
+                background-color: var(--bg-light);
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .case-study {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 4rem 0;
+            }
+
+            .back-button {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: 500;
+                margin: 2rem 0;
+                transition: color 0.2s ease;
+            }
+
+            .back-button:hover {
+                color: var(--primary-dark);
+            }
+
+            .case-study-header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: var(--text);
+                margin-bottom: 1rem;
+            }
+
+            .case-study-subtitle {
+                font-size: 1.5rem;
+                color: var(--primary);
+                margin: 1rem 0 1.5rem;
+                font-weight: 500;
+            }
+
+            .case-study-meta {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+            }
+
+            .case-study-tag {
+                background: rgba(59, 130, 246, 0.1);
+                color: var(--primary);
+                padding: 0.5rem 1rem;
+                border-radius: 1rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            .case-study-date {
+                color: var(--text-light);
+                display: flex;
+                align-items: center;
+            }
+
+            .case-study-client {
+                color: var(--text-light);
+                display: flex;
+                align-items: center;
+            }
+
+            .case-study-content {
+                background: var(--bg);
+                padding: 3rem;
+                border-radius: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                margin-bottom: 2rem;
+            }
+
+            .case-study-content h3 {
+                color: var(--primary);
+                margin: 2.5rem 0 1.5rem;
+                font-size: 1.75rem;
+                font-weight: 600;
+            }
+
+            .case-study-content h3:first-child {
+                margin-top: 0;
+            }
+
+            .case-study-content h4 {
+                color: var(--text);
+                margin-bottom: 1.25rem;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-bottom: 2px solid var(--border);
+                padding-bottom: 0.5rem;
+            }
+
+            .case-study-content p {
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+                color: var(--text);
+                font-size: 1.1rem;
+            }
+
+            .case-study-content ul,
+            .case-study-content ol {
+                margin: 1.5rem 0 1.5rem 2rem;
+                padding: 0;
+            }
+
+            .case-study-content li {
+                margin-bottom: 0.75rem;
+                line-height: 1.7;
+            }
+
+            .tech-stack {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2.5rem;
+                margin: 2.5rem 0;
+            }
+
+            .tech-category h4 {
+                color: var(--text);
+                margin-bottom: 1.25rem;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-bottom: 2px solid var(--border);
+                padding-bottom: 0.5rem;
+            }
+
+            .tech-category ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .tech-category li {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+            }
+
+            .tech-category li:before {
+                content: "•";
+                color: var(--primary);
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+            }
+
+            .tech-category li:last-child {
+                border-bottom: none;
+            }
+
+            .case-study-cta {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.75rem;
+                border-radius: 0.5rem;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                font-size: 1.1rem;
+            }
+
+            .btn-primary {
+                background-color: var(--primary);
+                color: white;
+                border: 2px solid var(--primary);
+            }
+
+            .btn-primary:hover {
+                background-color: var(--primary-dark);
+                border-color: var(--primary-dark);
+            }
+
+            .btn-outline {
+                background-color: transparent;
+                color: var(--primary);
+                border: 2px solid var(--primary);
+            }
+
+            .btn-outline:hover {
+                background-color: rgba(59, 130, 246, 0.1);
+            }
+
+            @media (max-width: 768px) {
+                .case-study-content {
+                    padding: 2rem;
+                }
+                .section-title {
+                    font-size: 2rem;
+                }
+                .case-study-subtitle {
+                    font-size: 1.25rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a href="../index.html#projects" class="back-button">
+                ← Back to Projects
+            </a>
+
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h1 class="section-title">MediScope</h1>
+                    <p class="case-study-subtitle">
+                        Healthcare Data Visualization & Patient Monitoring Platform
+                    </p>
+                    <div class="case-study-meta">
+                        <span class="case-study-tag">Streamlit</span>
+                        <span class="case-study-tag">Healthcare</span>
+                        <span class="case-study-tag">Data Analytics</span>
+                        <span class="case-study-date">June 2024</span>
+                        <span class="case-study-client">Healthcare Provider</span>
+                    </div>
+                </div>
+
+                <div class="case-study-content">
+                    <div class="case-study-overview">
+                        <h3>1. Project Overview</h3>
+                        <p>
+                            MediScope is a comprehensive healthcare data platform designed to transform hospital operations through real-time patient monitoring and data visualization. This solution provides medical staff with critical insights to improve patient care and optimize hospital resources.
+                        </p>
+                        <h4>1.1 Key Objectives</h4>
+                        <ul>
+                            <li>Enable real-time monitoring of patient vitals and status</li>
+                            <li>Improve hospital resource allocation and bed management</li>
+                            <li>Provide actionable insights through intuitive data visualization</li>
+                            <li>Enhance patient care through early risk detection</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study-challenge">
+                        <h3>2. The Challenge</h3>
+                        <p>
+                            Modern healthcare facilities face significant challenges in managing patient data and hospital resources effectively:
+                        </p>
+                        <ul>
+                            <li>Fragmented patient data across multiple systems</li>
+                            <li>Delayed response to critical patient conditions</li>
+                            <li>Inefficient bed and resource allocation</li>
+                            <li>Lack of real-time visibility into hospital operations</li>
+                            <li>Difficulty in identifying at-risk patients proactively</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-study-solution">
+                        <h3>3. The Solution</h3>
+                        <p>
+                            MediScope addresses these challenges through a comprehensive, user-friendly platform with the following key features:
+                        </p>
+                        <h4>3.1 Core Features</h4>
+                        <ul>
+                            <li><strong>Real-time Patient Monitoring:</strong> Track vital signs including heart rate, blood pressure, and oxygen saturation</li>
+                            <li><strong>AI-Powered Risk Assessment:</strong> Identify patients needing immediate attention through intelligent scoring</li>
+                            <li><strong>Interactive Hospital Dashboard:</strong> Visualize bed occupancy and department analytics</li>
+                            <li><strong>Comprehensive Patient Profiles:</strong> Access complete medical histories and current treatment plans</li>
+                            <li><strong>Resource Management:</strong> Track and optimize bed allocation and staff deployment</li>
+                        </ul>
+                        
+                        <h4>3.2 Technical Implementation</h4>
+                        <p>The platform was built using modern technologies to ensure reliability, scalability, and ease of use:</p>
+                    </div>
+
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h4>Frontend</h4>
+                            <ul>
+                                <li>Streamlit for interactive web interface</li>
+                                <li>Plotly for dynamic data visualization</li>
+                                <li>Custom UI components for healthcare metrics</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Backend</h4>
+                            <ul>
+                                <li>Python for data processing</li>
+                                <li>Pandas for efficient data manipulation</li>
+                                <li>SQLite for local data storage</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>AI/ML</h4>
+                            <ul>
+                                <li>Scikit-learn for risk prediction models</li>
+                                <li>Custom algorithms for patient risk scoring</li>
+                                <li>Data validation and normalization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="case-study-results">
+                        <h3>4. Results & Impact</h3>
+                        <p>The implementation of MediScope has delivered significant improvements in healthcare delivery:</p>
+                        <ul>
+                            <li>Reduced response time to critical patient conditions by 40%</li>
+                            <li>Improved bed utilization efficiency by 25%</li>
+                            <li>Enabled early intervention for at-risk patients, reducing complications</li>
+                            <li>Streamlined hospital operations through centralized monitoring</li>
+                            <li>Enhanced data-driven decision making for medical staff</li>
+                        </ul>
+                        
+                        <h4>4.1 Client Testimonial</h4>
+                        <blockquote>
+                            "MediScope has transformed how we monitor and respond to patient needs. The real-time insights have been invaluable in improving patient outcomes and operational efficiency."
+                            <cite>— Chief Medical Officer, Partner Hospital</cite>
+                        </blockquote>
+                    </div>
+
+                    <div class="case-study-cta">
+                        <a href="https://mediscope.streamlit.app/" class="btn btn-primary" target="_blank">
+                            View Live Demo
+                        </a>
+                        <a href="../index.html#projects" class="btn btn-outline">
+                            ← Back to Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
