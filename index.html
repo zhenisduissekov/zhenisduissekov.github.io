@@ -1689,7 +1689,7 @@
                                 <i class="project-icon">📈</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">
-                                        Houston Energy Dashboard
+                                        Houston Port Dashboard
                                     </h3>
                                     <span class="project-status demo"
                                         >Demo Ready</span
@@ -1697,8 +1697,9 @@
                                 </div>
                             </div>
                             <p class="project-description">
-                                AI-driven oil price analytics and forecasting
-                                system tailored for the Texas energy market.
+                                AI-powered Houston port logistics dashboard with
+                                real-time vessel tracking, KPIs, and delay
+                                predictions.
                                 <span
                                     style="
                                         display: block;
@@ -1727,6 +1728,43 @@
                                 </a>
                                 <a
                                     href="case-studies/houston-energy.html"
+                                    class="project-link"
+                                >
+                                    <i>📄</i> Case Study
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 1.5: PortScope -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">🚢</i>
+                                <div class="project-title-container">
+                                    <h3 class="project-title">PortScope</h3>
+                                    <span class="project-status demo"
+                                        >Demo Ready</span
+                                    >
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                Streamlit dashboard for monitoring Houston port logistics with real-time vessel tracking, shipment status, and AI-powered delay predictions.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Streamlit</span>
+                                <span class="project-tag">Data Analytics</span>
+                                <span class="project-tag">ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a
+                                    href="https://portscope.streamlit.app/"
+                                    class="project-link"
+                                    target="_blank"
+                                >
+                                    <i>🌐</i> Demo
+                                </a>
+                                <a
+                                    href="case-studies/portscope.html"
                                     class="project-link"
                                 >
                                     <i>📄</i> Case Study
@@ -2025,43 +2063,68 @@
                                         <i class="fas fa-building"></i> Office
                                     </span>
                                     <span class="work-option">
-                                        <i class="fas fa-exchange-alt"></i> Hybrid
+                                        <i class="fas fa-exchange-alt"></i>
+                                        Hybrid
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="contact-card">
                             <h4 class="contact-title">🔗 Connect With Me</h4>
                             <div class="social-links">
-                                <a href="https://github.com/zhenisduissekov" target="_blank" class="social-link">
+                                <a
+                                    href="https://github.com/zhenisduissekov"
+                                    target="_blank"
+                                    class="social-link"
+                                >
                                     <i class="fab fa-github"></i>
                                     <span>GitHub</span>
-                                    <i class="fas fa-external-link-alt external-icon"></i>
+                                    <i
+                                        class="fas fa-external-link-alt external-icon"
+                                    ></i>
                                 </a>
-                                <a href="https://www.linkedin.com/in/zhenis-duissekov" target="_blank" class="social-link">
+                                <a
+                                    href="https://www.linkedin.com/in/zhenis-duissekov"
+                                    target="_blank"
+                                    class="social-link"
+                                >
                                     <i class="fab fa-linkedin"></i>
                                     <span>LinkedIn</span>
-                                    <i class="fas fa-external-link-alt external-icon"></i>
+                                    <i
+                                        class="fas fa-external-link-alt external-icon"
+                                    ></i>
                                 </a>
-                                <a href="https://t.me/zduissekov" target="_blank" class="social-link">
+                                <a
+                                    href="https://t.me/zduissekov"
+                                    target="_blank"
+                                    class="social-link"
+                                >
                                     <i class="fab fa-telegram"></i>
                                     <span>Telegram</span>
-                                    <i class="fas fa-external-link-alt external-icon"></i>
+                                    <i
+                                        class="fas fa-external-link-alt external-icon"
+                                    ></i>
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="contact-card">
                             <h4 class="contact-title">📄 Resume</h4>
-                            <a href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf" 
-                               download 
-                               class="resume-download">
+                            <a
+                                href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
+                                download
+                                class="resume-download"
+                            >
                                 <div class="resume-content">
                                     <i class="fas fa-file-pdf"></i>
                                     <div>
-                                        <span class="resume-title">Download CV</span>
-                                        <span class="resume-subtitle">PDF, 2.4 MB</span>
+                                        <span class="resume-title"
+                                            >Download CV</span
+                                        >
+                                        <span class="resume-subtitle"
+                                            >PDF, 2.4 MB</span
+                                        >
                                     </div>
                                 </div>
                                 <i class="fas fa-download"></i>
@@ -2340,10 +2403,8 @@
             .typing-dot {
                 width: 8px;
                 height: 8px;
-                background: var(--primary);
                 border-radius: 50%;
-                display: inline-block;
-                animation: typing 1.4s infinite both;
+                background: var(--primary);
             }
 
             .typing-dot:nth-child(2) {
@@ -2666,143 +2727,149 @@
 </html>
 
 <style>
-.contact-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .contact-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
 
-.contact-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
+    .contact-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
 
-.contact-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+    .contact-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-/* Social Links Styling */
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
+    /* Social Links Styling */
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
 
-.social-link {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    color: var(--text);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid var(--border);
-}
+    .social-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: 1px solid var(--border);
+    }
 
-.social-link:hover {
-    background: rgba(59, 130, 246, 0.05);
-    border-color: var(--primary);
-    color: var(--primary);
-}
+    .social-link:hover {
+        background: rgba(59, 130, 246, 0.05);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
 
-.social-link i:first-child {
-    font-size: 1.25rem;
-    width: 24px;
-    text-align: center;
-    margin-right: 0.75rem;
-}
+    .social-link i:first-child {
+        font-size: 1.25rem;
+        width: 24px;
+        text-align: center;
+        margin-right: 0.75rem;
+    }
 
-.social-link span {
-    flex-grow: 1;
-    font-weight: 500;
-}
+    .social-link span {
+        flex-grow: 1;
+        font-weight: 500;
+    }
 
-.external-icon {
-    color: var(--text-light);
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
+    .external-icon {
+        color: var(--text-light);
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
 
-/* Resume Download Styling */
-.resume-download {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-radius: 8px;
-    background: white;
-    color: var(--text);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: all 0.2s ease;
-}
+    /* Resume Download Styling */
+    .resume-download {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-radius: 8px;
+        background: white;
+        color: var(--text);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
+    }
 
-.resume-download:hover {
-    background: #f8fafc;
-    border-color: var(--primary);
-}
+    .resume-download:hover {
+        background: #f8fafc;
+        border-color: var(--primary);
+    }
 
-.resume-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.resume-content i {
-    font-size: 1.5rem;
-    color: #e53e3e;
-}
-
-.resume-title {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-}
-
-.resume-subtitle {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-/* Work Options */
-.work-options {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-
-.work-option {
-    font-size: 0.85rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    background: var(--bg-light);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
+    .resume-content {
+        display: flex;
+        align-items: center;
         gap: 1rem;
     }
-    
-    .social-link, .resume-download {
-        padding: 0.75rem 1rem;
+
+    .resume-content i {
+        font-size: 1.5rem;
+        color: #e53e3e;
     }
-}
+
+    .resume-title {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .resume-subtitle {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-light);
+    }
+
+    /* Work Options */
+    .work-options {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .work-option {
+        font-size: 0.85rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        background: var(--bg-light);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .social-link,
+        .resume-download {
+            padding: 0.75rem 1rem;
+        }
+    }
 </style>
 
 <!-- Add Font Awesome in the head section if not already present -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
