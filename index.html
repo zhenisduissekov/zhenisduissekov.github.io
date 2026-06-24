@@ -2189,9 +2189,6 @@
                 </div>
             </section>
             <hr />
-            <div style="text-align: center; padding: 1rem; color: #3b82f6; font-weight: bold;">
-                ● TEST UPDATE
-            </div>
         </main>
 
         <!-- Chat Widget -->
@@ -2229,16 +2226,6 @@
                             <li>Answering questions about my work</li>
                             <li>Providing technical insights</li>
                         </ul>
-                        <!--   What would you like to know? TODO uncomment this when AI updated-->
-                        <div class="offline-notice">
-                            <span>⚠️</span>
-                            <div>
-                                <strong
-                                    >I am currently offline for updates.</strong
-                                >
-                                <div>A smarter assistant is coming soon!</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="suggestions">
@@ -2577,6 +2564,8 @@
         </style>
 
         <script>
+            let chatHistory = [];
+
             function toggleChat() {
                 const chatContainer = document.getElementById("chatContainer");
                 chatContainer.style.display =
@@ -2591,11 +2580,11 @@
             function resetChat() {
                 const chatContainer = document.getElementById("chatContainer");
                 chatContainer.style.display = "none";
-                // Reset chat messages
+                // Reset chat messages and history
+                chatHistory = [];
                 const messages = document.getElementById("messages");
                 messages.innerHTML =
-                    //---TODO: uncomment this when ready!       // '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>What would you like to know?</div>';
-                    '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul>I am currently offline disabled for updates. A sharper assistant is on the way.</div>';
+                    '<div class="bot">Hi 👋 I\'m ZhenisGPT - your AI assistant! I can help you with:<ul style="margin: 1rem 0; padding-left: 1.5rem;"><li>Explaining my projects and technologies</li><li>Discussing my experience and skills</li><li>Answering questions about my work</li><li>Providing technical insights</li></ul></div>';
             }
 
             function setSuggestion(text) {
@@ -2618,6 +2607,9 @@
                 messages.innerHTML += `<div class="user">${message}</div>`;
                 userInput.value = "";
 
+                // Add to history
+                chatHistory.push({ role: "user", content: message });
+
                 // Show typing indicator
                 messages.innerHTML += `
                     <div class="typing-indicator" id="typingIndicator">
@@ -2635,32 +2627,44 @@
                 messages.scrollTop = messages.scrollHeight;
 
                 try {
-                    const url = "https://zhenisduissekov.com/ask";
+                    const url = "https://zhenis-chat.zduissekov.workers.dev/";
+                    const secretKey = atob("czgySCNoV2FwMzF9I3QlbjN0Q3JwQkZFLC54UE5oZGNePkhkVDVUJTNSfksycyowdW5pakRldTBaYzk+SlBoLDNAdVlleGNrZz0/XzMhRGRCal8wdm5tKlg4I0o4Rk5KS0VG");
                     const response = await fetch(url, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
-                            "X-Auth-Token":
-                                "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2", // only if your /health route requires auth
+                            "X-Secret-Key": secretKey,
                         },
-                        body: JSON.stringify({ query: message }),
+                        body: JSON.stringify({
+                            message: message,
+                            history: chatHistory.slice(0, -1),
+                        }),
                     });
-
-                    if (!response.ok) {
-                        throw new Error(
-                            "Server responded with status: " + response.status,
-                        );
-                    }
-
-                    const data = await response.json();
 
                     // Remove typing indicator
                     const typingIndicator =
                         document.getElementById("typingIndicator");
                     if (typingIndicator) typingIndicator.remove();
 
-                    // Add bot response
-                    messages.innerHTML += `<div class="bot">${data.answer || "I'm here to help! Please ask me specific questions about my work, projects, or technical expertise."}</div>`;
+                    if (response.status === 429) {
+                        messages.innerHTML +=
+                            '<div class="bot">You\'ve sent too many messages. Please try again in an hour.</div>';
+                        chatHistory.pop();
+                    } else if (response.status === 401) {
+                        messages.innerHTML +=
+                            '<div class="bot">Unable to connect to chat.</div>';
+                        chatHistory.pop();
+                    } else if (!response.ok) {
+                        throw new Error(
+                            "Server responded with status: " + response.status,
+                        );
+                    } else {
+                        const data = await response.json();
+                        const reply = data.reply || "I'm here to help! Please ask me specific questions about my work, projects, or technical expertise.";
+                        
+                        messages.innerHTML += `<div class="bot">${reply}</div>`;
+                        chatHistory.push({ role: "assistant", content: reply });
+                    }
                 } catch (error) {
                     console.error("Error:", error);
                     // Remove typing indicator if it exists
@@ -2670,6 +2674,7 @@
 
                     messages.innerHTML +=
                         '<div class="bot">I\'m having trouble connecting to the server. Please try again later.</div>';
+                    chatHistory.pop();
                 } finally {
                     // Re-enable input and button
                     userInput.disabled = false;
