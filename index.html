@@ -11,6 +11,7 @@
             content="Backend Engineer with expertise in building scalable systems and APIs"
         />
         <meta charset="UTF-8" />
+        <!-- 🤫 Secret hint: The logo likes to be clicked... many times! -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Zhenis Duissekov – Backend Engineer Portfolio</title>
         <meta
@@ -25,6 +26,7 @@
             rel="stylesheet"
         />
         <!-- Google tag (gtag.js) -->
+        <!-- 🕵️ Secret hint: Try adding ?secret=true to the end of the website address... -->
         <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"
@@ -151,6 +153,7 @@
                 font-weight: 700;
                 text-decoration: none;
                 color: var(--text);
+                /* 🎯 Hint: This element responds to clicks... */
             }
 
             .nav-links {
@@ -2692,6 +2695,116 @@
                     sendMessage();
                 }
             }
+
+            // 🎮 EASTER EGGS FOR KIDS! 🎮
+            // Hint: Try typing the famous game code: ↑↑↓↓←→←→BA
+            // Hint: Click the logo at the top multiple times...
+            // Hint: Add ?secret=true to the website URL!
+            
+            // Konami Code Easter Egg
+            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let konamiIndex = 0;
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        activateKonamiEasterEgg();
+                        konamiIndex = 0;
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+            
+            function activateKonamiEasterEgg() {
+                document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
+                document.body.style.backgroundSize = '400% 400%';
+                document.body.style.animation = 'rainbow 3s ease infinite';
+                
+                setTimeout(() => {
+                    document.body.style.background = '';
+                    document.body.style.animation = '';
+                }, 5000);
+                
+                alert('🎮 KONAMI CODE ACTIVATED! You found the secret! 🎮');
+            }
+            
+            // Add rainbow animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes rainbow {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Click Counter Easter Egg
+            let logoClickCount = 0;
+            const logo = document.querySelector('.logo');
+            
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    logoClickCount++;
+                    if (logoClickCount === 5) {
+                        alert('🖱️ 5 clicks! Keep going...');
+                    } else if (logoClickCount === 10) {
+                        alert('🎉 10 clicks! You\'re persistent! Almost there...');
+                    } else if (logoClickCount === 15) {
+                        activateClickEasterEgg();
+                        logoClickCount = 0;
+                    }
+                });
+            }
+            
+            function activateClickEasterEgg() {
+                const emojis = ['🌟', '⭐', '✨', '💫', '🎊', '🎉', '🏆', '👏'];
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const emoji = document.createElement('div');
+                        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                        emoji.style.position = 'fixed';
+                        emoji.style.left = Math.random() * 100 + 'vw';
+                        emoji.style.top = '-50px';
+                        emoji.style.fontSize = '2rem';
+                        emoji.style.zIndex = '9999';
+                        emoji.style.transition = 'top 3s ease-in';
+                        document.body.appendChild(emoji);
+                        
+                        setTimeout(() => {
+                            emoji.style.top = '110vh';
+                        }, 100);
+                        
+                        setTimeout(() => {
+                            emoji.remove();
+                        }, 3100);
+                    }, i * 100);
+                }
+                alert('🏆 CLICK MASTER! You clicked the logo 15 times! 🏆');
+            }
+            
+            // URL Secret Easter Egg
+            function checkURLEasterEgg() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const hash = window.location.hash;
+                
+                if (urlParams.get('secret') === 'true' || hash === '#secret') {
+                    activateURLEasterEgg();
+                }
+            }
+            
+            function activateURLEasterEgg() {
+                alert('🔐 SECRET MODE ACTIVATED! You found the URL secret! 🔐');
+                document.body.style.filter = 'hue-rotate(180deg)';
+                
+                setTimeout(() => {
+                    document.body.style.filter = '';
+                }, 5000);
+            }
+            
+            checkURLEasterEgg();
         </script>
         <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
             Logos of USC and KAUST are used solely for educational
