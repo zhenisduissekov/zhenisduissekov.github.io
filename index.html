@@ -3025,6 +3025,188 @@
             // 💡 Tip: You can modify these functions! 
             // Try changing the emojis, colors, or timing to create your own effects!
             */
+            
+            /* 
+            ═══════════════════════════════════════════════════════════════
+            🎮 CONSOLE GAMES (Copy and paste these into the console!)
+            ═══════════════════════════════════════════════════════════════
+            */
+            
+            /*
+            // 🔢 Number Guessing Game - Try to guess the secret number!
+            function numberGame() {
+                const secretNumber = Math.floor(Math.random() * 100) + 1;
+                let attempts = 0;
+                const maxAttempts = 10;
+                
+                function guess(num) {
+                    attempts++;
+                    if (num === secretNumber) {
+                        console.log('🎉 Correct! You guessed it in ' + attempts + ' tries!');
+                        return true;
+                    } else if (attempts >= maxAttempts) {
+                        console.log('😢 Game over! The number was ' + secretNumber);
+                        return true;
+                    } else if (num < secretNumber) {
+                        console.log('📈 Too low! Try again. Attempts: ' + attempts + '/' + maxAttempts);
+                        return false;
+                    } else {
+                        console.log('📉 Too high! Try again. Attempts: ' + attempts + '/' + maxAttempts);
+                        return false;
+                    }
+                }
+                
+                console.log('🔢 Number Guessing Game!');
+                console.log('Guess a number between 1 and 100');
+                console.log('Type: guess(50) to make a guess');
+                console.log('Secret number is: ' + secretNumber); // Cheating mode for kids!
+                
+                window.guess = guess;
+            }
+            */
+            
+            /*
+            // ✂️ Rock Paper Scissors - Play against the computer!
+            function rockPaperScissors() {
+                const choices = ['rock', 'paper', 'scissors'];
+                const emojis = {rock: '🪨', paper: '📄', scissors: '✂️'};
+                
+                function play(playerChoice) {
+                    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+                    const playerEmoji = emojis[playerChoice];
+                    const computerEmoji = emojis[computerChoice];
+                    
+                    console.log('You: ' + playerEmoji + ' vs Computer: ' + computerEmoji);
+                    
+                    if (playerChoice === computerChoice) {
+                        console.log('🤝 It\'s a tie!');
+                    } else if (
+                        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+                        (playerChoice === 'paper' && computerChoice === 'rock') ||
+                        (playerChoice === 'scissors' && computerChoice === 'paper')
+                    ) {
+                        console.log('🏆 You win!');
+                        celebration();
+                    } else {
+                        console.log('😢 Computer wins!');
+                    }
+                }
+                
+                console.log('✂️ Rock Paper Scissors!');
+                console.log('Type: play("rock") or play("paper") or play("scissors")');
+                
+                window.play = play;
+            }
+            */
+            
+            /*
+            // ➕ Math Quiz - Test your math skills!
+            function mathQuiz() {
+                let score = 0;
+                let total = 0;
+                
+                function question() {
+                    const num1 = Math.floor(Math.random() * 20) + 1;
+                    const num2 = Math.floor(Math.random() * 20) + 1;
+                    const operations = ['+', '-', '*'];
+                    const operation = operations[Math.floor(Math.random() * operations.length)];
+                    
+                    let answer;
+                    if (operation === '+') answer = num1 + num2;
+                    else if (operation === '-') answer = num1 - num2;
+                    else answer = num1 * num2;
+                    
+                    total++;
+                    console.log('Question ' + total + ': ' + num1 + ' ' + operation + ' ' + num2 + ' = ?');
+                    console.log('Type: check(yourAnswer)');
+                    console.log('Secret answer: ' + answer); // Cheating mode!
+                    
+                    window.check = function(userAnswer) {
+                        if (userAnswer === answer) {
+                            score++;
+                            console.log('✅ Correct! Score: ' + score + '/' + total);
+                            if (score >= 5) {
+                                console.log('🏆 Math Champion! You got 5 correct!');
+                                celebration();
+                            }
+                        } else {
+                            console.log('❌ Wrong! The answer was ' + answer + '. Score: ' + score + '/' + total);
+                        }
+                    };
+                }
+                
+                console.log('➕ Math Quiz!');
+                console.log('Type: question() to get a math problem');
+                
+                window.question = question;
+            }
+            */
+            
+            /*
+            // 🎲 Dice Game - Roll the dice!
+            function diceGame() {
+                function roll() {
+                    const dice1 = Math.floor(Math.random() * 6) + 1;
+                    const dice2 = Math.floor(Math.random() * 6) + 1;
+                    const total = dice1 + dice2;
+                    
+                    const diceEmojis = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+                    
+                    console.log('🎲 You rolled: ' + diceEmojis[dice1 - 1] + ' and ' + diceEmojis[dice2 - 1]);
+                    console.log('Total: ' + total);
+                    
+                    if (total === 7 || total === 11) {
+                        console.log('🎉 Lucky roll!');
+                        celebration();
+                    } else if (dice1 === dice2) {
+                        console.log('🎯 Doubles!');
+                    } else {
+                        console.log('👍 Try again!');
+                    }
+                }
+                
+                console.log('🎲 Dice Game!');
+                console.log('Type: roll() to roll the dice');
+                
+                window.roll = roll;
+            }
+            */
+            
+            /*
+            // 🎯 High Low Game - Guess if next number is higher or lower!
+            function highLowGame() {
+                let currentNumber = Math.floor(Math.random() * 100) + 1;
+                let score = 0;
+                
+                function guess(direction) {
+                    const nextNumber = Math.floor(Math.random() * 100) + 1;
+                    
+                    console.log('Current: ' + currentNumber + ' → Next: ' + nextNumber);
+                    
+                    if ((direction === 'higher' && nextNumber > currentNumber) ||
+                        (direction === 'lower' && nextNumber < currentNumber)) {
+                        score++;
+                        console.log('✅ Correct! Score: ' + score);
+                        if (score >= 5) {
+                            console.log('🏆 High Low Champion!');
+                            celebration();
+                        }
+                    } else if (nextNumber === currentNumber) {
+                        console.log('🤝 Same number! No points.');
+                    } else {
+                        console.log('❌ Wrong! Score: ' + score);
+                    }
+                    
+                    currentNumber = nextNumber;
+                }
+                
+                console.log('🎯 High Low Game!');
+                console.log('Current number: ' + currentNumber);
+                console.log('Type: guess("higher") or guess("lower")');
+                
+                window.guess = guess;
+            }
+            */
         </script>
         <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
             Logos of USC and KAUST are used solely for educational
