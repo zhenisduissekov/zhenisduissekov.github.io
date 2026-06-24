@@ -2805,6 +2805,226 @@
             }
             
             checkURLEasterEgg();
+            
+            // 🎓 KIDS CODING CORNER - Copy and paste these into the console!
+            // 
+            // HOW TO USE:
+            // 1. Press F12 to open the console
+            // 2. Copy any function below
+            // 3. Paste it in the console and press Enter
+            // 4. Then type the function name with () to run it!
+            //
+            // Example: Copy the rainbowEffect function, paste it, then type: rainbowEffect()
+            
+            /* 
+            ═══════════════════════════════════════════════════════════════
+            🌸 YENLIK'S FUNCTIONS (Copy and paste these into the console!)
+            ═══════════════════════════════════════════════════════════════
+            */
+            
+            /*
+            // 🌈 Rainbow Effect - Makes the background colorful!
+            function rainbowEffect() {
+                document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
+                document.body.style.backgroundSize = '400% 400%';
+                document.body.style.animation = 'rainbow 3s ease infinite';
+                setTimeout(() => {
+                    document.body.style.background = '';
+                    document.body.style.animation = '';
+                }, 5000);
+            }
+            */
+            
+            /*
+            // 🦄 Unicorn Magic - Creates sparkles!
+            function unicornMagic() {
+                const sparkles = ['✨', '⭐', '🌟', '💫', '🦄'];
+                for(let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                        sparkle.style.position = 'fixed';
+                        sparkle.style.left = Math.random() * 100 + 'vw';
+                        sparkle.style.top = Math.random() * 100 + 'vh';
+                        sparkle.style.fontSize = '2rem';
+                        sparkle.style.zIndex = '9999';
+                        document.body.appendChild(sparkle);
+                        setTimeout(() => sparkle.remove(), 2000);
+                    }, i * 200);
+                }
+            }
+            */
+            
+            /*
+            // 🌸 Flower Rain - Makes flowers fall from the sky!
+            function flowerRain() {
+                const flowers = ['🌸', '🌺', '🌻', '🌷', '💐'];
+                for(let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const flower = document.createElement('div');
+                        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                        flower.style.position = 'fixed';
+                        flower.style.left = Math.random() * 100 + 'vw';
+                        flower.style.top = '-50px';
+                        flower.style.fontSize = '2rem';
+                        flower.style.zIndex = '9999';
+                        flower.style.transition = 'top 3s ease-in';
+                        document.body.appendChild(flower);
+                        setTimeout(() => flower.style.top = '110vh', 100);
+                        setTimeout(() => flower.remove(), 3100);
+                    }, i * 150);
+                }
+            }
+            */
+            
+            /*
+            // 👑 Princess Mode - Makes everything pink and sparkly!
+            function princessMode() {
+                document.body.style.filter = 'hue-rotate(320deg) saturate(1.5)';
+                setTimeout(() => document.body.style.filter = '', 5000);
+                unicornMagic();
+            }
+            */
+            
+            /* 
+            ═══════════════════════════════════════════════════════════════
+            🚀 MUSLIM'S FUNCTIONS (Copy and paste these into the console!)
+            ═══════════════════════════════════════════════════════════════
+            */
+            
+            /*
+            // 🚀 Rocket Launch - Launches rockets!
+            function rocketLaunch() {
+                const rockets = ['🚀', '🛸', '🌍', '⭐', '🌙'];
+                for(let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const rocket = document.createElement('div');
+                        rocket.textContent = rockets[Math.floor(Math.random() * rockets.length)];
+                        rocket.style.position = 'fixed';
+                        rocket.style.left = Math.random() * 100 + 'vw';
+                        rocket.style.bottom = '-50px';
+                        rocket.style.fontSize = '3rem';
+                        rocket.style.zIndex = '9999';
+                        rocket.style.transition = 'bottom 2s ease-out';
+                        document.body.appendChild(rocket);
+                        setTimeout(() => rocket.style.bottom = '110vh', 100);
+                        setTimeout(() => rocket.remove(), 2100);
+                    }, i * 300);
+                }
+            }
+            */
+            
+            /*
+            // 🏎️ Racing Mode - Fast and furious!
+            function racingMode() {
+                document.body.style.filter = 'hue-rotate(30deg) saturate(2)';
+                setTimeout(() => document.body.style.filter = '', 5000);
+                const cars = ['🏎️', '🚗', '🚙', '🚕', '🏁'];
+                for(let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const car = document.createElement('div');
+                        car.textContent = cars[Math.floor(Math.random() * cars.length)];
+                        car.style.position = 'fixed';
+                        car.style.left = '-100px';
+                        car.style.top = (20 + i * 10) + 'vh';
+                        car.style.fontSize = '2rem';
+                        car.style.zIndex = '9999';
+                        car.style.transition = 'left 1s linear';
+                        document.body.appendChild(car);
+                        setTimeout(() => car.style.left = '110vw', 100);
+                        setTimeout(() => car.remove(), 1100);
+                    }, i * 200);
+                }
+            }
+            */
+            
+            /*
+            // 🔥 Fire Effect - Cool flames!
+            function fireEffect() {
+                const flames = ['🔥', '💥', '⚡', '✨'];
+                for(let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const flame = document.createElement('div');
+                        flame.textContent = flames[Math.floor(Math.random() * flames.length)];
+                        flame.style.position = 'fixed';
+                        flame.style.left = Math.random() * 100 + 'vw';
+                        flame.style.bottom = '-50px';
+                        flame.style.fontSize = '2rem';
+                        flame.style.zIndex = '9999';
+                        flame.style.transition = 'bottom 2s ease-out';
+                        document.body.appendChild(flame);
+                        setTimeout(() => flame.style.bottom = '110vh', 100);
+                        setTimeout(() => flame.remove(), 2100);
+                    }, i * 200);
+                }
+            }
+            */
+            
+            /*
+            // 🦸 Superhero Mode - Be a hero!
+            function superheroMode() {
+                document.body.style.filter = 'contrast(1.3) saturate(1.5)';
+                setTimeout(() => document.body.style.filter = '', 5000);
+                const heroes = ['🦸', '🦸‍♂️', '⚡', '💪', '🌟'];
+                for(let i = 0; i < 12; i++) {
+                    setTimeout(() => {
+                        const hero = document.createElement('div');
+                        hero.textContent = heroes[Math.floor(Math.random() * heroes.length)];
+                        hero.style.position = 'fixed';
+                        hero.style.left = Math.random() * 100 + 'vw';
+                        hero.style.top = Math.random() * 100 + 'vh';
+                        hero.style.fontSize = '3rem';
+                        hero.style.zIndex = '9999';
+                        document.body.appendChild(hero);
+                        setTimeout(() => hero.remove(), 2000);
+                    }, i * 250);
+                }
+            }
+            */
+            
+            /* 
+            ═══════════════════════════════════════════════════════════════
+            🎮 SHARED FUNCTIONS (Both can use these!)
+            ═══════════════════════════════════════════════════════════════
+            */
+            
+            /*
+            // 🎉 Celebration - Party time!
+            function celebration() {
+                const party = ['🎉', '🎊', '🎈', '🎁', '🏆'];
+                for(let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        const item = document.createElement('div');
+                        item.textContent = party[Math.floor(Math.random() * party.length)];
+                        item.style.position = 'fixed';
+                        item.style.left = Math.random() * 100 + 'vw';
+                        item.style.top = '-50px';
+                        item.style.fontSize = '2rem';
+                        item.style.zIndex = '9999';
+                        item.style.transition = 'top 3s ease-in';
+                        document.body.appendChild(item);
+                        setTimeout(() => item.style.top = '110vh', 100);
+                        setTimeout(() => item.remove(), 3100);
+                    }, i * 100);
+                }
+            }
+            */
+            
+            /*
+            // 🌈 All Effects - Run everything at once!
+            function allEffects() {
+                rainbowEffect();
+                unicornMagic();
+                flowerRain();
+                rocketLaunch();
+                celebration();
+            }
+            */
+            
+            /*
+            // 💡 Tip: You can modify these functions! 
+            // Try changing the emojis, colors, or timing to create your own effects!
+            */
         </script>
         <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
             Logos of USC and KAUST are used solely for educational
