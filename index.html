@@ -11,13 +11,16 @@
             content="Backend Engineer with expertise in building scalable systems and APIs"
         />
         <meta charset="UTF-8" />
-        <!-- 🤫 Secret hint: The logo likes to be clicked... many times! -->
+        <!-- 🤫 psst — the logo has a few secrets if you're curious -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Zhenis Duissekov – Backend Engineer Portfolio</title>
         <meta
             name="description"
             content="Backend Engineer with expertise in building scalable systems and APIs"
         />
+        <link rel="canonical" href="https://zhenisduissekov.github.io/" />
+        <meta property="og:url" content="https://zhenisduissekov.github.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,8 +28,11 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
         <!-- Google tag (gtag.js) -->
-        <!-- 🕵️ Secret hint: Try adding ?secret=true to the end of the website address... -->
         <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-4NFSQ9XG8W"
@@ -59,6 +65,17 @@
 
             html {
                 scroll-behavior: smooth;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                    scroll-behavior: auto !important;
+                }
             }
 
             body {
@@ -159,6 +176,41 @@
             .nav-links {
                 display: flex;
                 gap: 2rem;
+            }
+
+            .nav-toggle {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                width: 32px;
+                height: 32px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1001;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: var(--text);
+                border-radius: 2px;
+                transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
             }
 
             .nav-links a {
@@ -680,8 +732,31 @@
                     margin-left: 0;
                 }
 
+                .nav-toggle {
+                    display: flex;
+                }
+
                 .nav-links {
-                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    flex-direction: column;
+                    gap: 0;
+                    background: white;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.25s ease;
+                }
+
+                .nav-links.open {
+                    max-height: 24rem;
+                }
+
+                .nav-links a {
+                    padding: 1rem 2rem;
+                    border-top: 1px solid var(--border);
                 }
 
                 .section {
@@ -1071,6 +1146,54 @@
                 padding: 0 2rem;
             }
 
+            .projects-subheading {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--text-light);
+                margin: 3rem 0 0.5rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .more-projects {
+                margin-top: 1rem;
+            }
+
+            .more-projects summary {
+                cursor: pointer;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--primary);
+                padding: 0.75rem 0;
+                list-style: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .more-projects summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .more-projects summary::before {
+                content: "▸";
+                transition: transform 0.2s ease;
+                display: inline-block;
+            }
+
+            .more-projects[open] summary::before {
+                transform: rotate(90deg);
+            }
+
+            .more-projects .projects-grid {
+                margin-top: 1.5rem;
+            }
+
+            .project-status.archived {
+                background: rgba(107, 114, 128, 0.1);
+                color: #6b7280;
+            }
+
             .projects-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1248,6 +1371,162 @@
                 }
             }
         </style>
+        <style>
+            .contact-card {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .contact-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color: var(--text);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            /* Social Links Styling */
+            .social-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                display: flex;
+                align-items: center;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                color: var(--text);
+                text-decoration: none;
+                transition: all 0.2s ease;
+                border: 1px solid var(--border);
+            }
+
+            .social-link:hover {
+                background: rgba(59, 130, 246, 0.05);
+                border-color: var(--primary);
+                color: var(--primary);
+            }
+
+            .social-link i:first-child {
+                font-size: 1.25rem;
+                width: 24px;
+                text-align: center;
+                margin-right: 0.75rem;
+            }
+
+            .social-link span {
+                flex-grow: 1;
+                font-weight: 500;
+            }
+
+            .external-icon {
+                color: var(--text-light);
+                font-size: 0.8rem;
+                opacity: 0.7;
+            }
+
+            /* Resume Download Styling */
+            .resume-download {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem;
+                border-radius: 8px;
+                background: white;
+                color: var(--text);
+                text-decoration: none;
+                border: 1px solid var(--border);
+                transition: all 0.2s ease;
+            }
+
+            .resume-download:hover {
+                background: #f8fafc;
+                border-color: var(--primary);
+            }
+
+            .resume-content {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .resume-content i {
+                font-size: 1.5rem;
+                color: #e53e3e;
+            }
+
+            .resume-title {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+            }
+
+            .resume-subtitle {
+                display: block;
+                font-size: 0.8rem;
+                color: var(--text-light);
+            }
+
+            /* Work Options */
+            .work-options {
+                display: flex;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .work-option {
+                font-size: 0.85rem;
+                padding: 0.25rem 0.75rem;
+                border-radius: 1rem;
+                background: var(--bg-light);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 768px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+
+                .social-link,
+                .resume-download {
+                    padding: 0.75rem 1rem;
+                }
+            }
+
+            .demo-note {
+                display: inline-block;
+                font-size: 0.8rem;
+                color: var(--text-light);
+                background: rgba(251, 191, 36, 0.1);
+                padding: 0.2rem 0.5rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+                cursor: help;
+                border: 1px solid rgba(251, 191, 36, 0.2);
+            }
+            .demo-note:hover {
+                background: rgba(251, 191, 36, 0.15);
+            }
+        </style>
     </head>
 
     <body>
@@ -1255,7 +1534,18 @@
             <div class="container">
                 <nav class="nav-container">
                     <a href="#" class="logo">Zhenis Duissekov</a>
-                    <div class="nav-links">
+                    <button
+                        class="nav-toggle"
+                        id="navToggle"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded="false"
+                        aria-controls="navLinks"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="nav-links" id="navLinks">
                         <a href="#about" class="nav-link">About</a>
                         <a href="#skills" class="nav-link">Skills</a>
                         <a href="#experience" class="nav-link">Experience</a>
@@ -1267,6 +1557,25 @@
             </div>
         </header>
 
+        <script>
+            const navToggle = document.getElementById("navToggle");
+            const navLinks = document.getElementById("navLinks");
+
+            navToggle.addEventListener("click", () => {
+                const isOpen = navLinks.classList.toggle("open");
+                navToggle.classList.toggle("active", isOpen);
+                navToggle.setAttribute("aria-expanded", isOpen);
+            });
+
+            navLinks.querySelectorAll(".nav-link").forEach((link) => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("open");
+                    navToggle.classList.remove("active");
+                    navToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        </script>
+
         <main class="container">
             <section class="hero">
                 <h1>
@@ -1274,10 +1583,10 @@
                 </h1>
                 <p>
                     Building <span class="highlight">scalable</span> and
-                    <span class="highlight">efficient</span> systems with modern
-                    technologies
+                    <span class="highlight">efficient</span> systems with Go,
+                    Kafka, and modern observability
                 </p>
-                <div class="hero-subtitle">Distributed Systems | Go + AI</div>
+                <div class="hero-subtitle">Go • Distributed Systems • Observability</div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn">Get in Touch</a>
                     <a href="#projects" class="btn btn-outline">View My Work</a>
@@ -1289,16 +1598,16 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <p>
-                            Hi, I’m Zhenis Duissekov, a Backend Engineer with 7+ years of experience building distributed systems and cloud-native applications.
+                            Hi, I’m Zhenis Duissekov — a backend-focused software engineer with 7+ years of experience building distributed systems and cloud-native services.
                         </p>
                         <p>
-                            My primary expertise is Go, with hands-on experience designing microservices, Kafka-based event-driven systems, and scalable data platforms. I’ve worked extensively with PostgreSQL, ClickHouse, MongoDB, Redis, Docker, Kubernetes, and modern observability tools.
+                            My core expertise is Go: Kafka-based event-driven pipelines, high-throughput services processing 1.2M+ events per day, data platforms on ClickHouse and PostgreSQL, and observability with OpenTelemetry, Prometheus, Grafana, and Jaeger.
                         </p>
                         <p>
-                            Most recently, I’ve been building backend services and integrating AI-powered tooling to improve operational visibility and automate engineering workflows. I enjoy solving complex performance and reliability challenges, from production troubleshooting to large-scale system design.
+                            I’m currently a Software Engineer at OptiSigns in Houston, working across a production SaaS platform — building backend services and integrations, migrating a legacy Angular platform to React/TypeScript, owning a 900+-test Playwright CI pipeline, and diagnosing production issues end to end.
                         </p>
                         <p>
-                            Currently based in Houston, Texas, and open to Backend, Platform, and Infrastructure Engineering opportunities.
+                            I’m open to Backend, Platform, and Distributed-Systems engineering roles centered on Go. U.S. Permanent Resident — no sponsorship required.
                         </p>
                     </div>
                 </div>
@@ -1313,28 +1622,44 @@
                 <div class="container">
                     <div class="skills-grid">
                         <div class="skill-category">
-                            <h4 class="skill-category-title">AI/LLM</h4>
-                            <div class="skills-list">
-                                <span class="skill-tag">OpenAI API</span>
-                                <span class="skill-tag"
-                                    >Prompt Engineering</span
-                                >
-                                <span class="skill-tag">LM Studio</span>
-                                <span class="skill-tag">Copilot</span>
-                                <span class="skill-tag">Windsurf</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
                             <h4 class="skill-category-title">
-                                Languages & Frameworks
+                                Programming Languages
                             </h4>
                             <div class="skills-list">
                                 <span class="skill-tag">Go</span>
                                 <span class="skill-tag">Python</span>
-                                <span class="skill-tag">NodeJS</span>
-                                <span class="skill-tag">gRPC</span>
-                                <span class="skill-tag">REST</span>
-                                <span class="skill-tag">WebSockets</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">Node.js</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">
+                                Distributed Systems
+                            </h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Kafka</span>
+                                <span class="skill-tag">RabbitMQ</span>
+                                <span class="skill-tag">NATS</span>
+                                <span class="skill-tag"
+                                    >Event-Driven Architecture</span
+                                >
+                                <span class="skill-tag">Microservices</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">
+                                Go Engineering
+                            </h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Goroutines</span>
+                                <span class="skill-tag">Worker Pools</span>
+                                <span class="skill-tag">Context</span>
+                                <span class="skill-tag">Channels</span>
+                                <span class="skill-tag">pprof</span>
+                                <span class="skill-tag"
+                                    >Graceful Shutdown</span
+                                >
                             </div>
                         </div>
                         <div class="skill-category">
@@ -1347,56 +1672,66 @@
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h4 class="skill-category-title">Event Systems</h4>
-                            <div class="skills-list">
-                                <span class="skill-tag">Kafka</span>
-                                <span class="skill-tag">RabbitMQ</span>
-                                <span class="skill-tag">NATS</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
                             <h4 class="skill-category-title">Observability</h4>
                             <div class="skills-list">
+                                <span class="skill-tag">OpenTelemetry</span>
+                                <span class="skill-tag">Jaeger</span>
                                 <span class="skill-tag">Prometheus</span>
                                 <span class="skill-tag">Grafana</span>
-                                <span class="skill-tag">Jaeger</span>
-                                <span class="skill-tag">OpenTelemetry</span>
                                 <span class="skill-tag">Alertmanager</span>
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h4 class="skill-category-title">DevOps</h4>
+                            <h4 class="skill-category-title">
+                                Infrastructure
+                            </h4>
                             <div class="skills-list">
                                 <span class="skill-tag">Docker</span>
                                 <span class="skill-tag">Kubernetes</span>
-                                <span class="skill-tag">GitLab CI</span>
-                                <span class="skill-tag">Jenkins</span>
+                                <span class="skill-tag">GitLab CI/CD</span>
+                                <span class="skill-tag">Linux</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 class="skill-category-title">
+                                APIs & Frontend
+                            </h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">REST</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">gRPC</span>
+                                <span class="skill-tag">WebSockets</span>
+                                <span class="skill-tag">React</span>
                             </div>
                         </div>
                         <div class="skill-category">
                             <h4 class="skill-category-title">Testing</h4>
                             <div class="skills-list">
-                                <span class="skill-tag">Unit Testing</span>
+                                <span class="skill-tag">Playwright</span>
+                                <span class="skill-tag">E2E Testing</span>
                                 <span class="skill-tag"
                                     >Integration Testing</span
                                 >
                                 <span class="skill-tag">Load Testing</span>
-                                <span class="skill-tag">Profiling</span>
+                                <span class="skill-tag">SonarQube</span>
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h4 class="skill-category-title">Architecture</h4>
+                            <h4 class="skill-category-title">AI/LLM</h4>
                             <div class="skills-list">
+                                <span class="skill-tag">Claude API</span>
+                                <span class="skill-tag">OpenAI API</span>
+                                <span class="skill-tag">Ollama</span>
+                                <span class="skill-tag">Copilot</span>
                                 <span class="skill-tag"
-                                    >Clean Architecture</span
+                                    >AI-Assisted Workflows</span
                                 >
-                                <span class="skill-tag">Microservices</span>
-                                <span class="skill-tag">Circuit Breakers</span>
-                                <span class="skill-tag">Feature Toggles</span>
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h4 class="skill-category-title">Languages</h4>
+                            <h4 class="skill-category-title">
+                                Spoken Languages
+                            </h4>
                             <div class="skills-list">
                                 <span class="skill-tag">English</span>
                                 <span class="skill-tag">Russian</span>
@@ -1417,19 +1752,59 @@
                 <h2 class="section-title">Experience</h2>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <span class="timeline-date">Mar 2021 - Present</span>
+                        <span class="timeline-date">Sep 2025 - Present</span>
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <span class="timeline-company"
+                            >OptiSigns Inc. · Houston, TX</span
+                        >
+                        <div class="timeline-description">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    Build backend services and GraphQL/REST
+                                    integrations powering digital signage
+                                    workflows and enterprise customer
+                                    deployments (Node.js, MongoDB).
+                                </li>
+                                <li>
+                                    Migrate a legacy Angular/Meteor platform to
+                                    React/TypeScript with emphasis on parity
+                                    and production-safe rollout.
+                                </li>
+                                <li>
+                                    Own the end-to-end testing platform: a
+                                    GitLab CI/CD pipeline running 900+
+                                    Playwright tests across multiple
+                                    validation stages, plus dashboards for
+                                    test health and release readiness.
+                                </li>
+                                <li>
+                                    Investigate and resolve production issues
+                                    across backend services, frontend
+                                    applications, databases, APIs, and
+                                    enterprise customer environments;
+                                    collaborate with product and engineering
+                                    on technical feasibility.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Node.js</span>
+                            <span class="timeline-tag">GraphQL</span>
+                            <span class="timeline-tag">React</span>
+                            <span class="timeline-tag">TypeScript</span>
+                            <span class="timeline-tag">MongoDB</span>
+                            <span class="timeline-tag">Playwright</span>
+                            <span class="timeline-tag">GitLab CI</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Mar 2021 - Aug 2025</span>
                         <h3 class="timeline-title">Backend Engineer</h3>
                         <span class="timeline-company"
-                            >VEON Group (Beeline Kazakhstan → QazCode)</span
+                            >QazCode / Beeline Kazakhstan / VEON Group ·
+                            Almaty, Kazakhstan</span
                         >
-                        <p>
-                            <em
-                                >Note: In June 2023, the backend engineering
-                                team transitioned from Beeline Kazakhstan to
-                                QazCode as part of an internal
-                                restructuring.</em
-                            >
-                        </p>
                         <div class="timeline-description">
                             <ul style="list-style-type: none">
                                 <li>
@@ -1449,12 +1824,17 @@
                                     </strong>
                                     Inherited and productionized a Kafka →
                                     ClickHouse pipeline processing 1.2M
-                                    logs/day. Refactored it into a stateless,
-                                    horizontally scalable service with async
-                                    dual writes (ClickHouse + PostgreSQL),
-                                    monthly partitioning, and integrity checks
-                                    via materialized views. Enabled reliable,
-                                    real-time observability.
+                                    logs/day. Built Go Kafka consumers using
+                                    goroutines, worker pools, batching, and
+                                    retry/backoff logic, then refactored the
+                                    pipeline into a stateless, horizontally
+                                    scalable service with async dual writes
+                                    (ClickHouse + PostgreSQL), monthly
+                                    partitioning, and integrity checks via
+                                    materialized views. Enabled reliable,
+                                    real-time observability for a
+                                    NASDAQ-listed operator serving 160M+
+                                    customers.
                                 </li>
                                 <li>
                                     <strong
@@ -1494,6 +1874,12 @@
                                     project sparked team interest and showed
                                     clear potential.
                                 </li>
+                                <li>
+                                    <strong>✅ Raised Test Coverage: </strong>
+                                    Raised automated test coverage from 32% to
+                                    46% through a SonarQube-driven refactoring
+                                    initiative.
+                                </li>
                             </ul>
                         </div>
                         <div class="timeline-tags">
@@ -1511,7 +1897,11 @@
                     <div class="timeline-item">
                         <span class="timeline-date">Oct 2017 - Feb 2021</span>
                         <h3 class="timeline-title">Co-Founder & CTO</h3>
-                        <span class="timeline-company">BAIOL Startup</span>
+                        <span class="timeline-company"
+                            >BAIOL · Astana, Kazakhstan — SaaS monitoring
+                            startup serving finance, oil & gas, and healthcare
+                            clients</span
+                        >
                         <div class="timeline-description">
                             <ul
                                 style="
@@ -1664,6 +2054,9 @@
                                     Wireless Systems
                                 </p>
                                 <p><strong>GPA:</strong> 3.6/4.0</p>
+                                <p>
+                                    <strong>Honors:</strong> BOLASHAK Scholar
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1677,8 +2070,9 @@
             >
                 <h2 class="section-title">Projects</h2>
                 <div class="projects-container">
+                    <h3 class="projects-subheading">Featured Projects</h3>
                     <div class="projects-grid">
-                        <!-- Project 1: Houston Energy Dashboard -->
+                        <!-- Featured: Houston Port Dashboard -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">📈</i>
@@ -1686,17 +2080,18 @@
                                     <h3 class="project-title">
                                         Houston Port Dashboard
                                     </h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
+                                    <span class="project-status in-progress"
+                                        >Prototype</span
                                     >
                                 </div>
                             </div>
                             <p class="project-description">
-                                AI-powered Houston port logistics dashboard with
-                                real-time vessel tracking, KPIs, and delay
-                                predictions.
-                                <span 
-                                    class="demo-note" 
+                                Energy and port operations dashboard tracking
+                                KPIs, throughput, and performance metrics for
+                                Houston-area logistics, with AI-assisted trend
+                                analysis.
+                                <span
+                                    class="demo-note"
                                     title="Demo may be slow initially due to free hosting"
                                 >
                                     ⚠️ Demo Note
@@ -1725,21 +2120,23 @@
                             </div>
                         </div>
 
-                        <!-- Project 1.5: PortScope -->
+                        <!-- Featured: PortScope -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">🚢</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">PortScope</h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
+                                    <span class="project-status in-progress"
+                                        >Prototype</span
                                     >
                                 </div>
                             </div>
                             <p class="project-description">
-                                Streamlit dashboard for monitoring Houston port logistics with real-time vessel tracking, shipment status, and AI-powered delay predictions.
-                                <span 
-                                    class="demo-note" 
+                                Real-time vessel tracking and shipment
+                                monitoring dashboard for Houston port
+                                logistics, with AI-powered delay predictions.
+                                <span
+                                    class="demo-note"
                                     title="Demo may be slow initially due to free hosting"
                                 >
                                     ⚠️ Demo Note
@@ -1768,7 +2165,7 @@
                             </div>
                         </div>
 
-                        <!-- Project 2: GRPC Labs -->
+                        <!-- Featured: gRPC Labs -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">🔌</i>
@@ -1781,8 +2178,8 @@
                                             flex-wrap: wrap;
                                         "
                                     >
-                                        <span class="project-status in-progress"
-                                            >In Progress</span
+                                        <span class="project-status"
+                                            >Code Available</span
                                         >
                                         <span
                                             class="project-status"
@@ -1820,251 +2217,16 @@
                                 >
                                     <i>👨‍💻</i> GitHub
                                 </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📚</i> Documentation
-                                </a>
                             </div>
                         </div>
 
-                        <!-- Project 3: AI Observability Assistant -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">👁️</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">
-                                        AI Observability Assistant
-                                    </h3>
-                                    <span class="project-status in-progress"
-                                        >In Development</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Combines GitLab, Prometheus, Jaeger, and
-                                Confluence to auto-summarize service health and
-                                suggest improvements.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/ML</span>
-                                <span class="project-tag">DevOps</span>
-                                <span class="project-tag">Monitoring</span>
-                                <span class="project-tag">Automation</span>
-                            </div>
-                            <div class="project-links">
-                                <span
-                                    class="project-link"
-                                    style="cursor: not-allowed; opacity: 0.6"
-                                >
-                                    <i>🔒</i> Coming Soon
-                                </span>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📝</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: ChannelMind -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">💬</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">ChannelMind</h3>
-                                    <span class="project-status in-progress"
-                                        >In Development</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                An AI assistant that helps users find answers
-                                from Telegram channel histories without manual
-                                searching.
-                                <span class="tooltip"
-                                    >ℹ️
-                                    <span class="tooltiptext">
-                                        Ask questions directly and get clear,
-                                        summarized responses — even when
-                                        original messages are unclear.
-                                    </span>
-                                </span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/LLM</span>
-                                <span class="project-tag">Telegram API</span>
-                                <span class="project-tag">NLP</span>
-                                <span class="project-tag">Vector DB</span>
-                            </div>
-                            <div class="project-links">
-                                <span
-                                    class="project-link"
-                                    style="cursor: not-allowed; opacity: 0.6"
-                                >
-                                    <i>🔒</i> Coming Soon
-                                </span>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📝</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 5: Vote4Feature -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🗳️</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">Vote4Feature</h3>
-                                    <div
-                                        style="
-                                            display: flex;
-                                            gap: 0.5rem;
-                                            flex-wrap: wrap;
-                                        "
-                                    >
-                                        <span class="project-status demo"
-                                            >Demo Ready</span
-                                        >
-                                        <span
-                                            class="project-status"
-                                            style="
-                                                background: rgba(
-                                                    139,
-                                                    92,
-                                                    246,
-                                                    0.1
-                                                );
-                                                color: #8b5cf6;
-                                            "
-                                            >Inspired by features.vote</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                A platform designed to help users bring new
-                                feature ideas or vote for existing ones,
-                                fostering engagement by allowing them to track
-                                feature progress and rankings.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Web App</span>
-                                <span class="project-tag">User Feedback</span>
-                                <span class="project-tag"
-                                    >Product Management</span
-                                >
-                                <span class="project-tag">Community</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="https://github.com/zhenisduissekov/FeatureVoteBoard"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>👨‍💻</i> GitHub
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 6: AIOrNot -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🎮</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">AIOrNot</h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Fast-built app combining AI text detection with
-                                a fun 3-round guessing game — human or not? 
-                                <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/ML</span>
-                                <span class="project-tag">Web App</span>
-                                <span class="project-tag">Game</span>
-                                <span class="project-tag">NLP</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://aiornot-556gedqnbkdmehetcauenq.streamlit.app/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project: MediScope -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🏥</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">MediScope</h3>
-                                    <span class="project-status demo">Demo Ready</span>
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Healthcare data platform for real-time patient monitoring and hospital resource management with AI-powered insights.
-                                <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Streamlit</span>
-                                <span class="project-tag">Healthcare</span>
-                                <span class="project-tag">Data Analytics</span>
-                                <span class="project-tag">AI/ML</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://mediscope.streamlit.app/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="case-studies/mediscope.html"
-                                    class="project-link"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project: CV Questionnaire -->
+                        <!-- Featured: CV Questionnaire -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">📄</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">CV → JD Tailoring Tool</h3>
-                                    <span class="project-status demo">Demo Ready</span>
+                                    <span class="project-status demo">Live</span>
                                 </div>
                             </div>
                             <p class="project-description">
@@ -2084,16 +2246,179 @@
                                 >
                                     <i>🌐</i> Demo
                                 </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
                             </div>
                         </div>
                     </div>
+
+                    <details class="more-projects">
+                        <summary>More Projects</summary>
+                        <div class="projects-grid">
+                            <!-- Vote4Feature -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🗳️</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">Vote4Feature</h3>
+                                        <span class="project-status demo"
+                                            >Live</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    A platform designed to help users bring new
+                                    feature ideas or vote for existing ones,
+                                    fostering engagement by allowing them to track
+                                    feature progress and rankings.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Web App</span>
+                                    <span class="project-tag">User Feedback</span>
+                                    <span class="project-tag"
+                                        >Product Management</span
+                                    >
+                                    <span class="project-tag">Community</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                    <a
+                                        href="https://github.com/zhenisduissekov/FeatureVoteBoard"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>👨‍💻</i> GitHub
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- MediScope -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🏥</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">MediScope</h3>
+                                        <span class="project-status in-progress">Prototype</span>
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Healthcare data platform for real-time patient monitoring and hospital resource management with AI-powered insights.
+                                    <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Streamlit</span>
+                                    <span class="project-tag">Healthcare</span>
+                                    <span class="project-tag">Data Analytics</span>
+                                    <span class="project-tag">AI/ML</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://mediscope.streamlit.app/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                    <a
+                                        href="case-studies/mediscope.html"
+                                        class="project-link"
+                                    >
+                                        <i>📄</i> Case Study
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- AIOrNot -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🎮</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">AIOrNot</h3>
+                                        <span class="project-status in-progress"
+                                            >Prototype</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Fast-built app combining AI text detection with
+                                    a fun 3-round guessing game — human or not?
+                                    <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/ML</span>
+                                    <span class="project-tag">Web App</span>
+                                    <span class="project-tag">Game</span>
+                                    <span class="project-tag">NLP</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://aiornot-556gedqnbkdmehetcauenq.streamlit.app/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- AI Observability Assistant -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">👁️</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">
+                                            AI Observability Assistant
+                                        </h3>
+                                        <span class="project-status in-progress"
+                                            >In Development</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Combines GitLab, Prometheus, Jaeger, and
+                                    Confluence to auto-summarize service health and
+                                    suggest improvements.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/ML</span>
+                                    <span class="project-tag">DevOps</span>
+                                    <span class="project-tag">Monitoring</span>
+                                    <span class="project-tag">Automation</span>
+                                </div>
+                            </div>
+
+                            <!-- ChannelMind -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">💬</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">ChannelMind</h3>
+                                        <span class="project-status in-progress"
+                                            >In Development</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    An AI assistant that helps users find
+                                    answers from Telegram channel histories
+                                    without manual searching — ask questions
+                                    directly and get clear, summarized
+                                    responses, even when the original messages
+                                    are unclear.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/LLM</span>
+                                    <span class="project-tag">Telegram API</span>
+                                    <span class="project-tag">NLP</span>
+                                    <span class="project-tag">Vector DB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
 
@@ -2108,10 +2433,11 @@
                         <div class="contact-card">
                             <h4 class="contact-title">📍 Location</h4>
                             <div class="location-address">
-                                <p>Houston, TX 77024</p>
+                                <p>Houston, TX</p>
                                 <div class="location-badge">
                                     <span class="status-dot"></span>
-                                    U.S. Work Authorized from July 14, 2025
+                                    U.S. Permanent Resident — No Sponsorship
+                                    Required
                                 </div>
                                 <div class="work-options">
                                     <span class="work-option">
@@ -2170,7 +2496,7 @@
                         <div class="contact-card">
                             <h4 class="contact-title">📄 Resume</h4>
                             <a
-                                href="https://github.com/zhenisduissekov/zhenisduissekov.github.io/raw/gh-pages/en/Zhenis_Duissekov_Backend_Engineer_Houston.pdf"
+                                href="en/Zhenis_Duissekov_Software_Engineer.pdf"
                                 download
                                 class="resume-download"
                             >
@@ -2181,7 +2507,7 @@
                                             >Download CV</span
                                         >
                                         <span class="resume-subtitle"
-                                            >PDF, 2.4 MB</span
+                                            >PDF</span
                                         >
                                     </div>
                                 </div>
@@ -2429,6 +2755,16 @@
                 .chat-badge {
                     bottom: 1rem;
                     right: 1rem;
+                    padding: 0.85rem;
+                    border-radius: 50%;
+                }
+
+                .chat-badge .chat-label {
+                    display: none;
+                }
+
+                .chat-badge .chat-icon {
+                    font-size: 1.4rem;
                 }
 
                 .chat-container {
@@ -2569,6 +2905,12 @@
         <script>
             let chatHistory = [];
 
+            function escapeHTML(str) {
+                const div = document.createElement("div");
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
             function toggleChat() {
                 const chatContainer = document.getElementById("chatContainer");
                 chatContainer.style.display =
@@ -2607,7 +2949,7 @@
                     document.querySelector(".input-container");
 
                 // Add user message and clear input
-                messages.innerHTML += `<div class="user">${message}</div>`;
+                messages.innerHTML += `<div class="user">${escapeHTML(message)}</div>`;
                 userInput.value = "";
 
                 // Add to history
@@ -2665,7 +3007,7 @@
                         const data = await response.json();
                         const reply = data.reply || "I'm here to help! Please ask me specific questions about my work, projects, or technical expertise.";
                         
-                        messages.innerHTML += `<div class="bot">${reply}</div>`;
+                        messages.innerHTML += `<div class="bot">${escapeHTML(reply)}</div>`;
                         chatHistory.push({ role: "assistant", content: reply });
                     }
                 } catch (error) {
@@ -2696,11 +3038,15 @@
                 }
             }
 
-            // 🎮 EASTER EGGS FOR KIDS! 🎮
+            // Hidden family easter eggs
             // Hint: Try typing the famous game code: ↑↑↓↓←→←→BA
             // Hint: Click the logo at the top multiple times...
             // Hint: Add ?secret=true to the website URL!
-            
+
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+
             // Konami Code Easter Egg
             const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
             let konamiIndex = 0;
@@ -2718,15 +3064,17 @@
             });
             
             function activateKonamiEasterEgg() {
-                document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
-                document.body.style.backgroundSize = '400% 400%';
-                document.body.style.animation = 'rainbow 3s ease infinite';
-                
-                setTimeout(() => {
-                    document.body.style.background = '';
-                    document.body.style.animation = '';
-                }, 5000);
-                
+                if (!prefersReducedMotion) {
+                    document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
+                    document.body.style.backgroundSize = '400% 400%';
+                    document.body.style.animation = 'rainbow 3s ease infinite';
+
+                    setTimeout(() => {
+                        document.body.style.background = '';
+                        document.body.style.animation = '';
+                    }, 5000);
+                }
+
                 alert('🎮 KONAMI CODE ACTIVATED! You found the secret! 🎮');
             }
             
@@ -2760,27 +3108,29 @@
             }
             
             function activateClickEasterEgg() {
-                const emojis = ['🌟', '⭐', '✨', '💫', '🎊', '🎉', '🏆', '👏'];
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const emoji = document.createElement('div');
-                        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                        emoji.style.position = 'fixed';
-                        emoji.style.left = Math.random() * 100 + 'vw';
-                        emoji.style.top = '-50px';
-                        emoji.style.fontSize = '2rem';
-                        emoji.style.zIndex = '9999';
-                        emoji.style.transition = 'top 3s ease-in';
-                        document.body.appendChild(emoji);
-                        
+                if (!prefersReducedMotion) {
+                    const emojis = ['🌟', '⭐', '✨', '💫', '🎊', '🎉', '🏆', '👏'];
+                    for (let i = 0; i < 20; i++) {
                         setTimeout(() => {
-                            emoji.style.top = '110vh';
-                        }, 100);
-                        
-                        setTimeout(() => {
-                            emoji.remove();
-                        }, 3100);
-                    }, i * 100);
+                            const emoji = document.createElement('div');
+                            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                            emoji.style.position = 'fixed';
+                            emoji.style.left = Math.random() * 100 + 'vw';
+                            emoji.style.top = '-50px';
+                            emoji.style.fontSize = '2rem';
+                            emoji.style.zIndex = '9999';
+                            emoji.style.transition = 'top 3s ease-in';
+                            document.body.appendChild(emoji);
+
+                            setTimeout(() => {
+                                emoji.style.top = '110vh';
+                            }, 100);
+
+                            setTimeout(() => {
+                                emoji.remove();
+                            }, 3100);
+                        }, i * 100);
+                    }
                 }
                 alert('🏆 CLICK MASTER! You clicked the logo 15 times! 🏆');
             }
@@ -2797,416 +3147,17 @@
             
             function activateURLEasterEgg() {
                 alert('🔐 SECRET MODE ACTIVATED! You found the URL secret! 🔐');
-                document.body.style.filter = 'hue-rotate(180deg)';
-                
-                setTimeout(() => {
-                    document.body.style.filter = '';
-                }, 5000);
+                if (!prefersReducedMotion) {
+                    document.body.style.filter = 'hue-rotate(180deg)';
+
+                    setTimeout(() => {
+                        document.body.style.filter = '';
+                    }, 5000);
+                }
             }
             
             checkURLEasterEgg();
             
-            // 🎓 KIDS CODING CORNER - Copy and paste these into the console!
-            // 
-            // HOW TO USE:
-            // 1. Press F12 to open the console
-            // 2. Copy any function below
-            // 3. Paste it in the console and press Enter
-            // 4. Then type the function name with () to run it!
-            //
-            // Example: Copy the rainbowEffect function, paste it, then type: rainbowEffect()
-            
-            /* 
-            ═══════════════════════════════════════════════════════════════
-            🌸 YENLIK'S FUNCTIONS (Copy and paste these into the console!)
-            ═══════════════════════════════════════════════════════════════
-            */
-            
-            /*
-            // 🌈 Rainbow Effect - Makes the background colorful!
-            function rainbowEffect() {
-                document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
-                document.body.style.backgroundSize = '400% 400%';
-                document.body.style.animation = 'rainbow 3s ease infinite';
-                setTimeout(() => {
-                    document.body.style.background = '';
-                    document.body.style.animation = '';
-                }, 5000);
-            }
-            */
-            
-            /*
-            // 🦄 Unicorn Magic - Creates sparkles!
-            function unicornMagic() {
-                const sparkles = ['✨', '⭐', '🌟', '💫', '🦄'];
-                for(let i = 0; i < 15; i++) {
-                    setTimeout(() => {
-                        const sparkle = document.createElement('div');
-                        sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
-                        sparkle.style.position = 'fixed';
-                        sparkle.style.left = Math.random() * 100 + 'vw';
-                        sparkle.style.top = Math.random() * 100 + 'vh';
-                        sparkle.style.fontSize = '2rem';
-                        sparkle.style.zIndex = '9999';
-                        document.body.appendChild(sparkle);
-                        setTimeout(() => sparkle.remove(), 2000);
-                    }, i * 200);
-                }
-            }
-            */
-            
-            /*
-            // 🌸 Flower Rain - Makes flowers fall from the sky!
-            function flowerRain() {
-                const flowers = ['🌸', '🌺', '🌻', '🌷', '💐'];
-                for(let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const flower = document.createElement('div');
-                        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-                        flower.style.position = 'fixed';
-                        flower.style.left = Math.random() * 100 + 'vw';
-                        flower.style.top = '-50px';
-                        flower.style.fontSize = '2rem';
-                        flower.style.zIndex = '9999';
-                        flower.style.transition = 'top 3s ease-in';
-                        document.body.appendChild(flower);
-                        setTimeout(() => flower.style.top = '110vh', 100);
-                        setTimeout(() => flower.remove(), 3100);
-                    }, i * 150);
-                }
-            }
-            */
-            
-            /*
-            // 👑 Princess Mode - Makes everything pink and sparkly!
-            function princessMode() {
-                document.body.style.filter = 'hue-rotate(320deg) saturate(1.5)';
-                setTimeout(() => document.body.style.filter = '', 5000);
-                unicornMagic();
-            }
-            */
-            
-            /* 
-            ═══════════════════════════════════════════════════════════════
-            🚀 MUSLIM'S FUNCTIONS (Copy and paste these into the console!)
-            ═══════════════════════════════════════════════════════════════
-            */
-            
-            /*
-            // 🚀 Rocket Launch - Launches rockets!
-            function rocketLaunch() {
-                const rockets = ['🚀', '🛸', '🌍', '⭐', '🌙'];
-                for(let i = 0; i < 10; i++) {
-                    setTimeout(() => {
-                        const rocket = document.createElement('div');
-                        rocket.textContent = rockets[Math.floor(Math.random() * rockets.length)];
-                        rocket.style.position = 'fixed';
-                        rocket.style.left = Math.random() * 100 + 'vw';
-                        rocket.style.bottom = '-50px';
-                        rocket.style.fontSize = '3rem';
-                        rocket.style.zIndex = '9999';
-                        rocket.style.transition = 'bottom 2s ease-out';
-                        document.body.appendChild(rocket);
-                        setTimeout(() => rocket.style.bottom = '110vh', 100);
-                        setTimeout(() => rocket.remove(), 2100);
-                    }, i * 300);
-                }
-            }
-            */
-            
-            /*
-            // 🏎️ Racing Mode - Fast and furious!
-            function racingMode() {
-                document.body.style.filter = 'hue-rotate(30deg) saturate(2)';
-                setTimeout(() => document.body.style.filter = '', 5000);
-                const cars = ['🏎️', '🚗', '🚙', '🚕', '🏁'];
-                for(let i = 0; i < 8; i++) {
-                    setTimeout(() => {
-                        const car = document.createElement('div');
-                        car.textContent = cars[Math.floor(Math.random() * cars.length)];
-                        car.style.position = 'fixed';
-                        car.style.left = '-100px';
-                        car.style.top = (20 + i * 10) + 'vh';
-                        car.style.fontSize = '2rem';
-                        car.style.zIndex = '9999';
-                        car.style.transition = 'left 1s linear';
-                        document.body.appendChild(car);
-                        setTimeout(() => car.style.left = '110vw', 100);
-                        setTimeout(() => car.remove(), 1100);
-                    }, i * 200);
-                }
-            }
-            */
-            
-            /*
-            // 🔥 Fire Effect - Cool flames!
-            function fireEffect() {
-                const flames = ['🔥', '💥', '⚡', '✨'];
-                for(let i = 0; i < 15; i++) {
-                    setTimeout(() => {
-                        const flame = document.createElement('div');
-                        flame.textContent = flames[Math.floor(Math.random() * flames.length)];
-                        flame.style.position = 'fixed';
-                        flame.style.left = Math.random() * 100 + 'vw';
-                        flame.style.bottom = '-50px';
-                        flame.style.fontSize = '2rem';
-                        flame.style.zIndex = '9999';
-                        flame.style.transition = 'bottom 2s ease-out';
-                        document.body.appendChild(flame);
-                        setTimeout(() => flame.style.bottom = '110vh', 100);
-                        setTimeout(() => flame.remove(), 2100);
-                    }, i * 200);
-                }
-            }
-            */
-            
-            /*
-            // 🦸 Superhero Mode - Be a hero!
-            function superheroMode() {
-                document.body.style.filter = 'contrast(1.3) saturate(1.5)';
-                setTimeout(() => document.body.style.filter = '', 5000);
-                const heroes = ['🦸', '🦸‍♂️', '⚡', '💪', '🌟'];
-                for(let i = 0; i < 12; i++) {
-                    setTimeout(() => {
-                        const hero = document.createElement('div');
-                        hero.textContent = heroes[Math.floor(Math.random() * heroes.length)];
-                        hero.style.position = 'fixed';
-                        hero.style.left = Math.random() * 100 + 'vw';
-                        hero.style.top = Math.random() * 100 + 'vh';
-                        hero.style.fontSize = '3rem';
-                        hero.style.zIndex = '9999';
-                        document.body.appendChild(hero);
-                        setTimeout(() => hero.remove(), 2000);
-                    }, i * 250);
-                }
-            }
-            */
-            
-            /* 
-            ═══════════════════════════════════════════════════════════════
-            🎮 SHARED FUNCTIONS (Both can use these!)
-            ═══════════════════════════════════════════════════════════════
-            */
-            
-            /*
-            // 🎉 Celebration - Party time!
-            function celebration() {
-                const party = ['🎉', '🎊', '🎈', '🎁', '🏆'];
-                for(let i = 0; i < 25; i++) {
-                    setTimeout(() => {
-                        const item = document.createElement('div');
-                        item.textContent = party[Math.floor(Math.random() * party.length)];
-                        item.style.position = 'fixed';
-                        item.style.left = Math.random() * 100 + 'vw';
-                        item.style.top = '-50px';
-                        item.style.fontSize = '2rem';
-                        item.style.zIndex = '9999';
-                        item.style.transition = 'top 3s ease-in';
-                        document.body.appendChild(item);
-                        setTimeout(() => item.style.top = '110vh', 100);
-                        setTimeout(() => item.remove(), 3100);
-                    }, i * 100);
-                }
-            }
-            */
-            
-            /*
-            // 🌈 All Effects - Run everything at once!
-            function allEffects() {
-                rainbowEffect();
-                unicornMagic();
-                flowerRain();
-                rocketLaunch();
-                celebration();
-            }
-            */
-            
-            /*
-            // 💡 Tip: You can modify these functions! 
-            // Try changing the emojis, colors, or timing to create your own effects!
-            */
-            
-            /* 
-            ═══════════════════════════════════════════════════════════════
-            🎮 CONSOLE GAMES (Copy and paste these into the console!)
-            ═══════════════════════════════════════════════════════════════
-            */
-            
-            /*
-            // 🔢 Number Guessing Game - Try to guess the secret number!
-            function numberGame() {
-                const secretNumber = Math.floor(Math.random() * 100) + 1;
-                let attempts = 0;
-                const maxAttempts = 10;
-                
-                function guess(num) {
-                    attempts++;
-                    if (num === secretNumber) {
-                        console.log('🎉 Correct! You guessed it in ' + attempts + ' tries!');
-                        return true;
-                    } else if (attempts >= maxAttempts) {
-                        console.log('😢 Game over! The number was ' + secretNumber);
-                        return true;
-                    } else if (num < secretNumber) {
-                        console.log('📈 Too low! Try again. Attempts: ' + attempts + '/' + maxAttempts);
-                        return false;
-                    } else {
-                        console.log('📉 Too high! Try again. Attempts: ' + attempts + '/' + maxAttempts);
-                        return false;
-                    }
-                }
-                
-                console.log('🔢 Number Guessing Game!');
-                console.log('Guess a number between 1 and 100');
-                console.log('Type: guess(50) to make a guess');
-                console.log('Secret number is: ' + secretNumber); // Cheating mode for kids!
-                
-                window.guess = guess;
-            }
-            */
-            
-            /*
-            // ✂️ Rock Paper Scissors - Play against the computer!
-            function rockPaperScissors() {
-                const choices = ['rock', 'paper', 'scissors'];
-                const emojis = {rock: '🪨', paper: '📄', scissors: '✂️'};
-                
-                function play(playerChoice) {
-                    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-                    const playerEmoji = emojis[playerChoice];
-                    const computerEmoji = emojis[computerChoice];
-                    
-                    console.log('You: ' + playerEmoji + ' vs Computer: ' + computerEmoji);
-                    
-                    if (playerChoice === computerChoice) {
-                        console.log('🤝 It\'s a tie!');
-                    } else if (
-                        (playerChoice === 'rock' && computerChoice === 'scissors') ||
-                        (playerChoice === 'paper' && computerChoice === 'rock') ||
-                        (playerChoice === 'scissors' && computerChoice === 'paper')
-                    ) {
-                        console.log('🏆 You win!');
-                        celebration();
-                    } else {
-                        console.log('😢 Computer wins!');
-                    }
-                }
-                
-                console.log('✂️ Rock Paper Scissors!');
-                console.log('Type: play("rock") or play("paper") or play("scissors")');
-                
-                window.play = play;
-            }
-            */
-            
-            /*
-            // ➕ Math Quiz - Test your math skills!
-            function mathQuiz() {
-                let score = 0;
-                let total = 0;
-                
-                function question() {
-                    const num1 = Math.floor(Math.random() * 20) + 1;
-                    const num2 = Math.floor(Math.random() * 20) + 1;
-                    const operations = ['+', '-', '*'];
-                    const operation = operations[Math.floor(Math.random() * operations.length)];
-                    
-                    let answer;
-                    if (operation === '+') answer = num1 + num2;
-                    else if (operation === '-') answer = num1 - num2;
-                    else answer = num1 * num2;
-                    
-                    total++;
-                    console.log('Question ' + total + ': ' + num1 + ' ' + operation + ' ' + num2 + ' = ?');
-                    console.log('Type: check(yourAnswer)');
-                    console.log('Secret answer: ' + answer); // Cheating mode!
-                    
-                    window.check = function(userAnswer) {
-                        if (userAnswer === answer) {
-                            score++;
-                            console.log('✅ Correct! Score: ' + score + '/' + total);
-                            if (score >= 5) {
-                                console.log('🏆 Math Champion! You got 5 correct!');
-                                celebration();
-                            }
-                        } else {
-                            console.log('❌ Wrong! The answer was ' + answer + '. Score: ' + score + '/' + total);
-                        }
-                    };
-                }
-                
-                console.log('➕ Math Quiz!');
-                console.log('Type: question() to get a math problem');
-                
-                window.question = question;
-            }
-            */
-            
-            /*
-            // 🎲 Dice Game - Roll the dice!
-            function diceGame() {
-                function roll() {
-                    const dice1 = Math.floor(Math.random() * 6) + 1;
-                    const dice2 = Math.floor(Math.random() * 6) + 1;
-                    const total = dice1 + dice2;
-                    
-                    const diceEmojis = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-                    
-                    console.log('🎲 You rolled: ' + diceEmojis[dice1 - 1] + ' and ' + diceEmojis[dice2 - 1]);
-                    console.log('Total: ' + total);
-                    
-                    if (total === 7 || total === 11) {
-                        console.log('🎉 Lucky roll!');
-                        celebration();
-                    } else if (dice1 === dice2) {
-                        console.log('🎯 Doubles!');
-                    } else {
-                        console.log('👍 Try again!');
-                    }
-                }
-                
-                console.log('🎲 Dice Game!');
-                console.log('Type: roll() to roll the dice');
-                
-                window.roll = roll;
-            }
-            */
-            
-            /*
-            // 🎯 High Low Game - Guess if next number is higher or lower!
-            function highLowGame() {
-                let currentNumber = Math.floor(Math.random() * 100) + 1;
-                let score = 0;
-                
-                function guess(direction) {
-                    const nextNumber = Math.floor(Math.random() * 100) + 1;
-                    
-                    console.log('Current: ' + currentNumber + ' → Next: ' + nextNumber);
-                    
-                    if ((direction === 'higher' && nextNumber > currentNumber) ||
-                        (direction === 'lower' && nextNumber < currentNumber)) {
-                        score++;
-                        console.log('✅ Correct! Score: ' + score);
-                        if (score >= 5) {
-                            console.log('🏆 High Low Champion!');
-                            celebration();
-                        }
-                    } else if (nextNumber === currentNumber) {
-                        console.log('🤝 Same number! No points.');
-                    } else {
-                        console.log('❌ Wrong! Score: ' + score);
-                    }
-                    
-                    currentNumber = nextNumber;
-                }
-                
-                console.log('🎯 High Low Game!');
-                console.log('Current number: ' + currentNumber);
-                console.log('Type: guess("higher") or guess("lower")');
-                
-                window.guess = guess;
-            }
-            */
         </script>
         <footer style="font-size: 0.8rem; text-align: center; margin-top: 3rem">
             Logos of USC and KAUST are used solely for educational
@@ -3226,47 +3177,8 @@
         </footer>
 
         <script>
-            function checkBackendHealth() {
-                fetch("https://zhenisduissekov.com/health", {
-                    method: "GET",
-                    headers: {
-                        "X-Auth-Token":
-                            "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2", // only if your /health route requires auth
-                    },
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log(
-                                "✅ Backend is healthy (Status:",
-                                response.status + ")",
-                            );
-                            // Optionally update UI:
-                            // document.getElementById('backend-status').innerText = 'Online';
-                            // document.getElementById('backend-status').style.color = 'green';
-                        } else {
-                            console.warn(
-                                "⚠️ Backend health check failed (Status:",
-                                response.status + ")",
-                            );
-                            // document.getElementById('backend-status').innerText = 'Unhealthy';
-                            // document.getElementById('backend-status').style.color = 'orange';
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("❌ Backend is unreachable:", error);
-                        // document.getElementById('backend-status').innerText = 'Offline';
-                        // document.getElementById('backend-status').style.color = 'red';
-                    });
-            }
-
-            // Run immediately on page load
-            checkBackendHealth();
-
-            // Repeat every 30 minutes (1800000 ms)
-            setInterval(checkBackendHealth, 30 * 60 * 1000);
-
             // Typing effect for hero text
-            const text = "Backend Engineer";
+            const text = "Backend Software Engineer";
             const typingText = document.getElementById("typing-text");
             const cursor = document.querySelector(".cursor");
             let charIndex = 0;
@@ -3300,175 +3212,15 @@
                 cursor.style.opacity = cursor.style.opacity == 0 ? 1 : 0;
             }
 
-            // Start the typing effect
-            setTimeout(type, 1000);
+            // Respect prefers-reduced-motion: show final text with no animation loop
+            if (prefersReducedMotion) {
+                typingText.textContent = text;
+                cursor.style.opacity = 1;
+            } else {
+                setTimeout(type, 1000);
+            }
 
             // Like/Dislike functionality>
         </script>
     </body>
 </html>
-
-<style>
-    .contact-card {
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .contact-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    /* Social Links Styling */
-    .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .social-link {
-        display: flex;
-        align-items: center;
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        color: var(--text);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        border: 1px solid var(--border);
-    }
-
-    .social-link:hover {
-        background: rgba(59, 130, 246, 0.05);
-        border-color: var(--primary);
-        color: var(--primary);
-    }
-
-    .social-link i:first-child {
-        font-size: 1.25rem;
-        width: 24px;
-        text-align: center;
-        margin-right: 0.75rem;
-    }
-
-    .social-link span {
-        flex-grow: 1;
-        font-weight: 500;
-    }
-
-    .external-icon {
-        color: var(--text-light);
-        font-size: 0.8rem;
-        opacity: 0.7;
-    }
-
-    /* Resume Download Styling */
-    .resume-download {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        border-radius: 8px;
-        background: white;
-        color: var(--text);
-        text-decoration: none;
-        border: 1px solid var(--border);
-        transition: all 0.2s ease;
-    }
-
-    .resume-download:hover {
-        background: #f8fafc;
-        border-color: var(--primary);
-    }
-
-    .resume-content {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .resume-content i {
-        font-size: 1.5rem;
-        color: #e53e3e;
-    }
-
-    .resume-title {
-        display: block;
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-    }
-
-    .resume-subtitle {
-        display: block;
-        font-size: 0.8rem;
-        color: var(--text-light);
-    }
-
-    /* Work Options */
-    .work-options {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .work-option {
-        font-size: 0.85rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        background: var(--bg-light);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .social-link,
-        .resume-download {
-            padding: 0.75rem 1rem;
-        }
-    }
-</style>
-
-<!-- Add Font Awesome in the head section if not already present -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-/>
-
-<style>
-    .demo-note {
-        display: inline-block;
-        font-size: 0.8rem;
-        color: var(--text-light);
-        background: rgba(251, 191, 36, 0.1);
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        cursor: help;
-        border: 1px solid rgba(251, 191, 36, 0.2);
-    }
-    .demo-note:hover {
-        background: rgba(251, 191, 36, 0.15);
-    }
-</style>
