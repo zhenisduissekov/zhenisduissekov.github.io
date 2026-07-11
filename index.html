@@ -1758,7 +1758,12 @@
                             >OptiSigns Inc. · Houston, TX</span
                         >
                         <div class="timeline-description">
-                            <ul style="list-style-type: none">
+                            <ul
+                                style="
+                                    margin-top: 0.5rem;
+                                    padding-left: 1.25rem;
+                                "
+                            >
                                 <li>
                                     Build backend services and GraphQL/REST
                                     integrations powering digital signage
@@ -1774,8 +1779,13 @@
                                     Own the end-to-end testing platform: a
                                     GitLab CI/CD pipeline running 900+
                                     Playwright tests across multiple
-                                    validation stages, plus dashboards for
-                                    test health and release readiness.
+                                    validation stages.
+                                </li>
+                                <li>
+                                    Build engineering dashboards to visualize
+                                    test health, release readiness, and
+                                    quality trends, enabling faster
+                                    identification of regressions.
                                 </li>
                                 <li>
                                     Investigate and resolve production issues
@@ -1784,6 +1794,11 @@
                                     enterprise customer environments;
                                     collaborate with product and engineering
                                     on technical feasibility.
+                                </li>
+                                <li>
+                                    Use AI-assisted development tools (Claude,
+                                    GitHub Copilot) to accelerate debugging,
+                                    refactoring, and feature delivery.
                                 </li>
                             </ul>
                         </div>
@@ -1806,9 +1821,14 @@
                             Almaty, Kazakhstan</span
                         >
                         <div class="timeline-description">
-                            <ul style="list-style-type: none">
+                            <ul
+                                style="
+                                    margin-top: 0.5rem;
+                                    padding-left: 1.25rem;
+                                "
+                            >
                                 <li>
-                                    <strong>🛠️ Reduced Latency: </strong>
+                                    <strong>Reduced Latency: </strong>
                                     Rebuilt a fragile legacy integration used to
                                     restore archived mobile plans with a new
                                     method that was found during research and
@@ -1819,7 +1839,7 @@
                                 </li>
                                 <li>
                                     <strong
-                                        >📊 Stabilized High-Volume Logging
+                                        >Stabilized High-Volume Logging
                                         Pipeline:
                                     </strong>
                                     Inherited and productionized a Kafka →
@@ -1838,7 +1858,7 @@
                                 </li>
                                 <li>
                                     <strong
-                                        >🔍 Tackling Endpoint Latency in Core
+                                        >Tackling Endpoint Latency in Core
                                         Endpoints:
                                     </strong>
                                     Diagnosed unpredictable delays in two
@@ -1851,9 +1871,7 @@
                                     workflows.
                                 </li>
                                 <li>
-                                    <strong
-                                        >📉 Revived Monitoring Stack:
-                                    </strong>
+                                    <strong>Revived Monitoring Stack: </strong>
                                     Fixed broken Grafana dashboards and rebuilt
                                     observability on ClickHouse after Postgres
                                     performance issues. Delivered actionable
@@ -1863,7 +1881,7 @@
                                 </li>
                                 <li>
                                     <strong
-                                        >🤖 Prototyped AI Log Analysis:
+                                        >Prototyped AI Log Analysis:
                                     </strong>
                                     Initiated LLM-based observability project
                                     using OpenAI and local models (Ollama,
@@ -1875,7 +1893,7 @@
                                     clear potential.
                                 </li>
                                 <li>
-                                    <strong>✅ Raised Test Coverage: </strong>
+                                    <strong>Raised Test Coverage: </strong>
                                     Raised automated test coverage from 32% to
                                     46% through a SonarQube-driven refactoring
                                     initiative.
@@ -2072,6 +2090,52 @@
                 <div class="projects-container">
                     <h3 class="projects-subheading">Featured Projects</h3>
                     <div class="projects-grid">
+                        <!-- Featured: Stock Ticker Watcher -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i class="project-icon">💹</i>
+                                <div class="project-title-container">
+                                    <h3 class="project-title">
+                                        Stock Ticker Watcher
+                                    </h3>
+                                    <span class="project-status"
+                                        >Code Available</span
+                                    >
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                Real-time stock watchlist backend in Go: a
+                                clean layered architecture (API → service →
+                                store) behind a subscription-aware WebSocket
+                                hub with backpressure handling, race-free
+                                concurrency, and graceful shutdown. SQLite
+                                tuned for reliability (WAL, busy-timeout),
+                                unit and integration tests, health/readiness
+                                probes, multi-stage Docker builds, and a
+                                GitHub Actions CI pipeline (fmt · vet · test ·
+                                build).
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Go</span>
+                                <span class="project-tag">WebSockets</span>
+                                <span class="project-tag">Concurrency</span>
+                                <span class="project-tag"
+                                    >Clean Architecture</span
+                                >
+                                <span class="project-tag">Docker</span>
+                                <span class="project-tag">CI</span>
+                            </div>
+                            <div class="project-links">
+                                <a
+                                    href="https://github.com/zhenisduissekov/stock-ticker-watcher"
+                                    class="project-link"
+                                    target="_blank"
+                                >
+                                    <i>👨‍💻</i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
                         <!-- Featured: Houston Port Dashboard -->
                         <div class="project-card">
                             <div class="project-header">
@@ -2165,61 +2229,6 @@
                             </div>
                         </div>
 
-                        <!-- Featured: gRPC Labs -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🔌</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">gRPC Labs</h3>
-                                    <div
-                                        style="
-                                            display: flex;
-                                            gap: 0.5rem;
-                                            flex-wrap: wrap;
-                                        "
-                                    >
-                                        <span class="project-status"
-                                            >Code Available</span
-                                        >
-                                        <span
-                                            class="project-status"
-                                            style="
-                                                background: rgba(
-                                                    99,
-                                                    102,
-                                                    241,
-                                                    0.1
-                                                );
-                                                color: #6366f1;
-                                            "
-                                            >15/17 Labs</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Hands-on gRPC experiments and workflows,
-                                auto-generated and managed via Windsurf prompts.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">gRPC</span>
-                                <span class="project-tag">Go</span>
-                                <span class="project-tag">Protobuf</span>
-                                <span class="project-tag"
-                                    >Distributed Systems</span
-                                >
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://github.com/zhenisduissekov/grpc-labs"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>👨‍💻</i> GitHub
-                                </a>
-                            </div>
-                        </div>
-
                         <!-- Featured: CV Questionnaire -->
                         <div class="project-card">
                             <div class="project-header">
@@ -2253,6 +2262,62 @@
                     <details class="more-projects">
                         <summary>More Projects</summary>
                         <div class="projects-grid">
+                            <!-- gRPC Labs -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🔌</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">gRPC Labs</h3>
+                                        <div
+                                            style="
+                                                display: flex;
+                                                gap: 0.5rem;
+                                                flex-wrap: wrap;
+                                            "
+                                        >
+                                            <span class="project-status"
+                                                >Code Available</span
+                                            >
+                                            <span
+                                                class="project-status"
+                                                style="
+                                                    background: rgba(
+                                                        99,
+                                                        102,
+                                                        241,
+                                                        0.1
+                                                    );
+                                                    color: #6366f1;
+                                                "
+                                                >15/17 Labs</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Hands-on gRPC experiments and workflows,
+                                    auto-generated and managed via Windsurf
+                                    prompts.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">gRPC</span>
+                                    <span class="project-tag">Go</span>
+                                    <span class="project-tag">Protobuf</span>
+                                    <span class="project-tag"
+                                        >Distributed Systems</span
+                                    >
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://github.com/zhenisduissekov/grpc-labs"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>👨‍💻</i> GitHub
+                                    </a>
+                                </div>
+                            </div>
+
                             <!-- Vote4Feature -->
                             <div class="project-card">
                                 <div class="project-header">
