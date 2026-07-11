@@ -1147,6 +1147,54 @@
                 padding: 0 2rem;
             }
 
+            .projects-subheading {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--text-light);
+                margin: 3rem 0 0.5rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .more-projects {
+                margin-top: 1rem;
+            }
+
+            .more-projects summary {
+                cursor: pointer;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--primary);
+                padding: 0.75rem 0;
+                list-style: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .more-projects summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .more-projects summary::before {
+                content: "▸";
+                transition: transform 0.2s ease;
+                display: inline-block;
+            }
+
+            .more-projects[open] summary::before {
+                transform: rotate(90deg);
+            }
+
+            .more-projects .projects-grid {
+                margin-top: 1.5rem;
+            }
+
+            .project-status.archived {
+                background: rgba(107, 114, 128, 0.1);
+                color: #6b7280;
+            }
+
             .projects-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -2023,8 +2071,9 @@
             >
                 <h2 class="section-title">Projects</h2>
                 <div class="projects-container">
+                    <h3 class="projects-subheading">Featured Projects</h3>
                     <div class="projects-grid">
-                        <!-- Project 1: Houston Energy Dashboard -->
+                        <!-- Featured: Houston Port Dashboard -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">📈</i>
@@ -2032,17 +2081,18 @@
                                     <h3 class="project-title">
                                         Houston Port Dashboard
                                     </h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
+                                    <span class="project-status in-progress"
+                                        >Prototype</span
                                     >
                                 </div>
                             </div>
                             <p class="project-description">
-                                AI-powered Houston port logistics dashboard with
-                                real-time vessel tracking, KPIs, and delay
-                                predictions.
-                                <span 
-                                    class="demo-note" 
+                                Energy and port operations dashboard tracking
+                                KPIs, throughput, and performance metrics for
+                                Houston-area logistics, with AI-assisted trend
+                                analysis.
+                                <span
+                                    class="demo-note"
                                     title="Demo may be slow initially due to free hosting"
                                 >
                                     ⚠️ Demo Note
@@ -2071,21 +2121,23 @@
                             </div>
                         </div>
 
-                        <!-- Project 1.5: PortScope -->
+                        <!-- Featured: PortScope -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">🚢</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">PortScope</h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
+                                    <span class="project-status in-progress"
+                                        >Prototype</span
                                     >
                                 </div>
                             </div>
                             <p class="project-description">
-                                Streamlit dashboard for monitoring Houston port logistics with real-time vessel tracking, shipment status, and AI-powered delay predictions.
-                                <span 
-                                    class="demo-note" 
+                                Real-time vessel tracking and shipment
+                                monitoring dashboard for Houston port
+                                logistics, with AI-powered delay predictions.
+                                <span
+                                    class="demo-note"
                                     title="Demo may be slow initially due to free hosting"
                                 >
                                     ⚠️ Demo Note
@@ -2114,7 +2166,7 @@
                             </div>
                         </div>
 
-                        <!-- Project 2: GRPC Labs -->
+                        <!-- Featured: gRPC Labs -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">🔌</i>
@@ -2127,8 +2179,8 @@
                                             flex-wrap: wrap;
                                         "
                                     >
-                                        <span class="project-status in-progress"
-                                            >In Progress</span
+                                        <span class="project-status"
+                                            >Code Available</span
                                         >
                                         <span
                                             class="project-status"
@@ -2166,251 +2218,16 @@
                                 >
                                     <i>👨‍💻</i> GitHub
                                 </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📚</i> Documentation
-                                </a>
                             </div>
                         </div>
 
-                        <!-- Project 3: AI Observability Assistant -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">👁️</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">
-                                        AI Observability Assistant
-                                    </h3>
-                                    <span class="project-status in-progress"
-                                        >In Development</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Combines GitLab, Prometheus, Jaeger, and
-                                Confluence to auto-summarize service health and
-                                suggest improvements.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/ML</span>
-                                <span class="project-tag">DevOps</span>
-                                <span class="project-tag">Monitoring</span>
-                                <span class="project-tag">Automation</span>
-                            </div>
-                            <div class="project-links">
-                                <span
-                                    class="project-link"
-                                    style="cursor: not-allowed; opacity: 0.6"
-                                >
-                                    <i>🔒</i> Coming Soon
-                                </span>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📝</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: ChannelMind -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">💬</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">ChannelMind</h3>
-                                    <span class="project-status in-progress"
-                                        >In Development</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                An AI assistant that helps users find answers
-                                from Telegram channel histories without manual
-                                searching.
-                                <span class="tooltip"
-                                    >ℹ️
-                                    <span class="tooltiptext">
-                                        Ask questions directly and get clear,
-                                        summarized responses — even when
-                                        original messages are unclear.
-                                    </span>
-                                </span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/LLM</span>
-                                <span class="project-tag">Telegram API</span>
-                                <span class="project-tag">NLP</span>
-                                <span class="project-tag">Vector DB</span>
-                            </div>
-                            <div class="project-links">
-                                <span
-                                    class="project-link"
-                                    style="cursor: not-allowed; opacity: 0.6"
-                                >
-                                    <i>🔒</i> Coming Soon
-                                </span>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📝</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 5: Vote4Feature -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🗳️</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">Vote4Feature</h3>
-                                    <div
-                                        style="
-                                            display: flex;
-                                            gap: 0.5rem;
-                                            flex-wrap: wrap;
-                                        "
-                                    >
-                                        <span class="project-status demo"
-                                            >Demo Ready</span
-                                        >
-                                        <span
-                                            class="project-status"
-                                            style="
-                                                background: rgba(
-                                                    139,
-                                                    92,
-                                                    246,
-                                                    0.1
-                                                );
-                                                color: #8b5cf6;
-                                            "
-                                            >Inspired by features.vote</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                A platform designed to help users bring new
-                                feature ideas or vote for existing ones,
-                                fostering engagement by allowing them to track
-                                feature progress and rankings.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Web App</span>
-                                <span class="project-tag">User Feedback</span>
-                                <span class="project-tag"
-                                    >Product Management</span
-                                >
-                                <span class="project-tag">Community</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="https://github.com/zhenisduissekov/FeatureVoteBoard"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>👨‍💻</i> GitHub
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 6: AIOrNot -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🎮</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">AIOrNot</h3>
-                                    <span class="project-status demo"
-                                        >Demo Ready</span
-                                    >
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Fast-built app combining AI text detection with
-                                a fun 3-round guessing game — human or not? 
-                                <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">AI/ML</span>
-                                <span class="project-tag">Web App</span>
-                                <span class="project-tag">Game</span>
-                                <span class="project-tag">NLP</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://aiornot-556gedqnbkdmehetcauenq.streamlit.app/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project: MediScope -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <i class="project-icon">🏥</i>
-                                <div class="project-title-container">
-                                    <h3 class="project-title">MediScope</h3>
-                                    <span class="project-status demo">Demo Ready</span>
-                                </div>
-                            </div>
-                            <p class="project-description">
-                                Healthcare data platform for real-time patient monitoring and hospital resource management with AI-powered insights.
-                                <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Streamlit</span>
-                                <span class="project-tag">Healthcare</span>
-                                <span class="project-tag">Data Analytics</span>
-                                <span class="project-tag">AI/ML</span>
-                            </div>
-                            <div class="project-links">
-                                <a
-                                    href="https://mediscope.streamlit.app/"
-                                    class="project-link"
-                                    target="_blank"
-                                >
-                                    <i>🌐</i> Demo
-                                </a>
-                                <a
-                                    href="case-studies/mediscope.html"
-                                    class="project-link"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project: CV Questionnaire -->
+                        <!-- Featured: CV Questionnaire -->
                         <div class="project-card">
                             <div class="project-header">
                                 <i class="project-icon">📄</i>
                                 <div class="project-title-container">
                                     <h3 class="project-title">CV → JD Tailoring Tool</h3>
-                                    <span class="project-status demo">Demo Ready</span>
+                                    <span class="project-status demo">Live</span>
                                 </div>
                             </div>
                             <p class="project-description">
@@ -2430,16 +2247,179 @@
                                 >
                                     <i>🌐</i> Demo
                                 </a>
-                                <a
-                                    href="#"
-                                    class="project-link"
-                                    style="opacity: 0.6; pointer-events: none"
-                                >
-                                    <i>📄</i> Case Study
-                                </a>
                             </div>
                         </div>
                     </div>
+
+                    <details class="more-projects">
+                        <summary>More Projects</summary>
+                        <div class="projects-grid">
+                            <!-- Vote4Feature -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🗳️</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">Vote4Feature</h3>
+                                        <span class="project-status demo"
+                                            >Live</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    A platform designed to help users bring new
+                                    feature ideas or vote for existing ones,
+                                    fostering engagement by allowing them to track
+                                    feature progress and rankings.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Web App</span>
+                                    <span class="project-tag">User Feedback</span>
+                                    <span class="project-tag"
+                                        >Product Management</span
+                                    >
+                                    <span class="project-tag">Community</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://zhenisduissekov.github.io/FeatureVoteBoard/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                    <a
+                                        href="https://github.com/zhenisduissekov/FeatureVoteBoard"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>👨‍💻</i> GitHub
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- MediScope -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🏥</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">MediScope</h3>
+                                        <span class="project-status in-progress">Prototype</span>
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Healthcare data platform for real-time patient monitoring and hospital resource management with AI-powered insights.
+                                    <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Streamlit</span>
+                                    <span class="project-tag">Healthcare</span>
+                                    <span class="project-tag">Data Analytics</span>
+                                    <span class="project-tag">AI/ML</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://mediscope.streamlit.app/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                    <a
+                                        href="case-studies/mediscope.html"
+                                        class="project-link"
+                                    >
+                                        <i>📄</i> Case Study
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- AIOrNot -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">🎮</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">AIOrNot</h3>
+                                        <span class="project-status in-progress"
+                                            >Prototype</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Fast-built app combining AI text detection with
+                                    a fun 3-round guessing game — human or not?
+                                    <span class="demo-note" title="Demo may be slow initially due to free hosting">⚠️ Demo Note</span>
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/ML</span>
+                                    <span class="project-tag">Web App</span>
+                                    <span class="project-tag">Game</span>
+                                    <span class="project-tag">NLP</span>
+                                </div>
+                                <div class="project-links">
+                                    <a
+                                        href="https://aiornot-556gedqnbkdmehetcauenq.streamlit.app/"
+                                        class="project-link"
+                                        target="_blank"
+                                    >
+                                        <i>🌐</i> Demo
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- AI Observability Assistant -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">👁️</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">
+                                            AI Observability Assistant
+                                        </h3>
+                                        <span class="project-status in-progress"
+                                            >In Development</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    Combines GitLab, Prometheus, Jaeger, and
+                                    Confluence to auto-summarize service health and
+                                    suggest improvements.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/ML</span>
+                                    <span class="project-tag">DevOps</span>
+                                    <span class="project-tag">Monitoring</span>
+                                    <span class="project-tag">Automation</span>
+                                </div>
+                            </div>
+
+                            <!-- ChannelMind -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <i class="project-icon">💬</i>
+                                    <div class="project-title-container">
+                                        <h3 class="project-title">ChannelMind</h3>
+                                        <span class="project-status in-progress"
+                                            >In Development</span
+                                        >
+                                    </div>
+                                </div>
+                                <p class="project-description">
+                                    An AI assistant that helps users find
+                                    answers from Telegram channel histories
+                                    without manual searching — ask questions
+                                    directly and get clear, summarized
+                                    responses, even when the original messages
+                                    are unclear.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="project-tag">AI/LLM</span>
+                                    <span class="project-tag">Telegram API</span>
+                                    <span class="project-tag">NLP</span>
+                                    <span class="project-tag">Vector DB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
 
