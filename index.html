@@ -68,6 +68,17 @@
                 scroll-behavior: smooth;
             }
 
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                    scroll-behavior: auto !important;
+                }
+            }
+
             body {
                 font-family:
                     "Inter",
@@ -166,6 +177,41 @@
             .nav-links {
                 display: flex;
                 gap: 2rem;
+            }
+
+            .nav-toggle {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                width: 32px;
+                height: 32px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1001;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: var(--text);
+                border-radius: 2px;
+                transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
             }
 
             .nav-links a {
@@ -687,8 +733,31 @@
                     margin-left: 0;
                 }
 
+                .nav-toggle {
+                    display: flex;
+                }
+
                 .nav-links {
-                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    flex-direction: column;
+                    gap: 0;
+                    background: white;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.25s ease;
+                }
+
+                .nav-links.open {
+                    max-height: 24rem;
+                }
+
+                .nav-links a {
+                    padding: 1rem 2rem;
+                    border-top: 1px solid var(--border);
                 }
 
                 .section {
@@ -1418,7 +1487,18 @@
             <div class="container">
                 <nav class="nav-container">
                     <a href="#" class="logo">Zhenis Duissekov</a>
-                    <div class="nav-links">
+                    <button
+                        class="nav-toggle"
+                        id="navToggle"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded="false"
+                        aria-controls="navLinks"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="nav-links" id="navLinks">
                         <a href="#about" class="nav-link">About</a>
                         <a href="#skills" class="nav-link">Skills</a>
                         <a href="#experience" class="nav-link">Experience</a>
@@ -1429,6 +1509,25 @@
                 </nav>
             </div>
         </header>
+
+        <script>
+            const navToggle = document.getElementById("navToggle");
+            const navLinks = document.getElementById("navLinks");
+
+            navToggle.addEventListener("click", () => {
+                const isOpen = navLinks.classList.toggle("open");
+                navToggle.classList.toggle("active", isOpen);
+                navToggle.setAttribute("aria-expanded", isOpen);
+            });
+
+            navLinks.querySelectorAll(".nav-link").forEach((link) => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("open");
+                    navToggle.classList.remove("active");
+                    navToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        </script>
 
         <main class="container">
             <section class="hero">
@@ -2592,6 +2691,16 @@
                 .chat-badge {
                     bottom: 1rem;
                     right: 1rem;
+                    padding: 0.85rem;
+                    border-radius: 50%;
+                }
+
+                .chat-badge .chat-label {
+                    display: none;
+                }
+
+                .chat-badge .chat-icon {
+                    font-size: 1.4rem;
                 }
 
                 .chat-container {
@@ -2865,11 +2974,15 @@
                 }
             }
 
-            // 🎮 EASTER EGGS FOR KIDS! 🎮
+            // Hidden family easter eggs
             // Hint: Try typing the famous game code: ↑↑↓↓←→←→BA
             // Hint: Click the logo at the top multiple times...
             // Hint: Add ?secret=true to the website URL!
-            
+
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+
             // Konami Code Easter Egg
             const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
             let konamiIndex = 0;
@@ -2887,15 +3000,17 @@
             });
             
             function activateKonamiEasterEgg() {
-                document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
-                document.body.style.backgroundSize = '400% 400%';
-                document.body.style.animation = 'rainbow 3s ease infinite';
-                
-                setTimeout(() => {
-                    document.body.style.background = '';
-                    document.body.style.animation = '';
-                }, 5000);
-                
+                if (!prefersReducedMotion) {
+                    document.body.style.background = 'linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3)';
+                    document.body.style.backgroundSize = '400% 400%';
+                    document.body.style.animation = 'rainbow 3s ease infinite';
+
+                    setTimeout(() => {
+                        document.body.style.background = '';
+                        document.body.style.animation = '';
+                    }, 5000);
+                }
+
                 alert('🎮 KONAMI CODE ACTIVATED! You found the secret! 🎮');
             }
             
@@ -2929,27 +3044,29 @@
             }
             
             function activateClickEasterEgg() {
-                const emojis = ['🌟', '⭐', '✨', '💫', '🎊', '🎉', '🏆', '👏'];
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const emoji = document.createElement('div');
-                        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                        emoji.style.position = 'fixed';
-                        emoji.style.left = Math.random() * 100 + 'vw';
-                        emoji.style.top = '-50px';
-                        emoji.style.fontSize = '2rem';
-                        emoji.style.zIndex = '9999';
-                        emoji.style.transition = 'top 3s ease-in';
-                        document.body.appendChild(emoji);
-                        
+                if (!prefersReducedMotion) {
+                    const emojis = ['🌟', '⭐', '✨', '💫', '🎊', '🎉', '🏆', '👏'];
+                    for (let i = 0; i < 20; i++) {
                         setTimeout(() => {
-                            emoji.style.top = '110vh';
-                        }, 100);
-                        
-                        setTimeout(() => {
-                            emoji.remove();
-                        }, 3100);
-                    }, i * 100);
+                            const emoji = document.createElement('div');
+                            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                            emoji.style.position = 'fixed';
+                            emoji.style.left = Math.random() * 100 + 'vw';
+                            emoji.style.top = '-50px';
+                            emoji.style.fontSize = '2rem';
+                            emoji.style.zIndex = '9999';
+                            emoji.style.transition = 'top 3s ease-in';
+                            document.body.appendChild(emoji);
+
+                            setTimeout(() => {
+                                emoji.style.top = '110vh';
+                            }, 100);
+
+                            setTimeout(() => {
+                                emoji.remove();
+                            }, 3100);
+                        }, i * 100);
+                    }
                 }
                 alert('🏆 CLICK MASTER! You clicked the logo 15 times! 🏆');
             }
@@ -2966,11 +3083,13 @@
             
             function activateURLEasterEgg() {
                 alert('🔐 SECRET MODE ACTIVATED! You found the URL secret! 🔐');
-                document.body.style.filter = 'hue-rotate(180deg)';
-                
-                setTimeout(() => {
-                    document.body.style.filter = '';
-                }, 5000);
+                if (!prefersReducedMotion) {
+                    document.body.style.filter = 'hue-rotate(180deg)';
+
+                    setTimeout(() => {
+                        document.body.style.filter = '';
+                    }, 5000);
+                }
             }
             
             checkURLEasterEgg();
@@ -3430,8 +3549,13 @@
                 cursor.style.opacity = cursor.style.opacity == 0 ? 1 : 0;
             }
 
-            // Start the typing effect
-            setTimeout(type, 1000);
+            // Respect prefers-reduced-motion: show final text with no animation loop
+            if (prefersReducedMotion) {
+                typingText.textContent = text;
+                cursor.style.opacity = 1;
+            } else {
+                setTimeout(type, 1000);
+            }
 
             // Like/Dislike functionality>
         </script>
