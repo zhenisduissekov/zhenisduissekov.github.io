@@ -18,12 +18,19 @@
             name="description"
             content="Backend Engineer with expertise in building scalable systems and APIs"
         />
+        <link rel="canonical" href="https://zhenisduissekov.github.io/" />
+        <meta property="og:url" content="https://zhenisduissekov.github.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
         <!-- Google tag (gtag.js) -->
         <!-- 🕵️ Secret hint: Try adding ?secret=true to the end of the website address... -->
@@ -1246,6 +1253,162 @@
                 .project-card {
                     padding: 1.25rem;
                 }
+            }
+        </style>
+        <style>
+            .contact-card {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .contact-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color: var(--text);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            /* Social Links Styling */
+            .social-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                display: flex;
+                align-items: center;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                color: var(--text);
+                text-decoration: none;
+                transition: all 0.2s ease;
+                border: 1px solid var(--border);
+            }
+
+            .social-link:hover {
+                background: rgba(59, 130, 246, 0.05);
+                border-color: var(--primary);
+                color: var(--primary);
+            }
+
+            .social-link i:first-child {
+                font-size: 1.25rem;
+                width: 24px;
+                text-align: center;
+                margin-right: 0.75rem;
+            }
+
+            .social-link span {
+                flex-grow: 1;
+                font-weight: 500;
+            }
+
+            .external-icon {
+                color: var(--text-light);
+                font-size: 0.8rem;
+                opacity: 0.7;
+            }
+
+            /* Resume Download Styling */
+            .resume-download {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem;
+                border-radius: 8px;
+                background: white;
+                color: var(--text);
+                text-decoration: none;
+                border: 1px solid var(--border);
+                transition: all 0.2s ease;
+            }
+
+            .resume-download:hover {
+                background: #f8fafc;
+                border-color: var(--primary);
+            }
+
+            .resume-content {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .resume-content i {
+                font-size: 1.5rem;
+                color: #e53e3e;
+            }
+
+            .resume-title {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+            }
+
+            .resume-subtitle {
+                display: block;
+                font-size: 0.8rem;
+                color: var(--text-light);
+            }
+
+            /* Work Options */
+            .work-options {
+                display: flex;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .work-option {
+                font-size: 0.85rem;
+                padding: 0.25rem 0.75rem;
+                border-radius: 1rem;
+                background: var(--bg-light);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 768px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+
+                .social-link,
+                .resume-download {
+                    padding: 0.75rem 1rem;
+                }
+            }
+
+            .demo-note {
+                display: inline-block;
+                font-size: 0.8rem;
+                color: var(--text-light);
+                background: rgba(251, 191, 36, 0.1);
+                padding: 0.2rem 0.5rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+                cursor: help;
+                border: 1px solid rgba(251, 191, 36, 0.2);
+            }
+            .demo-note:hover {
+                background: rgba(251, 191, 36, 0.15);
             }
         </style>
     </head>
@@ -2569,6 +2732,12 @@
         <script>
             let chatHistory = [];
 
+            function escapeHTML(str) {
+                const div = document.createElement("div");
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
             function toggleChat() {
                 const chatContainer = document.getElementById("chatContainer");
                 chatContainer.style.display =
@@ -2607,7 +2776,7 @@
                     document.querySelector(".input-container");
 
                 // Add user message and clear input
-                messages.innerHTML += `<div class="user">${message}</div>`;
+                messages.innerHTML += `<div class="user">${escapeHTML(message)}</div>`;
                 userInput.value = "";
 
                 // Add to history
@@ -2665,7 +2834,7 @@
                         const data = await response.json();
                         const reply = data.reply || "I'm here to help! Please ask me specific questions about my work, projects, or technical expertise.";
                         
-                        messages.innerHTML += `<div class="bot">${reply}</div>`;
+                        messages.innerHTML += `<div class="bot">${escapeHTML(reply)}</div>`;
                         chatHistory.push({ role: "assistant", content: reply });
                     }
                 } catch (error) {
@@ -3226,45 +3395,6 @@
         </footer>
 
         <script>
-            function checkBackendHealth() {
-                fetch("https://zhenisduissekov.com/health", {
-                    method: "GET",
-                    headers: {
-                        "X-Auth-Token":
-                            "2bb80d537b1da3e38bd30361aa855686bde0ba6bfb04b8e05f3b1f94d4e5f0f2", // only if your /health route requires auth
-                    },
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log(
-                                "✅ Backend is healthy (Status:",
-                                response.status + ")",
-                            );
-                            // Optionally update UI:
-                            // document.getElementById('backend-status').innerText = 'Online';
-                            // document.getElementById('backend-status').style.color = 'green';
-                        } else {
-                            console.warn(
-                                "⚠️ Backend health check failed (Status:",
-                                response.status + ")",
-                            );
-                            // document.getElementById('backend-status').innerText = 'Unhealthy';
-                            // document.getElementById('backend-status').style.color = 'orange';
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("❌ Backend is unreachable:", error);
-                        // document.getElementById('backend-status').innerText = 'Offline';
-                        // document.getElementById('backend-status').style.color = 'red';
-                    });
-            }
-
-            // Run immediately on page load
-            checkBackendHealth();
-
-            // Repeat every 30 minutes (1800000 ms)
-            setInterval(checkBackendHealth, 30 * 60 * 1000);
-
             // Typing effect for hero text
             const text = "Backend Engineer";
             const typingText = document.getElementById("typing-text");
@@ -3307,168 +3437,3 @@
         </script>
     </body>
 </html>
-
-<style>
-    .contact-card {
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .contact-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    /* Social Links Styling */
-    .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .social-link {
-        display: flex;
-        align-items: center;
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        color: var(--text);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        border: 1px solid var(--border);
-    }
-
-    .social-link:hover {
-        background: rgba(59, 130, 246, 0.05);
-        border-color: var(--primary);
-        color: var(--primary);
-    }
-
-    .social-link i:first-child {
-        font-size: 1.25rem;
-        width: 24px;
-        text-align: center;
-        margin-right: 0.75rem;
-    }
-
-    .social-link span {
-        flex-grow: 1;
-        font-weight: 500;
-    }
-
-    .external-icon {
-        color: var(--text-light);
-        font-size: 0.8rem;
-        opacity: 0.7;
-    }
-
-    /* Resume Download Styling */
-    .resume-download {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        border-radius: 8px;
-        background: white;
-        color: var(--text);
-        text-decoration: none;
-        border: 1px solid var(--border);
-        transition: all 0.2s ease;
-    }
-
-    .resume-download:hover {
-        background: #f8fafc;
-        border-color: var(--primary);
-    }
-
-    .resume-content {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .resume-content i {
-        font-size: 1.5rem;
-        color: #e53e3e;
-    }
-
-    .resume-title {
-        display: block;
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-    }
-
-    .resume-subtitle {
-        display: block;
-        font-size: 0.8rem;
-        color: var(--text-light);
-    }
-
-    /* Work Options */
-    .work-options {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .work-option {
-        font-size: 0.85rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        background: var(--bg-light);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .social-link,
-        .resume-download {
-            padding: 0.75rem 1rem;
-        }
-    }
-</style>
-
-<!-- Add Font Awesome in the head section if not already present -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-/>
-
-<style>
-    .demo-note {
-        display: inline-block;
-        font-size: 0.8rem;
-        color: var(--text-light);
-        background: rgba(251, 191, 36, 0.1);
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        cursor: help;
-        border: 1px solid rgba(251, 191, 36, 0.2);
-    }
-    .demo-note:hover {
-        background: rgba(251, 191, 36, 0.15);
-    }
-</style>
